@@ -36,11 +36,20 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection
 @section('content')
     <div class="text-inter">
         <div class="container">
-            <div class="row">
+            @foreach($content as $contents)
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>{{$contents->title}}</h3>
+                        <p>{!! $contents->content !!}</p>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+
+           {{-- <div class="row">
                 <div class="col-md-12">
                     <h3>Wesley Mission</h3>
                     <p>Wesley Mission is an organisation that supports Oprhans. With your help, we can provide food, shelter and get them job ready.
@@ -49,7 +58,8 @@
                     </p>
                     <div class="divider"></div>
                 </div>
-            </div>
+            </div>--}}
+                @endforeach
         </div>
     </div>
 

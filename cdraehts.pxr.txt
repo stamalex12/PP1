@@ -1,0 +1,32 @@
+﻿Version 2.0
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#	modified:   .idea/DonationManager.iml
+#	new file:   .idea/vcs.xml
+#	modified:   .idea/workspace.xml
+#	new file:   app/Content.php
+#	new file:   app/Http/Controllers/ContentController.php
+#	new file:   app/Http/Controllers/PageController.php
+#	deleted:    app/Http/Controllers/PagesController.php
+#	new file:   app/Http/Requests/CreateContentRequest.php
+#	modified:   app/Http/routes.php
+#	new file:   app/Page.php
+#	modified:   composer.json
+#	modified:   composer.lock
+#	modified:   config/app.php
+#	modified:   config/database.php
+#	modified:   public/css/styles.css
+#	new file:   resources/views/content/create.blade.php
+#	new file:   resources/views/content/edit.blade.php
+#	new file:   resources/views/content/index.blade.php
+#	new file:   resources/views/content/test.php
+#	new file:   resources/views/home/about.blade.php
+#	new file:   resources/views/home/index.blade.php
+#	modified:   resources/views/layouts/master.blade.php
+#	new file:   resources/views/shared/navbar.blade.php
+#	new file:   resources/views/shared/slider.blade.php
+#	modified:   resources/views/welcome.blade.php
+#
+

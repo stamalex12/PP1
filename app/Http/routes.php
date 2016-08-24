@@ -11,7 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'PageController@index');
+Route::get('/about', 'PageController@about');
+Route::get('/content', 'ContentController@index');
+Route::get('/content/create', 'ContentController@create');
+Route::get('/contentEdit/{id}', 'ContentController@edit');
+
+Route::post('/content', 'ContentController@store');
+Route::patch('/content', array(
+    'as' => 'content.update',
+    'uses' => 'ContentController@update'
+));
+
+
+
 

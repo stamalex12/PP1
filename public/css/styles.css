@@ -854,7 +854,7 @@ nav ul li a.active {
 }
 .next, .prev, .quote-next, .quote-prev{
     color: #fff;
-    position: absolute;
+   /* position: absolute;*/
     top: 50%;
     z-index: 1;
     margin-top: -.75em;
