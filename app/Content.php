@@ -11,6 +11,6 @@ class Content extends Model
     protected $fillable = ['pageId, title, content, sortOrder'];
 
     public function page() {
-        return $this->belongsTo('App/Page'); // this matches the Eloquent model
+        return $this->belongsTo('App\Page'); // this matches the Eloquent model
     }
 }
