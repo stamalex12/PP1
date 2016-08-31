@@ -17,3 +17,5 @@ composer.phar
 /app/config/packages
 /public/packages
 
+
+.idea/workspace.xml
