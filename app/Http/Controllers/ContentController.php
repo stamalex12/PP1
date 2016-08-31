@@ -48,7 +48,7 @@ class ContentController extends Controller
         $content->sortOrder = $request['sortOrder'];
 
         $content = $content->save();
-        //$page = Page::find($request['page']);
+
         //Content::find($content->id)->page()->save($page);
 
        /* if($request['page'] == 'home')

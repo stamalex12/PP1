@@ -18,6 +18,10 @@ Route::get('/content', 'ContentController@index');
 Route::get('/content/create', 'ContentController@create');
 Route::get('/contentEdit/{id}', 'ContentController@edit');
 
+Route::get('/dashboard', 'PageController@dashboard');
+Route::get('/dashboard/resource', 'ResourceController@index');
+
+
 Route::post('/content', 'ContentController@store');
 Route::patch('/content', array(
     'as' => 'content.update',

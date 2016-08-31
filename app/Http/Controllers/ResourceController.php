@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Content;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class PageController extends Controller
+class ResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,21 +14,8 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-{
-    $content = Content::where('pageId', '=', 1)->get();
-    return view('home.index')->with('content', $content);
-}
-
-
-    public function about()
     {
-        $content = Content::where('pageId', '=', 2)->get();
-        return view('home.about')->with('content', $content);
-    }
-
-    public function dashboard()
-    {
-        return view('admin.dashboard.index');
+        return view('admin.dashboard.resource');
     }
 
     /**
@@ -38,9 +24,9 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-{
-    //
-}
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
