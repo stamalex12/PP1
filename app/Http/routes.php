@@ -23,7 +23,3 @@ Route::patch('/content', array(
     'as' => 'content.update',
     'uses' => 'ContentController@update'
 ));
-
-
-
-
