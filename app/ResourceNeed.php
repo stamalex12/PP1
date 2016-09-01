@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class ResourceNeed extends Model
 {
     protected $fillable = [
-        'name', 'description', 'status', 'amountNeeded',
+        'name', 'description', 'amountNeeded',
     ];
+    protected $attributes = array(
+        'status' => 'Active',
+    );
 }

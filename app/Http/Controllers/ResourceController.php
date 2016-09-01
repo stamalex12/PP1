@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\ResourceNeed;
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 
 class ResourceController extends Controller
 {
@@ -15,7 +16,8 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.resource');
+        $resources = ResourceNeed::all();
+        return view('dashboard.resources.index', compact('resources'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ResourceController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.resources.create');
     }
 
     /**
@@ -34,9 +36,11 @@ class ResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $input = Request::all();
+        ResourceNeed::create($input);
+        return redirect('dashboard/resources');
     }
 
     /**
@@ -58,7 +62,9 @@ class ResourceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $resource = ResourceNeed::find($id);
+
+        return view('dashboard/resources.edit', compact('resource'));
     }
 
     /**
@@ -70,7 +76,11 @@ class ResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $resource = ResourceNeed::findOrFail($id);
+
+        $resource->update(Request::all());
+
+        return redirect('dashboard/resources');
     }
 
     /**

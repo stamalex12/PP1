@@ -12,7 +12,7 @@ class CreatePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('page', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -26,6 +26,6 @@ class CreatePageTable extends Migration
      */
     public function down()
     {
-        Schema::drop('page');
+        Schema::drop('pages');
     }
 }

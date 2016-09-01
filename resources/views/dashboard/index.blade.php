@@ -3,7 +3,7 @@
 @section('content')
     <ul>
         <li>
-            <a href="dashboard/resource">Create Resource</a>
+            <a href="dashboard/resources">Resource Needs</a>
         </li>
     </ul>
 @endsection

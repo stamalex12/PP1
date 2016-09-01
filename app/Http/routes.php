@@ -18,9 +18,12 @@ Route::get('/content', 'ContentController@index');
 Route::get('/content/create', 'ContentController@create');
 Route::get('/contentEdit/{id}', 'ContentController@edit');
 
-Route::get('/dashboard', 'PageController@dashboard');
-Route::get('/dashboard/resource', 'ResourceController@index');
-
+Route::get('dashboard', 'PageController@dashboard');
+Route::get('dashboard/resources', 'ResourceController@index');
+Route::get('dashboard/resources/create', 'ResourceController@create');
+Route::post('dashboard/resources', 'ResourceController@store');
+Route::get('dashboard/resources/{id}', 'ResourceController@edit');
+Route::patch('dashboard/resources/{id}', 'ResourceController@update');
 
 Route::post('/content', 'ContentController@store');
 Route::patch('/content', array(
