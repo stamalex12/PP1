@@ -36,9 +36,9 @@ class ResourceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Requests\CreateResourceRequest $request)
     {
-        $input = Request::all();
+        $input = $request->all();
         ResourceNeed::create($input);
         return redirect('dashboard/resources');
     }
@@ -74,11 +74,11 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\CreateResourceRequest $request, $id)
     {
         $resource = ResourceNeed::findOrFail($id);
 
-        $resource->update(Request::all());
+        $resource->update($request->all());
 
         return redirect('dashboard/resources');
     }
@@ -91,6 +91,22 @@ class ResourceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ResourceNeed::destroy($id);
+
+        return redirect('dashboard/resources');
+
+    }
+
+    public function statusToggle($id){
+        $resource = ResourceNeed::findOrFail($id);
+        if($resource->status == "Active"){
+            $status = "Disabled";
+            print 'Here';
+        }else{
+            $status = "Active";
+        }
+        $resource->status = $status;
+        $resource->save();
+        return redirect('dashboard/resources');
     }
 }

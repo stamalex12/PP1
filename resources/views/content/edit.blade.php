@@ -34,6 +34,7 @@
                     {!! Form::close() !!}
 
 
+
                     <div class="divider"></div>
                 </div>
             </div>

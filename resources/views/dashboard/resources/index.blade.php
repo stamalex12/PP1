@@ -35,7 +35,13 @@
                                 <th>{{$resource->description}}</th>
                                 <th>{{$resource->status}}</th>
                                 <th>{{$resource->amountNeeded}}</th>
-                                <th>{!!link_to_action('ResourceController@edit', 'Edit', $resource->id) !!}</th>
+                                <th>{!!link_to_action('ResourceController@edit', 'Edit', $resource->id) !!} |
+                                @if($resource->status == "Active")
+                                    {!! link_to_action('ResourceController@statusToggle','Disable', $resource->id) !!}
+                                @else
+                                    {!! link_to_action('ResourceController@statusToggle','Enable', $resource->id) !!}
+                                @endif
+                                    | {!! link_to_action('ResourceController@destroy','Remove', $resource->id) !!}</th>
                             </tr>
                         @endforeach
 
