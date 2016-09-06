@@ -49,9 +49,11 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $resources = ResourceNeed::where('status', '=', 'Active')->get();
+
+        return view('projects.index', compact('resources'));
     }
 
     /**
@@ -101,7 +103,6 @@ class ResourceController extends Controller
         $resource = ResourceNeed::findOrFail($id);
         if($resource->status == "Active"){
             $status = "Disabled";
-            print 'Here';
         }else{
             $status = "Active";
         }

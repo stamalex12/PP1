@@ -17,14 +17,15 @@ Route::get('/about', 'PageController@about');
 Route::get('/content', 'ContentController@index');
 Route::get('/content/create', 'ContentController@create');
 Route::get('/contentEdit/{id}', 'ContentController@edit');
+Route::get('/projects', 'PageController@projects');
 
 Route::get('dashboard', 'PageController@dashboard');
 Route::get('dashboard/resources', 'ResourceController@index');
 Route::get('dashboard/resources/create', 'ResourceController@create');
 Route::post('dashboard/resources', 'ResourceController@store');
-Route::get('dashboard/resources/{id}', 'ResourceController@edit');
-Route::get('dashboard/resources/{id}', 'ResourceController@statusToggle');
-Route::get('dashboard/resources/{id}', 'ResourceController@destroy');
+Route::get('dashboard/resources/editId={id}', 'ResourceController@edit');
+Route::get('dashboard/resources/disableId={id}', 'ResourceController@statusToggle');
+Route::get('dashboard/resources/deleteId={id}', 'ResourceController@destroy');
 Route::patch('dashboard/resources/{id}', 'ResourceController@update');
 
 Route::post('/content', 'ContentController@store');

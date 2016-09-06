@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Content;
+use App\ResourceNeed;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,6 +26,13 @@ class PageController extends Controller
     {
         $content = Content::where('pageId', '=', 2)->get();
         return view('home.about')->with('content', $content);
+    }
+
+    public function projects()
+    {
+        $resources = ResourceNeed::where('status', '=', 'Active')->get();
+
+        return view('projects.index', compact('resources'));
     }
 
     public function dashboard()
