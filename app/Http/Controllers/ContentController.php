@@ -42,16 +42,7 @@ class ContentController extends Controller
      */
     public function store(CreateContentRequest $request)
     {
-        $content = new Content();
-        $content->title = $request['title'];
-        $content->content = $request['content'];
-        $content->sortOrder = $request['sortOrder'];
-
-        $content = $content->save();
-
-        //Content::find($content->id)->page()->save($page);
-
-       /* if($request['page'] == 'home')
+        if($request['page'] == 'home')
         {
             $page = '1';
         }
@@ -61,7 +52,7 @@ class ContentController extends Controller
         }
 
         Content::insert(['pageId' => $page, 'title' => $request['title'], 'content' => $request['content'], 'sortOrder' => $request['sortOrder']]);
-        $content = Content::all();*/
+        $content = Content::all();
         return view('content.index')->with('content', $content);
         //return redirect()->back();
     }
@@ -88,12 +79,10 @@ class ContentController extends Controller
     public function edit($id)
     {
         //$content = Content::with(['page'])->find($id);
-
         $content = Content::find($id);
-
         $page = Page::where('id', '=', $content->pageId)->get();
         return view('content.edit', compact('content', 'page'));
-
+        //return content;
     }
 
     /**
@@ -105,13 +94,20 @@ class ContentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $content = Content::find($id);
-        $page = Page::find($request->get('pageId'));
-        $input = array($request->get('title'), $request->get('content'), $request->get('sortOrder'));
-        $content->fill($input);
-        $page->content()->save($content);
+        $content = Content::findOrFail($id);
 
-        return $page;
+       /* $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required'
+        ]);*/
+
+        $input = $request->all();
+
+        $content->fill($input)->save();
+
+        //Session::flash('flash_message', 'Task successfully added!');
+
+        return redirect()->back();
     }
 
     /**
@@ -122,6 +118,6 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-
+        //
     }
 }
