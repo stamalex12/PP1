@@ -8,7 +8,7 @@
                     <h1>Edit</h1>
                     {!! Form::model($content, [
       'method' => 'PATCH',
-      'route' => ['content.update', $content->id]
+      'action' => ['ContentController@update', $content->id]
   ]) !!}
 
                     <div class="form-group">
@@ -32,6 +32,7 @@
                     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
 
                     {!! Form::close() !!}
+
 
 
                     <div class="divider"></div>
