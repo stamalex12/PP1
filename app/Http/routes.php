@@ -27,3 +27,7 @@ Route::patch('/content', array(
 
 
 
+
+Route::auth();
+
+//Route::get('/', 'PageController@index');

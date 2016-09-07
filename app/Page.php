@@ -11,6 +11,6 @@ class Page extends Model
     protected $fillable = ['name'];
 
     public function content() {
-        return $this->hasMany('App\Content', 'pageId'); // this matches the Eloquent model
+        return $this->hasMany('App/Content'); // this matches the Eloquent model
     }
 }
