@@ -9,8 +9,6 @@
             <li>{!!link_to_action('PageController@projects', 'Projects') !!} </li>
             <li>{!!link_to_action('ContentController@index', 'Content') !!} </li>
             <li>{!!link_to_action('PageController@dashboard', 'Dashboard') !!} </li>
-           {{-- <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>
                 <li><a href="{{ url('/register') }}">Register</a></li>
@@ -24,7 +22,7 @@
                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                     </ul>
                 </li>
-          @endif
+            @endif
         </ul>
     </nav>
     <div class="pullcontainer">

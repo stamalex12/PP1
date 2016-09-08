@@ -32,9 +32,6 @@ Route::post('/content', 'ContentController@store');
 Route::patch('/content', array(
     'as' => 'content.update',
     'uses' => 'ContentController@update'
-<<<<<<< HEAD
-));
-=======
 ));
 
 
@@ -44,4 +41,3 @@ Route::patch('/content', array(
 Route::auth();
 
 //Route::get('/', 'PageController@index');
->>>>>>> lucas-branch
