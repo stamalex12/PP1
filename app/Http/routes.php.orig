@@ -34,8 +34,6 @@ Route::patch('/content', array(
     'uses' => 'ContentController@update'
 <<<<<<< HEAD
 ));
-=======
-));
 
 
 
@@ -44,4 +42,6 @@ Route::patch('/content', array(
 Route::auth();
 
 //Route::get('/', 'PageController@index');
->>>>>>> lucas-branch
+=======
+));
+>>>>>>> master

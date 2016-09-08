@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+<<<<<<< HEAD
+  <component name="PublishConfigData">
+=======
+  <component name="PublishConfigData" serverName="xamppserver">
+>>>>>>> master
+    <serverData>
+      <paths name="xamppserver">
+        <serverdata>
+          <mappings>
+<<<<<<< HEAD
+            <mapping local="$PROJECT_DIR$" web="/" />
+=======
+            <mapping local="$PROJECT_DIR$" web="SponsorManager" />
+>>>>>>> master
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
