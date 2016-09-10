@@ -7,7 +7,6 @@
             <li>{!!link_to_action('PageController@index', 'Home') !!} </li>
             <li>{!!link_to_action('PageController@about', 'About') !!} </li>
             <li>{!!link_to_action('PageController@projects', 'Projects') !!} </li>
-            <li>{!!link_to_action('ContentController@index', 'Content') !!} </li>
             <li>{!!link_to_action('PageController@dashboard', 'Dashboard') !!} </li>
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>

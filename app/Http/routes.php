@@ -14,8 +14,8 @@
 
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
-Route::get('/content', 'ContentController@index');
-Route::get('/content/create', 'ContentController@create');
+Route::get('dashboard/content', 'ContentController@index');
+Route::get('dashboard/content/create', 'ContentController@create');
 Route::get('/contentEdit/{id}', 'ContentController@edit');
 Route::get('/projects', 'PageController@projects');
 

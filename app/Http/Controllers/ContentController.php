@@ -21,7 +21,7 @@ class ContentController extends Controller
     public function index()
     {
         $content = Content::all();
-        return view('content.index')->with('content', $content);
+        return view('dashboard/content.index')->with('content', $content);
     }
 
     /**
@@ -31,7 +31,7 @@ class ContentController extends Controller
      */
     public function create()
     {
-        return view('content.create');
+        return view('dashboard/content.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class ContentController extends Controller
 
         Content::insert(['pageId' => $page, 'title' => $request['title'], 'content' => $request['content'], 'sortOrder' => $request['sortOrder']]);
         $content = Content::all();
-        return view('content.index')->with('content', $content);
+        return view('dashboard/content.index')->with('content', $content);
         //return redirect()->back();
     }
 
