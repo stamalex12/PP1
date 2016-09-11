@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@yield('title')</title>
     <!-- Bootstrap -->
-    <link href="{{URL::to('/')}}/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{URL::to('/')}}/css/styles.css">
-    <link rel="stylesheet" href="{{URL::to('/')}}/css/queries.css">
-    <link rel="stylesheet" href="{{URL::to('/')}}/css/slider.css">
+    <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/queries.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/slider.css')}}">
 
 
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    <script type='text/javascript' src='{{URL::to('/')}}/js/jquery.js'></script>
+    <script type='text/javascript' src='{{URL::asset('js/jquery.js')}}'></script>
 
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -55,13 +55,13 @@
     </div>
 </footer>
 
-<script src="{{URL::to('/')}}/js/bootstrap.min.js"></script>
-<script src="{{URL::to('/')}}/js/scripts.js"></script>
-<script src="{{URL::to('/')}}/js/unslider.min.js"></script>
+<script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('js/scripts.js')}}"></script>
+<script src="{{URL::asset('js/unslider.min.js')}}"></script>
 </body>
 </html>
 <!-- FlexSlider -->
-<script type="text/javascript" src="{{URL::to('/')}}/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="{{URL::asset('js/jquery.flexslider-min.js')}}"></script>
 <script type="text/javascript" charset="utf-8">
     var $ = jQuery.noConflict();
     $(window).load(function () {
