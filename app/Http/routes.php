@@ -34,8 +34,19 @@ Route::patch('/content', array(
     'uses' => 'ContentController@update'
 ));
 
+Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
+    Route::get('/users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
+    Route::get('/roles', 'RolesController@index');
+    Route::get('roles/create', 'RolesController@create');
+    Route::post('roles/create', 'RolesController@store');
+    Route::get('users/{id?}/edit', 'UsersController@edit');
+    Route::post('users/{id?}/edit','UsersController@update');
+});
 
 
+
+
+Route::get('/logout', 'Auth\AuthController@getLogout');
 
 
 Route::auth();
