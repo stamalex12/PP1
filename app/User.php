@@ -1,31 +1,31 @@
 <?php
-
 namespace App;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class User extends Authenticatable
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'username', 'email', 'password',
-    ];
+    use Authenticatable, CanResetPassword;
+    use EntrustUserTrait;
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The database table used by the model.
      *
-     * @var array
+     * @var string
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $table = 'users';
 
-    public function roles()
+    public function saveRoles($roles)
     {
-        return $this->belongsToMany('App\Role', 'user_role', 'userId', 'roleId');
+        if(!empty($roles))
+        {
+            $this->roles()->sync($roles);
+        } else {
+            $this->roles()->detach();
+        }
     }
 }
