@@ -26,7 +26,8 @@ class CreateResourceRequest extends Request
         return [
             'name' => 'required|min:3',
             'description' => 'required',
-            'amountNeeded' => 'required|integer'
+            'amountNeeded' => 'required|integer',
+            'image' => 'image|mimes:jpeg,bmp,png'
         ];
     }
 }
