@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title', 'Create A New Role')
 @section('content')
     <div class="container col-md-8 col-md-offset-2">
