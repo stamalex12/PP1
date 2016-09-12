@@ -47,15 +47,15 @@ class ResourceController extends Controller
         $resource->save();
         if( $request->hasFile('image') ) {
 
-            $imageName = $resource->id . '.' . $request->file('image')->getClientOriginalName();
+            $imageName = $resource->getQueueableId() . '.' . $request->file('image')->getClientOriginalName();
 
             $request->file('image')->move(base_path() . '/public/images/resources/', $imageName);
 
             $resource->imagePath = '/public/images/resources/'. $imageName;
         }
-        $resource->save();
 
-        return redirect('dashboard/resources');
+
+        return redirect('admin/resources');
     }
 
     /**

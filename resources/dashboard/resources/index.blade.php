@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>Resource Needs</h1>
-                    {!!link_to_action('ResourceController@create', 'Create') !!}
+
                     <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
