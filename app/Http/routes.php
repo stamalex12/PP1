@@ -14,33 +14,35 @@
 
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
-Route::get('dashboard/content', 'ContentController@index');
-Route::get('dashboard/content/create', 'ContentController@create');
-Route::get('/contentEdit/{id}', 'ContentController@edit');
 Route::get('/projects', 'PageController@projects');
 
-Route::get('dashboard', 'PageController@dashboard');
-Route::get('dashboard/resources', 'ResourceController@index');
-Route::get('dashboard/resources/create', 'ResourceController@create');
-Route::post('dashboard/resources', 'ResourceController@store');
-Route::get('dashboard/resources/editId={id}', 'ResourceController@edit');
-Route::get('dashboard/resources/disableId={id}', 'ResourceController@statusToggle');
-Route::get('dashboard/resources/deleteId={id}', 'ResourceController@destroy');
-Route::patch('dashboard/resources/{id}', 'ResourceController@update');
 
-Route::post('/content', 'ContentController@store');
-Route::patch('/content', array(
-    'as' => 'content.update',
-    'uses' => 'ContentController@update'
-));
-
+//For all Administrator only access
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
     Route::get('/users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
     Route::get('/roles', 'RolesController@index');
-    Route::get('roles/create', 'RolesController@create');
-    Route::post('roles/create', 'RolesController@store');
-    Route::get('users/{id?}/edit', 'UsersController@edit');
-    Route::post('users/{id?}/edit','UsersController@update');
+    Route::get('/roles/create', 'RolesController@create');
+    Route::post('/roles/create', 'RolesController@store');
+    Route::get('/users/{id?}/edit', 'UsersController@edit');
+    Route::post('/users/{id?}/edit','UsersController@update');
+    Route::get('/dashboard', 'PageController@dashboard');
+
+    Route::get('/resources', 'ResourceController@index');
+    Route::get('/resources/create', 'ResourceController@create');
+    Route::post('/resources', 'ResourceController@store');
+    Route::get('/resources/editId={id}', 'ResourceController@edit');
+    Route::get('/resources/disableId={id}', 'ResourceController@statusToggle');
+    Route::get('/resources/deleteId={id}', 'ResourceController@destroy');
+    Route::patch('/resources/{id}', 'ResourceController@update');
+    Route::get('/content', 'ContentController@index' );
+    Route::get('/content/create', 'ContentController@create');
+    Route::get('/contentEdit/{id}', 'ContentController@edit');
+    Route::post('/content', 'ContentController@store');
+    Route::patch('/content', array(
+        'as' => 'content.update',
+        'uses' => 'ContentController@update'
+    ));
+
 });
 
 
