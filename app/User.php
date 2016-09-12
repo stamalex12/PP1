@@ -19,6 +19,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $table = 'users';
 
+
     public function saveRoles($roles)
     {
         if(!empty($roles))
