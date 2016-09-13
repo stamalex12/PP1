@@ -52,7 +52,7 @@ class ResourceController extends Controller
             $request->file('image')->move(public_path() . '/images/resources/', $imageName);
 
             $resource->imagePath = '/images/resources/'. $imageName;
-            Image::make(public_path() . $resource->imagePath)->resize(300,200)->save();
+            Image::make(public_path() . $resource->imagePath)->resize(370,350)->save();
             $resource->save();
         }
 
