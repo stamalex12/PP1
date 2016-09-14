@@ -45,17 +45,17 @@ class ResourceController extends Controller
             'amountNeeded' => $request->get('amountNeeded')
         ));
         $resource->save();
+
         if( $request->hasFile('image') ) {
 
             $imageName = $resource->id . '.' . $request->file('image')->getClientOriginalExtension();
 
             $request->file('image')->move(public_path() . '/images/resources/', $imageName);
 
-            $resource->imagePath = '/images/resources/'. $imageName;
-            Image::make(public_path() . $resource->imagePath)->resize(370,350)->save();
+            $resource->imagePath = '/images/resources/' . $imageName;
+            Image::make(public_path() . $resource->imagePath)->resize(370, 350)->save();
             $resource->save();
         }
-
 
         return redirect('admin/resources');
     }

@@ -28,6 +28,7 @@
                         </tr>
                         </tfoot>
                         <tbody>
+
                         @foreach($resources as $resource)
 
                             <tr>

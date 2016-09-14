@@ -26,7 +26,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/users/{id?}/edit', 'UsersController@edit');
     Route::post('/users/{id?}/edit','UsersController@update');
     Route::get('/dashboard', 'PageController@dashboard');
-
     Route::get('/resources', 'ResourceController@index');
     Route::get('/resources/create', 'ResourceController@create');
     Route::post('/resources', 'ResourceController@store');
