@@ -51,7 +51,7 @@ class ContentController extends Controller
             $page = '2';
         }
 
-        Content::insert(['pageId' => $page, 'title' => $request['title'], 'content' => $request['content'], 'sortOrder' => $request['sortOrder']]);
+        Content::insert(['pageId' => $page, 'title' => $request['title'], 'content' => $request['content'], 'sortOrder' => $request['sortOrder'], 'status' => "Active"]);
         $content = Content::all();
 
         return view('backend.content.index')->with('content', $content);
@@ -93,7 +93,7 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Requests\EditContentRequest $request)
     {
         $content = Content::findOrFail($id);
 
@@ -108,9 +108,10 @@ class ContentController extends Controller
 
         //Session::flash('flash_message', 'Task successfully added!');
 
-        $content = Content::all();
+        $contentReturn = Content::all();
 
-        return view('backend.content.index')->with('content', $content);
+        //return $content;
+        return view('backend.content.index')->with('content', $contentReturn);
     }
 
     /**
@@ -121,6 +122,20 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Content::destroy($id);
+
+        return redirect('admin/content');
     }
+    public function statusToggle($id){
+        $content = Content::findOrFail($id);
+        if($content->status == "Active"){
+            $status = "Disabled";
+        }else{
+            $status = "Active";
+        }
+        $content->status = $status;
+        $content->save();
+        return redirect('admin/content');
+    }
+
 }

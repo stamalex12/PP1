@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1>Create Resource Need</h1>
-                    {!! Form::open(['url'=>'admin/resources', 'files' => true]) !!}
+                    {!! Form::open(['url'=>'/admin/resources']) !!}
                     <div class="form-group">
                         {!! Form::label('name', 'Name:') !!}
                         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
@@ -22,10 +22,6 @@
                         {!! Form::text('amountNeeded', null, ['class' => 'form-control', 'placeholder' => 'Amount Needed']) !!}
                     </div>
 
-                    <div class="form-group">
-                        {!! Form::label('image', 'Upload Image:') !!}
-                        {!! Form::file('image',null) !!}
-                    </div>
 
                     {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
                     {!! Form::close() !!}

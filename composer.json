@@ -9,8 +9,7 @@
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "^5.2",
         "barryvdh/laravel-ide-helper": "v2.2.0",
-        "zizaco/entrust": "5.2.x-dev",
-        "intervention/image": "2.3.8"
+        "zizaco/entrust": "5.2.x-dev"
 
     },
     "require-dev": {

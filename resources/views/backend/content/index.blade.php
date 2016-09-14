@@ -13,6 +13,7 @@
                      <th>Title</th>
                      <th>Content</th>
                      <th>SortOrder</th>
+                     <th>Status</th>
                      <th>Action</th>
 
                   </tr>
@@ -22,6 +23,7 @@
                      <th>Title</th>
                      <th>Content</th>
                      <th>SortOrder</th>
+                     <th>Status</th>
                      <th>Action</th>
                   </tr>
                   </tfoot>
@@ -32,7 +34,14 @@
                         <th>{{$contents->title}}</th>
                         <th>{{$contents->content}}</th>
                         <th>{{$contents->sortOrder}}</th>
-                        <th>{!!link_to_action('Admin\ContentController@edit', 'Edit', $contents->id) !!}</th>
+                        <th>{{$contents->status}}</th>
+                        <th>{!!link_to_action('Admin\ContentController@edit', 'Edit', $contents->id) !!}
+                           @if($contents->status == "Active")
+                              {!! link_to_action('Admin\ContentController@statusToggle','Disable', $contents->id) !!}
+                           @else
+                              {!! link_to_action('Admin\ContentController@statusToggle','Enable', $contents->id) !!}
+                           @endif
+                           | {!! link_to_action('Admin\ContentController@destroy','Remove', $contents->id) !!}</th>
                      </tr>
                   @endforeach
 

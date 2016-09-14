@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVolunteerUsersTable extends Migration
+class CreateResourceNeedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreateVolunteerUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('volunteer_users', function (Blueprint $table) {
+        Schema::create('resource_needs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('mail');
+            $table->string('name');
+            $table->text('description');
+            $table->string('status');
+            $table->integer('amountNeeded');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateVolunteerUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('volunteer_users');
+        Schema::drop('resource_needs');
     }
 }

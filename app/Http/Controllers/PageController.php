@@ -17,7 +17,7 @@ class PageController extends Controller
      */
     public function index()
 {
-    $content = Content::where('pageId', '=', 1)->get();
+    $content = Content::where('pageId', '=', 1)->where('status', "=", 'Active')->get();
     return view('home.index')->with('content', $content);
 }
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CreateResourceRequest extends Request
+class EditContentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class CreateResourceRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
-            'description' => 'required',
-            'amountNeeded' => 'required|integer'
+            'title' => 'required|min:3',
+            'content' => 'required',
+            'pageId' => 'required'
         ];
     }
 }

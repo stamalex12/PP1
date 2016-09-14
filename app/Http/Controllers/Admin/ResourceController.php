@@ -6,7 +6,6 @@ use App\ResourceNeed;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
-use Intervention\Image\Facades\Image;
 
 class ResourceController extends Controller
 {
@@ -39,24 +38,8 @@ class ResourceController extends Controller
      */
     public function store(Requests\CreateResourceRequest $request)
     {
-        $resource = new ResourceNeed(array(
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'amountNeeded' => $request->get('amountNeeded')
-        ));
-        $resource->save();
-        if( $request->hasFile('image') ) {
-
-            $imageName = $resource->id . '.' . $request->file('image')->getClientOriginalExtension();
-
-            $request->file('image')->move(public_path() . '/images/resources/', $imageName);
-
-            $resource->imagePath = '/images/resources/'. $imageName;
-            Image::make(public_path() . $resource->imagePath)->resize(370,350)->save();
-            $resource->save();
-        }
-
-
+        $input = $request->all();
+        ResourceNeed::create($input);
         return redirect('admin/resources');
     }
 
