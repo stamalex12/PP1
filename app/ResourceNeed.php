@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ResourceNeed extends Model
 {
     protected $fillable = [
-        'name', 'description', 'amountNeeded', 'imagePath'
+        'name', 'description', 'amountNeeded',
     ];
     protected $attributes = array(
         'status' => 'Active',

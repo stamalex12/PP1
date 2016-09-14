@@ -18,6 +18,7 @@ class CreateContentsTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->integer('sortOrder');
+            $table->string('status');
             $table->timestamps();
         });
     }

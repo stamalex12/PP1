@@ -18,7 +18,6 @@ class CreateResourceNeedsTable extends Migration
             $table->text('description');
             $table->string('status');
             $table->integer('amountNeeded');
-            $table->string('imagePath');
             $table->timestamps();
         });
     }

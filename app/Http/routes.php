@@ -38,7 +38,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/content/create', 'ContentController@create');
     Route::get('/contentEdit/{id}', 'ContentController@edit');
     Route::post('/content', 'ContentController@store');
-    Route::patch('/content', array(
+    Route::get('/content/disableId={id}', 'ContentController@statusToggle');
+    Route::get('/content/deleteId={id}', 'ContentController@destroy');
+    Route::patch('/content/{id}', array(
         'as' => 'content.update',
         'uses' => 'ContentController@update'
     ));

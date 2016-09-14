@@ -28,6 +28,14 @@
 
                     {!! Form::submit('Add Content', ['class'=>'btn btn-primary']) !!}
                     {!! Form::close() !!}
+
+                    @if ($errors->any())
+                        <ul class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                     <div class="divider"></div>
                 </div>
             </div>
