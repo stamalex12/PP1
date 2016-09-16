@@ -21,29 +21,29 @@ Composer
 
 Git Workflow
 --
--   Start a new feature:<br><br>
+-   Start a new feature:<br>
   `git checkout -b new-feature master`
 
--   Edit some files:<br><br>
+-   Edit some files:<br>
   `git add <file>`<br>
   `git commit -m "Start a feature"`
 
--   Edit some files:<br><br>
+-   Edit some files:<br>
   `git add <file>`<br>
   `git commit -m "Finish a feature"`
 
--   Merge the new-feature branch to the master:<br><br>
+-   Merge the new-feature branch to the master:<br>
   `git checkout master`<br>
 
--   Update master.<br><br>
+-   Update master.<br>
   `git pull origin master` (Resolve conflicts, if any and commit)
 
--   continues here for the merge.<br><br>
+-   continues here for the merge.<br>
   `git merge new-feature` (Resolve conflicts, if any and commit)<br>
   `git branch -d new-feature`
 
--   Make sure no new changes have been made in the remote master.<br><br>
+-   Make sure no new changes have been made in the remote master.<br>
   `git pull origin master` (Resolve conflicts, if any and commit)
   
--   Push to the remote<br><br>
+-   Push to the remote<br>
   `git push`
