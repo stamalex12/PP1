@@ -12,8 +12,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>Status</th>
                             <th>Amount Needed</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
@@ -22,8 +22,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>Status</th>
                             <th>Amount Needed</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -33,8 +33,8 @@
                             <tr>
                                 <th>{{$resource->name}}</th>
                                 <th>{{$resource->description}}</th>
-                                <th>{{$resource->status}}</th>
                                 <th>{{$resource->amountNeeded}}</th>
+                                <th>{{$resource->status}}</th>
                                 <th>{!!link_to_action('Admin\ResourceController@edit', 'Edit', $resource->id) !!} |
                                 @if($resource->status == "Active")
                                     {!! link_to_action('Admin\ResourceController@statusToggle','Disable', $resource->id) !!}

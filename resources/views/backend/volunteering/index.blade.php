@@ -5,8 +5,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Resource Needs</h1>
-                    {!!link_to_action('Admin\ResourceController@create', 'Create') !!}
+                    <h1>Volunteer Needs</h1>
+                    {!!link_to_action('Admin\VolunteerController@create', 'Create') !!}
                     <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
@@ -16,6 +16,7 @@
                             <th>End Date</th>
                             <th>Skills Needed</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -26,6 +27,7 @@
                             <th>End Date</th>
                             <th>Skills Needed</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -36,7 +38,8 @@
                                 <th>{{$volunteerNeed->description}}</th>
                                 <th>{{$volunteerNeed->startDate}}</th>
                                 <th>{{$volunteerNeed->endDate}}</th>
-                                <th>{{$volunteerNeed->skillNeeded}}</th>
+                                <th>{{$volunteerNeed->skillsNeeded}}</th>
+                                <th>{{$volunteerNeed->status}}</th>
                                 <th>{!!link_to_action('Admin\VolunteerController@edit', 'Edit', $volunteerNeed->id) !!} |
                                 @if($volunteerNeed->status == "Active")
                                     {!! link_to_action('Admin\VolunteerController@statusToggle','Disable', $volunteerNeed->id) !!}

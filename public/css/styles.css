@@ -925,6 +925,7 @@ footer {
     background-color: #242a2c;
     padding: 20px 0 20px 0;
     color: #454e51;
+    height: 60px;
 }
 footer h2 {
     font-size: 24px;
@@ -1042,4 +1043,11 @@ footer h2 {
 .logout-section{
     float: right;
     padding-right:10px;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
 }
