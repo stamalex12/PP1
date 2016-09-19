@@ -31,4 +31,6 @@ class UserEditFormRequest extends Request
             'password_confirmation'=>'alpha_num|min:6',
         ];
     }
+
+
 }

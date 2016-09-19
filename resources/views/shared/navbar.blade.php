@@ -7,6 +7,7 @@
             <li>{!!link_to_action('PageController@index', 'Home') !!} </li>
             <li>{!!link_to_action('PageController@about', 'About') !!} </li>
             <li>{!!link_to_action('PageController@projects', 'Projects') !!} </li>
+            <li>{!!link_to_action('PageController@testimonies', 'Testimonies') !!} </li>
 
 
             @if (Auth::check())

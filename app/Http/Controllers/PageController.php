@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Content;
 use App\ResourceNeed;
 use App\VolunteeringNeed;
+use App\Testimonies;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -42,6 +43,13 @@ class PageController extends Controller
         return view('backend.index');
     }
 
+
+    public function testimonies()
+    {
+        $testimonies = Testimonies::where('status', '=', 'Active')->get();
+
+        return view('testimonies.index', compact('testimonies'));
+    }
     /**
      * Show the form for creating a new resource.
      *
