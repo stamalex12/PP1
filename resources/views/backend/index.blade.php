@@ -17,5 +17,8 @@
         <li>
             <a href="users">Manage Users</a>
         </li>
+        <li>
+            <a href="testimonies">Manage Testimonies</a>
+        </li>
     </ul>
 @endsection

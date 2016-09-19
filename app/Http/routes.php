@@ -11,10 +11,11 @@
 |
 */
 
-
+//For visitors
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
 Route::get('/projects', 'PageController@projects');
+Route::get('/testimonies', 'PageController@testimonies');
 
 
 //For all Administrator only access
@@ -52,6 +53,14 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         'as' => 'content.update',
         'uses' => 'ContentController@update'
     ));
+
+    Route::get('/testimonies', 'TestimoniesController@index');
+    Route::get('/testimonies/create', 'TestimoniesController@create');
+    Route::post('/testimonies', 'TestimoniesController@store');
+    Route::get('/testimonies/editId={id}', 'TestimoniesController@edit');
+    Route::get('/testimonies/deleteId={id}', 'TestimoniesController@destroy');
+    Route::patch('/testimonies/{id}', 'TestimoniesController@update');
+    Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
 
 });
 
