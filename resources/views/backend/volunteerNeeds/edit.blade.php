@@ -3,8 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1>Create Resource Need</h1>
-            {!! Form::open(['url'=>'admin/resources', 'files' => true]) !!}
+            <h1>Edit</h1>
+            {!! Form::model($resource, ['method' => 'PATCH', 'action' => ['ResourceController@update', $resource->id]]) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
@@ -20,13 +20,9 @@
                 {!! Form::text('amountNeeded', null, ['class' => 'form-control', 'placeholder' => 'Amount Needed']) !!}
             </div>
 
-            <div class="form-group">
-                {!! Form::label('image', 'Upload Image:') !!}
-                {!! Form::file('image',null) !!}
-            </div>
+            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            <a href="../resources" class="btn btn-default btn-raised">Cancel</a>
 
-            {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
-            <a href="../resources" class="btn btn-primary btn-raised">Cancel</a>
             {!! Form::close() !!}
 
             @if ($errors->any())
@@ -37,8 +33,8 @@
                 </ul>
             @endif
 
-
             <div class="divider"></div>
         </div>
     </div>
+
 @endsection

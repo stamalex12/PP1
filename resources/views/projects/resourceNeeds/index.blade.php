@@ -1,5 +1,4 @@
-    <div class="text-inter">
-        <div class="container">
+
             <h2>Resource Needs</h2>
             @foreach($resources as $resource)
                 <div class="row">
@@ -16,5 +15,3 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>

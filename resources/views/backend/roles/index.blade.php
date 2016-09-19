@@ -14,6 +14,7 @@
             @if ($roles->isEmpty())
                 <p> There is no role.</p>
             @else
+
                 <table class="table">
                     <thead>
                     <tr>
@@ -33,6 +34,9 @@
                     </tbody>
                 </table>
             @endif
+
         </div>
+        <a href="roles/create" class="btn btn-primary btn-raised">Create</a>
+        <a href="dashboard" class="btn btn-default btn-raised">Back</a>
     </div>
 @endsection
