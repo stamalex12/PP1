@@ -1,5 +1,4 @@
-<div class="text-inter">
-    <div class="container">
+
         <h2>Volunteering Programs</h2>
         @foreach($volunteerNeeds as $volunteerNeed)
             <div class="row">
@@ -18,5 +17,3 @@
                 </div>
             </div>
         @endforeach
-    </div>
-</div>

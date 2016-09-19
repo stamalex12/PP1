@@ -26,7 +26,7 @@
             </div>
 
             {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
-            <a href="../resources" class="btn btn-primary btn-raised">Cancel</a>
+            <a href="../resources" class="btn btn-default btn-raised">Cancel</a>
             {!! Form::close() !!}
 
             @if ($errors->any())

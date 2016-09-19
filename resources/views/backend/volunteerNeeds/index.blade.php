@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
+
     <div class="row">
         <div class="col-md-12">
-            <h1>Volunteer Needs</h1>
-            <a href="volunteering/create" class="btn btn-primary btn-raised">Create</a>
+            <h1>Resource Needs</h1>
+            <a href="resources/create" class="btn btn-primary btn-raised">Create</a>
 
             <table id="example" class="display" cellspacing="0" width="100%">
                 <thead>
@@ -15,7 +16,6 @@
                     <th>End Date</th>
                     <th>Skills Needed</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -26,7 +26,6 @@
                     <th>End Date</th>
                     <th>Skills Needed</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -37,8 +36,7 @@
                         <th>{{$volunteerNeed->description}}</th>
                         <th>{{$volunteerNeed->startDate}}</th>
                         <th>{{$volunteerNeed->endDate}}</th>
-                        <th>{{$volunteerNeed->skillsNeeded}}</th>
-                        <th>{{$volunteerNeed->status}}</th>
+                        <th>{{$volunteerNeed->skillNeeded}}</th>
                         <th>{!!link_to_action('Admin\VolunteerController@edit', 'Edit', $volunteerNeed->id) !!} |
                             @if($volunteerNeed->status == "Active")
                                 {!! link_to_action('Admin\VolunteerController@statusToggle','Disable', $volunteerNeed->id) !!}
@@ -56,5 +54,6 @@
             <a href="dashboard" class="btn btn-default btn-raised">Back</a>
         </div>
     </div>
+
 @endsection
 
