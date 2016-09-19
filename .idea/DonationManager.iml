@@ -70,9 +70,11 @@
       <library name="PHARS">
         <CLASSES>
           <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/old/composer.phar/" />
         </CLASSES>
         <SOURCES>
           <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/old/composer.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

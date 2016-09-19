@@ -26,7 +26,7 @@ class PageController extends Controller
 
     public function about()
     {
-        $content = Content::where('pageId', '=', 2)->get();
+        $content = Content::where('pageId', '=', 2)->where('status', "=", 'Active')->get();
         return view('home.about')->with('content', $content);
     }
 

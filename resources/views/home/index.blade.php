@@ -38,8 +38,7 @@
     </div>
 @endsection
 @section('content')
-    <div class="text-inter">
-        <div class="container">
+
             @foreach($content as $contents)
                 <div class="row">
                     <div class="col-md-12">
@@ -60,7 +59,6 @@
                 </div>
             </div>--}}
                 @endforeach
-        </div>
-    </div>
+
 
 @endsection

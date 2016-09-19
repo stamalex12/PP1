@@ -2,8 +2,7 @@
 
 @section('content')
     <h1>Testimonies</h1>
-    <div class="text-inter">
-        <div class="container">
+
             <h2>Please read below to see what a few of our charity partners have to say about us:</h2>
             @foreach($testimonies as $testimonie)
                 <div class="row">
@@ -20,8 +19,7 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
+
 
 
 @endsection

@@ -17,7 +17,8 @@
     <link href='http://fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    <script type='text/javascript' src='{{URL::asset('js/jquery.js')}}'></script>
+    {{-- <script type='text/javascript' src='{{URL::asset('js/jquery.js')}}'></script>--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -32,28 +33,31 @@
     <![endif]-->
 </head>
 <body>
-@include('shared.navbar')
-@yield('slider')
+<div class="wrapper">
+    @include('shared.navbar')
+    @yield('slider')
 
 
-
-<div class="text-inter">
-    <div class="container">
-        @yield('content')
-    </div>
-</div>
-
-
-<div class="shadow"></div>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p>Copyright 2016 All rights reserved.</p>
-            </div>
+    <div class="text-inter">
+        <div class="container">
+            @yield('content')
         </div>
     </div>
-</footer>
+
+
+    <div id="footer">
+        <div class="shadow"></div>
+        <footer>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Copyright 2016 All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
 
 <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
@@ -85,7 +89,7 @@
     });
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#example').DataTable();
-    } );
+    });
 </script>

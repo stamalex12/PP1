@@ -35,8 +35,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">Cancel</button>
                                 <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="../roles" class="btn btn-default btn-raised">Cancel</a>
                         </div>
                     </div>
                 </fieldset>
