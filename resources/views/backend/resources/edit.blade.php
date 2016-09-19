@@ -22,6 +22,11 @@
                         {!! Form::text('amountNeeded', null, ['class' => 'form-control', 'placeholder' => 'Amount Needed']) !!}
                     </div>
 
+                    <div class="form-group">
+                        {!! Form::label('image', 'Upload Image:') !!}
+                        {!! Form::file('image',null) !!}
+                    </div>
+
                     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
 
                     {!! Form::close() !!}

@@ -33,11 +33,22 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/resources/disableId={id}', 'ResourceController@statusToggle');
     Route::get('/resources/deleteId={id}', 'ResourceController@destroy');
     Route::patch('/resources/{id}', 'ResourceController@update');
+
+    Route::get('/volunteering', 'VolunteerController@index');
+    Route::get('/volunteering/create', 'VolunteerController@create');
+    Route::post('/volunteering', 'VolunteerController@store');
+    Route::get('/volunteering/editId={id}', 'VolunteerController@edit');
+    Route::get('/volunteering/disableId={id}', 'VolunteerController@statusToggle');
+    Route::get('/volunteering/deleteId={id}', 'VolunteerController@destroy');
+    Route::patch('/volunteering/{id}', 'VolunteerController@update');
+
     Route::get('/content', 'ContentController@index' );
     Route::get('/content/create', 'ContentController@create');
     Route::get('/contentEdit/{id}', 'ContentController@edit');
     Route::post('/content', 'ContentController@store');
-    Route::patch('/content', array(
+    Route::get('/content/disableId={id}', 'ContentController@statusToggle');
+    Route::get('/content/deleteId={id}', 'ContentController@destroy');
+    Route::patch('/content/{id}', array(
         'as' => 'content.update',
         'uses' => 'ContentController@update'
     ));

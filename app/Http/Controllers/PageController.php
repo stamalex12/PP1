@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Content;
 use App\ResourceNeed;
+use App\VolunteeringNeed;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,7 +18,7 @@ class PageController extends Controller
      */
     public function index()
 {
-    $content = Content::where('pageId', '=', 1)->get();
+    $content = Content::where('pageId', '=', 1)->where('status', "=", 'Active')->get();
     return view('home.index')->with('content', $content);
 }
 
@@ -31,8 +32,9 @@ class PageController extends Controller
     public function projects()
     {
         $resources = ResourceNeed::where('status', '=', 'Active')->get();
+        $volunteerNeeds = VolunteeringNeed::where('status', '=', 'Active')->get();
 
-        return view('projects.index', compact('resources'));
+        return view('projects.index', compact('resources', 'volunteerNeeds'));
     }
 
     public function dashboard()

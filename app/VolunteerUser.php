@@ -11,5 +11,4 @@ class VolunteerUser extends Model
     public function volunteerNeeds() {
         return $this->belongsToMany('App\VolunteerNeed', 'volunteerNeeds_users', 'user_id', 'volunteerNeed_id');
     }
-
 }

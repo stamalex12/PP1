@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use App\VolunteerNeed;
 use App\VolunteerUser;
 use Illuminate\Database\Seeder;
@@ -33,16 +34,23 @@ class VolunteerNeedTableSeeder extends Seeder
             'skillsNeeded'  =>  'English'
         ));
 
-        $userOne = VolunteerUser::create(array(
-            'firstName'     =>  'Alex',
-            'lastName'      =>  'Stam',
-            'mail'         =>  'stamalex12@gmail.com'
+        $userOne = User::create(array(
+            'name'     =>  'Alex',
+            'username'      =>  'Stamadaldhaoifig',
+            'email'         =>  'stamalex1222@gmail.com',
+            'password'      =>  '17051994',
         ));
-        $userTwo = VolunteerUser::create(array(
+        $userTwo = User::create(array(
+            'name'     =>  'Alexandros',
+            'username'      =>  'Stamdawdawda',
+            'email'         =>  'stamalex1221@gmail.com',
+            'password'      =>  '17051994',
+        ));
+        /*$userTwo = VolunteerUser::create(array(
             'firstName'     =>  'Alex',
             'lastName'      =>  'Stamatopoulos',
             'mail'         =>  'stamalex12@gmail.com'
-        ));
+        ));*/
 
         $needOne->volunteerUsers()->attach($userOne->id);
         $needOne->volunteerUsers()->attach($userTwo->id);
