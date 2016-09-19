@@ -54,6 +54,7 @@
         </div>
     </div>
 </footer>
+</div>
 
 <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
 <script src="{{URL::asset('js/scripts.js')}}"></script>
