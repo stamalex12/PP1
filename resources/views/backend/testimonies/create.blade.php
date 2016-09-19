@@ -14,12 +14,12 @@
 
                     <div class="form-group">
                         {!! Form::label('organisation', 'Organisation:') !!}
-                        {!! Form::textarea('organisation', null, ['class' => 'form-control', 'placeholder' => 'Organisation']) !!}
+                        {!! Form::text('organisation', null, ['class' => 'form-control', 'placeholder' => 'Organisation']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('description', 'Description:') !!}
-                        {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
+                        {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
                     </div>
 
                     <div class="form-group">
