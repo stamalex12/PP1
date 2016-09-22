@@ -80,6 +80,19 @@
                         <a href="testimonies/create" class="btn btn-primary btn-raised">Create A Testimony</a>
                     </div>
                 </div>
+
+                <div class="list-group-item">
+                    <div class="row-action-primary">
+                        <i class="mdi-social-group"></i>
+                    </div>
+                    <div class="row-content">
+                        <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                        <h4 class="list-group-item-heading">Emails</h4>
+                        <a href="testimonies" class="btn btn-default btn-raised">View Sent Emails</a>
+                        <a href="email/create" class="btn btn-primary btn-raised">Send Email To Single Person</a>
+                        <a href="email/create-group" class="btn btn-primary btn-raised">Send Email To Subscribed List</a>
+                    </div>
+                </div>
                 <div class="list-group-separator"></div>
             </div>
         </div>
