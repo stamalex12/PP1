@@ -90,6 +90,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::post('email', 'EmailController@store');
     Route::get('/email/create-group', 'EmailController@createGroupMessage');
     Route::post('email', 'EmailController@storeGroupMessage');
+
+    Route::get('/websiteinfo', 'WebsiteInfoController@index');
+    Route::post('/websiteinfo', 'WebsiteInfoController@store');
 });
 
 

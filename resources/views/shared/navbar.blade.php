@@ -1,6 +1,14 @@
 <header class="clearfix">
-    <div class="logo col-md-3">
-        <h2 class="logo-text">WESLEY MISSION</h2>
+    <div class="logo col-md-1">
+        @if (count(\App\WebsiteInfo::all()) && \App\WebsiteInfo::all()->first() != NULL && \App\WebsiteInfo::all()->first()->logofilepath != NULL ) {{ Html::image(\App\WebsiteInfo::all()->first()->logofilepath) }} @endif
+    </div>
+    <div class="logo col-lg-2 ">
+        <h2 class="logo-text">
+            <div class="text-left">
+            @foreach(\App\WebsiteInfo::all()as $title) {{$title->companyName}} @endforeach
+            @if(count(\App\WebsiteInfo::all())==0)My Organisation @endif
+            </div>
+        </h2>
     </div>
     <nav class="clearfix">
         <ul class="clearfix">

@@ -30,6 +30,19 @@
                     </div>
                 </div>
                 <div class="list-group-separator"></div>
+
+                <div class="list-group-item">
+                    <div class="row-action-primary">
+                        <i class="mdi-editor-border-color"></i>
+                    </div>
+                    <div class="row-content">
+                        <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                        <h4 class="list-group-item-heading">Website Info</h4>
+                        <a href="websiteinfo" class="btn btn-primary btn-raised">Update Website Info</a>
+                    </div>
+                </div>
+                <div class="list-group-separator"></div>
+
                 <div class="list-group-item">
                     <div class="row-action-primary">
                         <i class="mdi-editor-border-color"></i>
