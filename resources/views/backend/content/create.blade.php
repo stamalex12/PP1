@@ -12,7 +12,7 @@
 
             <div class="form-group">
                 {!! Form::label('name', 'Content:') !!}
-                {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Conent']) !!}
+                {!! Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Content']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('name', 'Sort Order:') !!}

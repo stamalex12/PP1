@@ -17,6 +17,31 @@ Route::get('/about', 'PageController@about');
 Route::get('/projects', 'PageController@projects');
 Route::get('/testimonies', 'PageController@testimonies');
 
+Route::get('/sendemail', function () {
+
+    $data = array(
+        'name' => "Learning Laravel",
+    );
+
+    Mail::send('emails.welcome', $data, function ($message) {
+
+        $message->from('kikssrilanka@gmail.com', 'Learning Laravel');
+
+        $message->to('stamalex12@gmail.com')->subject('Learning Laravel test email');
+
+    });
+
+    return "Your email has been sent successfully";
+
+});
+
+//For all Visitor access
+Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {
+
+
+});
+
+
 
 //For all Administrator only access
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
@@ -61,7 +86,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/testimonies/deleteId={id}', 'TestimoniesController@destroy');
     Route::patch('/testimonies/{id}', 'TestimoniesController@update');
     Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
+    Route::get('/email/create', 'EmailController@create');
+    Route::post('email', 'EmailController@store');
+    Route::get('/email/create-group', 'EmailController@createGroupMessage');
+    Route::post('email', 'EmailController@storeGroupMessage');
 
+    Route::get('/websiteinfo', 'WebsiteInfoController@index');
+    Route::post('/websiteinfo', 'WebsiteInfoController@store');
 });
 
 

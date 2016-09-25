@@ -30,6 +30,19 @@
                     </div>
                 </div>
                 <div class="list-group-separator"></div>
+
+                <div class="list-group-item">
+                    <div class="row-action-primary">
+                        <i class="mdi-editor-border-color"></i>
+                    </div>
+                    <div class="row-content">
+                        <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                        <h4 class="list-group-item-heading">Website Info</h4>
+                        <a href="websiteinfo" class="btn btn-primary btn-raised">Update Website Info</a>
+                    </div>
+                </div>
+                <div class="list-group-separator"></div>
+
                 <div class="list-group-item">
                     <div class="row-action-primary">
                         <i class="mdi-editor-border-color"></i>
@@ -78,6 +91,19 @@
                         <h4 class="list-group-item-heading">Manage Testimonies</h4>
                         <a href="testimonies" class="btn btn-default btn-raised">All Testimonies</a>
                         <a href="testimonies/create" class="btn btn-primary btn-raised">Create A Testimony</a>
+                    </div>
+                </div>
+
+                <div class="list-group-item">
+                    <div class="row-action-primary">
+                        <i class="mdi-social-group"></i>
+                    </div>
+                    <div class="row-content">
+                        <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                        <h4 class="list-group-item-heading">Emails</h4>
+                        <a href="testimonies" class="btn btn-default btn-raised">View Sent Emails</a>
+                        <a href="email/create" class="btn btn-primary btn-raised">Send Email To Single Person</a>
+                        <a href="email/create-group" class="btn btn-primary btn-raised">Send Email To Subscribed List</a>
                     </div>
                 </div>
                 <div class="list-group-separator"></div>
