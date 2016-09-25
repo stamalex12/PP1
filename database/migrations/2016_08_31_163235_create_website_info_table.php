@@ -14,6 +14,16 @@ class CreateWebsiteInfoTable extends Migration
     {
         Schema::create('website_info', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('companyName');
+            $table->string('addressLine1');
+            $table->string('addressLine2');
+            $table->string('city');
+            $table->string('state');
+            $table->string('country');
+            $table->string('postCode');
+            $table->string('phoneNo');
+            $table->string('email');
+            $table->string('logofilepath');
             $table->timestamps();
         });
     }

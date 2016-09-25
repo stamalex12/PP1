@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>{{$contents->title}}</h3>
-                <p>{!! $contents->content !!}</p>
+                <p>{!!  nl2br(e($contents->content)) !!}</p>
                 <div class="divider"></div>
             </div>
         </div>
