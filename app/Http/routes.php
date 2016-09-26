@@ -87,9 +87,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::patch('/testimonies/{id}', 'TestimoniesController@update');
     Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
     Route::get('/email/create', 'EmailController@create');
-    Route::post('email', 'EmailController@store');
-    Route::get('/email/create-group', 'EmailController@createGroupMessage');
-    Route::post('email', 'EmailController@storeGroupMessage');
+    Route::post('/email', 'EmailController@store');
+    Route::get('/email-group/create', 'EmailGroupController@create');
+    Route::post('/email-group', 'EmailGroupController@store');
 });
 
 

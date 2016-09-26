@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Create Group Email</h1>
-            {!! Form::open(['url'=>'/admin/email']) !!}
+            {!! Form::open(['url'=>'/admin/email-group']) !!}
             @foreach ($errors->all() as $error)
                 <p class="alert alert-danger">{{ $error }}</p>
             @endforeach
