@@ -103,7 +103,7 @@
                         <h4 class="list-group-item-heading">Emails</h4>
                         <a href="testimonies" class="btn btn-default btn-raised">View Sent Emails</a>
                         <a href="email/create" class="btn btn-primary btn-raised">Send Email To Single Person</a>
-                        <a href="email/create-group" class="btn btn-primary btn-raised">Send Email To Subscribed List</a>
+                        <a href="email-group/create" class="btn btn-primary btn-raised">Send Email To Subscribed List</a>
                     </div>
                 </div>
                 <div class="list-group-separator"></div>
