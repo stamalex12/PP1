@@ -12,6 +12,7 @@
                     <th>Title</th>
                     <th>Content</th>
                     <th>SortOrder</th>
+                    <th>Page</th>
                     <th>Status</th>
                     <th>Action</th>
 
@@ -22,6 +23,7 @@
                     <th>Title</th>
                     <th>Content</th>
                     <th>SortOrder</th>
+                    <th>Page</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -33,6 +35,7 @@
                         <th>{{$contents->title}}</th>
                         <th>{{$contents->content}}</th>
                         <th>{{$contents->sortOrder}}</th>
+                        <th>{{App\Page::find($contents->pageId)->name}}</th>
                         <th>{{$contents->status}}</th>
                         <th>{!!link_to_action('Admin\ContentController@edit', 'Edit', $contents->id) !!}
                             @if($contents->status == "Active")
@@ -48,7 +51,7 @@
                 </tbody>
             </table>
             <div class="divider"></div>
-            <a href="dashboard" class="btn btn-default btn-raised">Back</a>
+            <a href="{{ action("Admin\PageController@dashboard") }}" class="btn btn-default btn-raised">Back</a>
         </div>
     </div>
 @endsection

@@ -1087,3 +1087,10 @@ body {
 .fa-bars:before {
     color: #fff;
 }
+.list-group-item {
+    margin-bottom: 10px!Important;
+}
+
+.logo img {
+    max-height: 68px;
+}

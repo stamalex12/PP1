@@ -31,7 +31,8 @@ class ContentController extends Controller
      */
     public function create()
     {
-        return view('backend/content.create');
+        $page = Page::all();
+        return view('backend/content.create', compact('page', $page));
     }
 
     /**
@@ -42,16 +43,7 @@ class ContentController extends Controller
      */
     public function store(CreateContentRequest $request)
     {
-        if($request['page'] == 'home')
-        {
-            $page = '1';
-        }
-        else
-        {
-            $page = '2';
-        }
-
-        Content::insert(['pageId' => $page, 'title' => $request['title'], 'content' => $request['content'], 'sortOrder' => $request['sortOrder'], 'status' => "Active"]);
+        Content::insert(['pageId' => $request['page'], 'title' => $request['title'], 'content' => $request['content'], 'sortOrder' => $request['sortOrder'], 'status' => "Active"]);
         $content = Content::all();
 
         return view('backend.content.index')->with('content', $content);
@@ -81,7 +73,7 @@ class ContentController extends Controller
     {
         //$content = Content::with(['page'])->find($id);
         $content = Content::find($id);
-        $page = Page::where('id', '=', $content->pageId)->get();
+        $page = Page::all(['id', 'name']);
         return view('backend.content.edit', compact('content', 'page'));
         //return content;
     }

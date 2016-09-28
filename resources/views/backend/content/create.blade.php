@@ -20,7 +20,13 @@
             </div>
             <div class="form-group">
                 {!! Form::label('name', 'Page:') !!}
-                {!! Form::text('page', null, ['class' => 'form-control', 'placeholder' => 'Page']) !!}
+                <select class="form-control" name="page">
+                    @foreach($page as $pages)
+                        <option value="{{$pages->id}}">{{$pages->name}}</option>
+                    @endforeach
+                </select>
+                {{--{!! Form::select('page', 'name', $page,  ['class' => 'form-control']) !!}
+                {!! Form::text('page', null, ['class' => 'form-control', 'placeholder' => 'Page']) !!}--}}
             </div>
 
 
