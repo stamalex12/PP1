@@ -27,7 +27,6 @@ class CreateContentRequest extends Request
             'title' => 'required|min:3',
             'content' => 'required',
             'page' => 'required'
-
         ];
     }
 }

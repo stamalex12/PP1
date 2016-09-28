@@ -14,9 +14,14 @@
 //For visitors
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
-Route::get('/projects', 'PageController@projects');
-Route::get('/testimonies', 'PageController@testimonies');
-
+if(App\System::all()->first()->projects == 1)
+{
+    Route::get('/projects', 'PageController@projects');
+}
+if(App\System::all()->first()->testimonies == 1)
+{
+    Route::get('/testimonies', 'PageController@testimonies');
+}
 
 //For all Visitor access
 Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {
@@ -33,21 +38,28 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/users/{id?}/edit', 'UsersController@edit');
     Route::post('/users/{id?}/edit','UsersController@update');
     Route::get('/dashboard', 'PageController@dashboard');
-    Route::get('/resources', 'ResourceController@index');
-    Route::get('/resources/create', 'ResourceController@create');
-    Route::post('/resources', 'ResourceController@store');
-    Route::get('/resources/editId={id}', 'ResourceController@edit');
-    Route::get('/resources/disableId={id}', 'ResourceController@statusToggle');
-    Route::get('/resources/deleteId={id}', 'ResourceController@destroy');
-    Route::patch('/resources/{id}', 'ResourceController@update');
 
-    Route::get('/volunteering', 'VolunteerController@index');
-    Route::get('/volunteering/create', 'VolunteerController@create');
-    Route::post('/volunteering', 'VolunteerController@store');
-    Route::get('/volunteering/editId={id}', 'VolunteerController@edit');
-    Route::get('/volunteering/disableId={id}', 'VolunteerController@statusToggle');
-    Route::get('/volunteering/deleteId={id}', 'VolunteerController@destroy');
-    Route::patch('/volunteering/{id}', 'VolunteerController@update');
+    if(App\System::all()->first()->resourceneeds == 1)
+    {
+        Route::get('/resources', 'ResourceController@index');
+        Route::get('/resources/create', 'ResourceController@create');
+        Route::post('/resources', 'ResourceController@store');
+        Route::get('/resources/editId={id}', 'ResourceController@edit');
+        Route::get('/resources/disableId={id}', 'ResourceController@statusToggle');
+        Route::get('/resources/deleteId={id}', 'ResourceController@destroy');
+        Route::patch('/resources/{id}', 'ResourceController@update');
+    }
+
+    if(App\System::all()->first()->volunteerprograms == 1)
+    {
+        Route::get('/volunteering', 'VolunteerController@index');
+        Route::get('/volunteering/create', 'VolunteerController@create');
+        Route::post('/volunteering', 'VolunteerController@store');
+        Route::get('/volunteering/editId={id}', 'VolunteerController@edit');
+        Route::get('/volunteering/disableId={id}', 'VolunteerController@statusToggle');
+        Route::get('/volunteering/deleteId={id}', 'VolunteerController@destroy');
+        Route::patch('/volunteering/{id}', 'VolunteerController@update');
+    }
 
     Route::get('/content', 'ContentController@index' );
     Route::get('/content/create', 'ContentController@create');
@@ -60,22 +72,33 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         'uses' => 'ContentController@update'
     ));
 
-    Route::get('/testimonies', 'TestimoniesController@index');
-    Route::get('/testimonies/create', 'TestimoniesController@create');
-    Route::post('/testimonies', 'TestimoniesController@store');
-    Route::get('/testimonies/editId={id}', 'TestimoniesController@edit');
-    Route::get('/testimonies/deleteId={id}', 'TestimoniesController@destroy');
-    Route::patch('/testimonies/{id}', 'TestimoniesController@update');
-    Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
+    if(App\System::all()->first()->testimonies == 1)
+    {
+        Route::get('/testimonies', 'TestimoniesController@index');
+        Route::get('/testimonies/create', 'TestimoniesController@create');
+        Route::post('/testimonies', 'TestimoniesController@store');
+        Route::get('/testimonies/editId={id}', 'TestimoniesController@edit');
+        Route::get('/testimonies/deleteId={id}', 'TestimoniesController@destroy');
+        Route::patch('/testimonies/{id}', 'TestimoniesController@update');
+        Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
+    }
+
 
     Route::get('/websiteinfo', 'WebsiteInfoController@index');
     Route::post('/websiteinfo', 'WebsiteInfoController@store');
 
-    Route::get('/email/create', 'EmailController@create');
-    Route::post('/email', 'EmailController@store');
-    Route::get('/email-group/create', 'EmailGroupController@create');
-    Route::post('/email-group', 'EmailGroupController@store');
+    if(App\System::all()->first()->email == 1)
+    {
+        Route::get('/email/create', 'EmailController@create');
+        Route::post('/email', 'EmailController@store');
+        Route::get('/email-group/create', 'EmailGroupController@create');
+        Route::post('/email-group', 'EmailGroupController@store');
+    }
 
+
+
+    Route::get('/settings', 'SystemController@index');
+    Route::post('/settings', 'SystemController@store');
 });
 
 

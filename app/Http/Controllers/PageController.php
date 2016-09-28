@@ -19,7 +19,7 @@ class PageController extends Controller
      */
     public function index()
 {
-    $content = Content::where('pageId', '=', 1)->where('status', "=", 'Active')->get();
+    $content = Content::where('pageId', '=', 1)->where('status', "=", 'Active')->orderBy('sortOrder', 'ASC')->get();
     return view('home.index')->with('content', $content);
 }
 

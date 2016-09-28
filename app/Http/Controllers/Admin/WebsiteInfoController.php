@@ -30,7 +30,7 @@ class WebsiteInfoController extends Controller
             if( $request->hasFile('image') ) {
                 $imageName = 'logo.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(public_path() . '/images/websiteinfo/', $imageName);
-                Image::make(public_path() . '/images/websiteinfo/'.$imageName)->resize(70,70)->save();
+                Image::make(public_path() . '/images/websiteinfo/'.$imageName)->resize(250,100)->save();
             }
             $websiteInfo = new WebsiteInfo(array(
             'companyName' => $request->get('companyName'),
@@ -49,7 +49,7 @@ class WebsiteInfoController extends Controller
             if ($request->hasFile('image')) {
                 $imageName = 'logo.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(public_path() . '/images/websiteinfo/', $imageName);
-                Image::make(public_path() . '/images/websiteinfo/' . $imageName)->resize(70, 70)->save();
+                Image::make(public_path() . '/images/websiteinfo/' . $imageName)->resize(250, 100)->save();
             }
             $currentWebsite->companyName = $request->get('companyName');
             $currentWebsite->addressLine1 = $request->get('addressline1');
@@ -67,7 +67,7 @@ class WebsiteInfoController extends Controller
 
         }
 
-        return redirect('admin/websiteinfo')->with('status', 'Your information has been updated successfully.');
+        return redirect('admin/dashboard')->with('status', 'Website information has been updated successfully.');
 
     }
 

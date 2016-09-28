@@ -25,7 +25,17 @@
 
             <div class="form-group">
                 {!! Form::label('name', 'Page:') !!}
-                {!! Form::text('pageId', null , ['class' => 'form-control']) !!}
+                <select class="form-control" name="pageId">
+                    @foreach($page as $pages)
+                        @if($pages->id == $content->pageId)
+                            <option selected value="{{$pages->id}}">{{$pages->name}}</option>
+                        @else
+                            <option value="{{$pages->id}}">{{$pages->name}}</option>
+                        @endif
+
+                    @endforeach
+                </select>
+
             </div>
 
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
