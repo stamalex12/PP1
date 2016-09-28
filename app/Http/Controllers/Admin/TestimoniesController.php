@@ -101,8 +101,9 @@ class TestimoniesController extends Controller
         ));
 
         if( $request->hasFile('image') ) {
-            Image::make(public_path() . $testimonie->imagePath)->destroy();
-
+            if (file_exists(public_path() . $testimonie->imagePath)) {
+                Image::make(public_path() . $testimonie->imagePath)->destroy();
+            }
             $imageName = $testimonie->id . '.' . $request->file('image')->getClientOriginalExtension();
 
             $request->file('image')->move(public_path() . '/images/testimonies/', $imageName);

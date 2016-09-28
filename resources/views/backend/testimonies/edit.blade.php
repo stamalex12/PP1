@@ -20,6 +20,10 @@
                 {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
             </div>
 
+            <div class="form-group">
+                {!! Form::label('image', 'Upload Image:') !!}
+                {!! Form::file('image',null) !!}
+            </div>
 
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
             <a href="../testimonies" class="btn btn-default btn-raised">Cancel</a>

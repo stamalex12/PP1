@@ -109,8 +109,9 @@ class VolunteerController extends Controller
         ));
 
         if( $request->hasFile('image') ) {
-            Image::make(public_path() . $volunteerNeed->imagePath)->destroy();
-
+            if (file_exists(public_path() . $volunteerNeed->imagePath)) {
+                Image::make(public_path() . $volunteerNeed->imagePath)->destroy();
+            }
             $imageName = $volunteerNeed->id . '.' . $request->file('image')->getClientOriginalExtension();
 
             $request->file('image')->move(public_path() . '/images/volunteering/', $imageName);
