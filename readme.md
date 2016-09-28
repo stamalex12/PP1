@@ -47,3 +47,5 @@ Git Workflow
   
 -   Push to the remote<br>
   `git push`
+  
+  NOTE: `git rm --cached <filename>` to unversion files that don't want to be shared but for some reason where added to git
