@@ -1,0 +1,25 @@
+@extends('layouts.master')
+
+@section('content')
+    <h1>Visitor Rooms</h1>
+
+    <h2>Please read below to see our visitor rooms:</h2>
+    @foreach($room as $aroom)
+        <div class="row">
+            <div class="panel panel-default col-sm-12 col-md-8 col-md-offset-2 col-xs-12">
+                <div class="row">
+                    <div class="col-md-6" style="padding-left: 0px;">{{ Html::image($aroom->imagePath) }}</div>
+
+                    <div class="col-md-6">
+                        <h3>{{$aroom->name}}</h3>
+                        <p>{{$aroom->description}}</p>
+                        <p>type: {{$aroom->type}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+
+@endsection
