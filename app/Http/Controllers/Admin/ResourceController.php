@@ -104,6 +104,7 @@ class ResourceController extends Controller
         ));
 
         if( $request->hasFile('image') ) {
+            Image::make(public_path() . $resource->imagePath)->destroy();
 
             $imageName = $resource->id . '.' . $request->file('image')->getClientOriginalExtension();
 

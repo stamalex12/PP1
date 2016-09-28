@@ -94,7 +94,23 @@ class TestimoniesController extends Controller
     public function update(Requests\CreateTestimoniesRequest $request, $id)
     {
         $testimonie= Testimonies::findOrFail($id);
-        $testimonie->update($request->all());
+        $testimonie->update(array(
+            'name'          =>  $request->get('name'),
+            'organisation'   =>  $request->get('organisation'),
+            'description'  =>  $request->get('description')
+        ));
+
+        if( $request->hasFile('image') ) {
+            Image::make(public_path() . $testimonie->imagePath)->destroy();
+
+            $imageName = $testimonie->id . '.' . $request->file('image')->getClientOriginalExtension();
+
+            $request->file('image')->move(public_path() . '/images/testimonies/', $imageName);
+
+            $testimonie->imagePath = '/images/testimonies/'. $imageName;
+            Image::make(public_path() . $testimonie->imagePath)->resize(370,350)->save();
+            $testimonie->save();
+        }
 
         return redirect('admin/testimonies');
     }

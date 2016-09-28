@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Edit</h1>
-            {!! Form::model($testimonie, ['method' => 'PATCH', 'action' => ['Admin\TestimoniesController@update', $testimonie->id]]) !!}
+            {!! Form::model($testimonie, ['method' => 'PATCH', 'action' => ['Admin\TestimoniesController@update', $testimonie->id], 'files'=>true]) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}

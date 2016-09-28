@@ -100,7 +100,25 @@ class VolunteerController extends Controller
     {
         $volunteerNeed = VolunteeringNeed::findOrFail($id);
 
-        $volunteerNeed->update($request->all());
+        $volunteerNeed->update(array(
+            'name'          =>  $request->get('name'),
+            'description'   =>  $request->get('description'),
+            'startDate'  =>  $request->get('startDate'),
+            'endDate'  =>  $request->get('endDate'),
+            'skillsNeeded'  =>  $request->get('skillsNeeded'),
+        ));
+
+        if( $request->hasFile('image') ) {
+            Image::make(public_path() . $volunteerNeed->imagePath)->destroy();
+
+            $imageName = $volunteerNeed->id . '.' . $request->file('image')->getClientOriginalExtension();
+
+            $request->file('image')->move(public_path() . '/images/volunteering/', $imageName);
+
+            $volunteerNeed->imagePath = '/images/volunteering/'. $imageName;
+            Image::make(public_path() . $volunteerNeed->imagePath)->resize(370,350)->save();
+            $volunteerNeed->save();
+        }
 
         return redirect('admin/volunteering');
     }
