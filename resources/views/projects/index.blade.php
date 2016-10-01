@@ -8,4 +8,5 @@
     @if(\App\System::all()->first()->volunteerprograms == 1)
         @include('projects/volunteeringNeeds.index')
     @endif
+    <script type="text/javascript" src="{{URL::asset('js/donation.js')}}"></script>
 @endsection

@@ -1094,3 +1094,7 @@ body {
 .logo img {
     max-height: 68px;
 }
+
+#donation-details, #donation-details div {
+    padding: 0;
+}

@@ -12,11 +12,16 @@
 */
 
 //For visitors
+
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
 if(App\System::all()->first()->projects == 1)
 {
     Route::get('/projects', 'PageController@projects');
+    Route::get('projects/{resource}/resource-donation', ['as' => 'resource-donation', function (App\ResourceNeed $resource) {
+        return view('projects/resourceNeeds.amount', compact('resource'));
+    }]);
+    Route::post('/donate', 'ProjectController@donate');
 }
 if(App\System::all()->first()->testimonies == 1)
 {
