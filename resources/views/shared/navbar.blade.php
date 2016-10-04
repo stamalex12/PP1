@@ -22,15 +22,13 @@
             <li>{!!link_to_action('PageController@index', 'Home') !!} </li>
             <li>{!!link_to_action('PageController@about', 'About') !!} </li>
 
-            @if(\App\System::all()->first()->testimonies == 1)
+            @if(\App\System::all()->first()->projects == 1)
                 <li>{!!link_to_action('PageController@projects', 'Projects') !!} </li>
             @endif
 
             @if(\App\System::all()->first()->testimonies == 1)
                 <li>{!!link_to_action('PageController@testimonies', 'Testimonies') !!} </li>
             @endif
-
-
 
 
             @if (Auth::check())

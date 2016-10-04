@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use App\Content;
-use App\Http\Requests\CreateContentRequest;
+
+use App\Http\Requests\CreateContentImageRequest;
 use App\Page;
 use File;
-use Intervention\Image\Facades\Image;
 
-
-class ContentController extends Controller
+class ContentImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +22,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        $content = Content::all();
-        $page = Page::all();
-        return view('backend.content.index', compact('content', 'page'));
+        //
     }
 
     /**
@@ -35,9 +33,8 @@ class ContentController extends Controller
     public function create()
     {
         $page = Page::all();
-        return view('backend/content.create', compact('page', $page));
+        return view('backend/content.createImage', compact('page', $page));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -45,16 +42,16 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateContentRequest $request)
+    public function store(CreateContentImageRequest $request)
     {
         $newContent = new Content(array(
-        'pageId' => $request->get('page'),
-        'title' => $request->get('title'),
-        'content' => $request->get('content'),
-        'sortOrder' => $request->get('sortOrder'),
-        'status' => "Active",
-        'type' => "information"
-    ));
+            'pageId' => $request->get('page'),
+            'title' => $request->get('title'),
+            'content' => "",
+            'sortOrder' => $request->get('sortOrder'),
+            'status' => "Active",
+            'type' => "image"
+        ));
         $newContent->save();
 
         if( $request->hasFile('image') ) {
@@ -72,8 +69,6 @@ class ContentController extends Controller
 
     }
 
-
-
     /**
      * Display the specified resource.
      *
@@ -82,9 +77,7 @@ class ContentController extends Controller
      */
     public function show($id)
     {
-        $content = Content::find($id);
-
-        return view('');
+        //
     }
 
     /**
@@ -98,11 +91,9 @@ class ContentController extends Controller
         //$content = Content::with(['page'])->find($id);
         $content = Content::find($id);
         $page = Page::all(['id', 'name']);
-        return view('backend.content.edit', compact('content', 'page'));
+        return view('backend.content.editImage', compact('content', 'page'));
         //return content;
     }
-
-
 
     /**
      * Update the specified resource in storage.
@@ -111,17 +102,32 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function update($id, Requests\EditContentRequest $request)
+    public function update($id, Requests\EditContentImageRequest $request)
     {
         $content = Content::findOrFail($id);
 
+        if( $request->hasFile('image') )
+        {
+            File::Delete(public_path().$content->image);
+            $imageName = $content->id . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path() . '/images/content/', $imageName);
+            Image::make(public_path() . $content->image)->save();
 
-        $input = $request->all();
+            $content->update(array(
+                'title' => $request->get('title'),
+                'pageId' => $request->get('pageId'),
+                'sortOrder' => $request->get('sortOrder'),
+                'image' => '/images/content/' . $imageName
+            ));
+        }
+        else{
+            $content->update(array(
+                'title' => $request->get('title'),
+                'pageId' => $request->get('pageId'),
+                'sortOrder' => $request->get('sortOrder')
+            ));
+        }
 
-        $content->fill($input)->save();
-
-        //Session::flash('flash_message', 'Task successfully added!');
 
         $contentReturn = Content::all();
 
@@ -137,29 +143,6 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        $content = Content::find($id);
-
-        if($content->image != null)
-        {
-            File::Delete(public_path().$content->image);
-        }
-
-        Content::destroy($id);
-
-        return redirect('admin/content');
+        //
     }
-
-
-    public function statusToggle($id){
-        $content = Content::findOrFail($id);
-        if($content->status == "Active"){
-            $status = "Disabled";
-        }else{
-            $status = "Active";
-        }
-        $content->status = $status;
-        $content->save();
-        return redirect('admin/content');
-    }
-
 }
