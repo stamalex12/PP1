@@ -15,10 +15,12 @@ class CreateContentsTable extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pageId'); //Foreign key to page table
-            $table->string('title');
-            $table->string('content');
-            $table->integer('sortOrder');
-            $table->string('status');
+            $table->string('title')->nullable();
+            $table->string('content')->nullable();
+            $table->integer('sortOrder')->nullable();
+            $table->string('status')->nullable();
+            $table->string('type')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

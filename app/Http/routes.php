@@ -69,13 +69,22 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
 
     Route::get('/content', 'ContentController@index' );
     Route::get('/content/create', 'ContentController@create');
-    Route::get('/contentEdit/{id}', 'ContentController@edit');
     Route::post('/content', 'ContentController@store');
+    Route::get('/content/createImage', 'ContentImageController@create');
+    Route::post('/contentImage', 'ContentImageController@store');
+    Route::get('/contentEdit/{id}', 'ContentController@edit');
+    Route::get('/contentEditImage/{id}', 'ContentImageController@edit');
+
+
     Route::get('/content/disableId={id}', 'ContentController@statusToggle');
     Route::get('/content/deleteId={id}', 'ContentController@destroy');
     Route::patch('/content/{id}', array(
         'as' => 'content.update',
         'uses' => 'ContentController@update'
+    ));
+    Route::patch('/content/{id}', array(
+        'as' => 'content.updateImage',
+        'uses' => 'ContentImageController@update'
     ));
 
     if(App\System::all()->first()->testimonies == 1)

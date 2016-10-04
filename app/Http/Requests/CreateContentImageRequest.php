@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class EditContentRequest extends Request
+class CreateContentImageRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class EditContentRequest extends Request
     public function rules()
     {
         return [
-            'pageId' => 'required'
+            'page' => 'required',
+            'image' => 'required'
         ];
     }
 }
