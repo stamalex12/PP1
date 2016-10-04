@@ -96,6 +96,23 @@
                             </div>
                         </div>
                     @endif
+
+                        <div class="col-md-6 col-xs-12">
+                            <div class="list-group-separator"></div>
+
+                            <div class="list-group-item">
+                                <div class="row-action-primary">
+                                    <i class="mdi-social-group"></i>
+                                </div>
+                                <div class="row-content">
+                                    <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                    <h4 class="list-group-item-heading">Manage Expenses</h4>
+                                    <a href="expenses" class="btn btn-default btn-raised">All Expenses</a>
+                                    <a href="expenses/create" class="btn btn-primary btn-raised">Create an Expense</a>
+                                </div>
+                            </div>
+                        </div>
+
                     @if(\App\System::all()->first()->volunteerprograms == 1 )
                         <div class="col-md-6 col-xs-12">
                             <div class="list-group-separator"></div>

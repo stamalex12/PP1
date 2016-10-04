@@ -30,6 +30,11 @@ class PageController extends Controller
         return view('home.about')->with('content', $content);
     }
 
+    public function profile()
+    {
+        return view('profile.index');
+    }
+
     public function projects()
     {
         $resources = ResourceNeed::where('status', '=', 'Active')->get();

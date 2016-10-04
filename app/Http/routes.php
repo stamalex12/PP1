@@ -23,8 +23,14 @@ if(App\System::all()->first()->testimonies == 1)
     Route::get('/testimonies', 'PageController@testimonies');
 }
 
+Route::get('/profile', 'PageController@profile');
+Route::get('/applications', 'ApplicationsController@index');;
+Route::get('/applications/create={id}', 'ApplicationsController@create');
+Route::post('/applications', 'ApplicationsController@store');
+
 //For all Visitor access
 Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {
+
 
 
 });
@@ -95,7 +101,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         Route::post('/email-group', 'EmailGroupController@store');
     }
 
-
+    Route::get('/expenses', 'ExpensesController@index');
+    Route::get('/expenses/create', 'ExpensesController@create');
+    Route::get('/expenses/deleteId={id}', 'ExpensesController@destroy');
+    Route::get('/expenses/editId={id}', 'ExpensesController@edit');
+    Route::patch('/expenses/{id}', 'ExpensesController@update');
+    Route::post('/expenses', 'ExpensesController@store');
+    Route::get('/expenses/summary{name}', 'ExpensesController@summary');
 
     Route::get('/settings', 'SystemController@index');
     Route::post('/settings', 'SystemController@store');
