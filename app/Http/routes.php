@@ -125,6 +125,17 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
 
     Route::get('/settings', 'SystemController@index');
     Route::post('/settings', 'SystemController@store');
+
+     /*if(App\System::all()->first()->slider == 1)
+    {*/
+        Route::get('/slider', 'SliderController@index');
+        Route::get('/slider/create', 'SliderController@create');
+        Route::post('/slider', 'SliderController@store');
+        Route::get('/slider/editId={id}', 'SliderController@edit');
+        Route::get('/slider/disableId={id}', 'SliderController@statusToggle');
+        Route::get('/slider/deleteId={id}', 'SliderController@destroy');
+        Route::patch('/slider/{id}', 'SliderController@update');
+//    }
 });
 
 
