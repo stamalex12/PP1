@@ -34,8 +34,6 @@
             @if (Auth::check())
                 @if(Auth::user()->hasRole('Admin'))
                     <li>{!!link_to_action('Admin\PageController@dashboard', 'Dashboard') !!} </li>
-                    @else
-                    <li>{!!link_to_action('PageController@profile', 'Profile') !!} </li>
                 @endif
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -1094,3 +1094,15 @@ body {
 .logo img {
     max-height: 68px;
 }
+
+.content-image img {
+    max-width: 250px;
+    margin: auto;
+    display: block;
+}
+
+.content-image-full img {
+    margin: auto;
+    display: block;
+    max-width:1170px;
+}

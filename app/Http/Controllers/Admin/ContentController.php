@@ -117,9 +117,33 @@ class ContentController extends Controller
         $content = Content::findOrFail($id);
 
 
-        $input = $request->all();
+        if( $request->hasFile('image') )
+        {
+            File::Delete(public_path().$content->image);
+            $imageName = $content->id . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path() . '/images/content/', $imageName);
+            Image::make(public_path() . $content->image)->save();
 
-        $content->fill($input)->save();
+            $content->update(array(
+                'title' => $request->get('title'),
+                'pageId' => $request->get('pageId'),
+                'content' => $request->get('content'),
+                'sortOrder' => $request->get('sortOrder'),
+                'image' => '/images/content/' . $imageName
+            ));
+        }
+        else{
+            $content->update(array(
+                'title' => $request->get('title'),
+                'pageId' => $request->get('pageId'),
+                'content' => $request->get('content'),
+                'sortOrder' => $request->get('sortOrder')
+            ));
+        }
+
+      /*  $input = $request->all();
+
+        $content->fill($input)->save();*/
 
         //Session::flash('flash_message', 'Task successfully added!');
 

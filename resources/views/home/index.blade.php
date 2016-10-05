@@ -4,17 +4,24 @@
         <div class="slider_container">
             <div class="flexslider">
                 <ul class="slides">
+                    @foreach(\App\Slider::where('status', "=", 'Active')->orderBy('sortOrder', 'ASC')->get() as $slider)
                     <li>
-                        <a href="#"><img src="img/children.jpg" alt="" title=""/></a>
+                        <a href="#"><img src="{{$slider->image}}" alt="" title=""/></a>
+                        @if($slider->title != null || $slider->description != null)
                         <div class="flex-caption">
                             <div class="caption_title_line">
-                                <h2>The Children</h2>
-                                <p>Our mission is to help the children by allowing them to be able to get an education.
-                                    With your help, we can make this happen.</p>
+                                @if($slider->title != null)
+                                <h2>{{$slider->title}}</h2>
+                                @endif
+                                @if($slider->description != null)
+                                <p>{{$slider->description}}</p>
+                                    @endif
                             </div>
                         </div>
+                            @endif
                     </li>
-                    <li>
+                    @endforeach
+                   {{-- <li>
                         <a href="#"><img src="img/facility.jpg" alt="" title=""/></a>
                         <div class="flex-caption">
                             <div class="caption_title_line">
@@ -34,7 +41,7 @@
                                     will allow the beneficiaries to be gainfully employed.</p>
                             </div>
                         </div>
-                    </li>
+                    </li>--}}
 
                 </ul>
             </div>
@@ -50,14 +57,14 @@
                     <h3>{{$contents->title}}</h3>
                     @if($contents->image == null)
                         <div class="col-md-12">
-                            <p>{!! nl2br(e($contents->content)) !!}</p>
+                            <p>{!! $contents->content !!}</p>
                         </div>
                     @else
-                        <div class="col-md-9">
-                            <p>{!! nl2br(e($contents->content)) !!}</p>
-                        </div>
                         <div class="col-md-3">
                             <div class="content-image">{{ Html::image($contents->image) }}</div>
+                        </div>
+                        <div class="col-md-9">
+                            <p>{!! $contents->content!!}</p>
                         </div>
                     @endif
 
@@ -70,17 +77,6 @@
                 <div class="divider"></div>
             </div>
         </div>
-
-        {{-- <div class="row">
-             <div class="col-md-12">
-                 <h3>Wesley Mission</h3>
-                 <p>Wesley Mission is an organisation that supports Oprhans. With your help, we can provide food, shelter and get them job ready.
-                     We are looking for volunteers that would like to help these kids by teaching them skills such as English, programming skills or any relevant skills
-                     that would benefit them in their future careers. Even just a small donation by you will significantly help these children.
-                 </p>
-                 <div class="divider"></div>
-             </div>
-         </div>--}}
     @endforeach
 
 

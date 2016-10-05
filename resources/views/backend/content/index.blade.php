@@ -4,6 +4,8 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Content</h1>
+            @if (session('status'))
+                <div class="alert alert-success"> {{ session('status') }} </div> @endif
             <a href="content/create" class="btn btn-primary btn-raised">Create</a>
             <a href="content/createImage" class="btn btn-primary btn-raised">Create Image</a>
 
