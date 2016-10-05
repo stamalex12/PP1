@@ -24,7 +24,7 @@ if(App\System::all()->first()->testimonies == 1)
 }
 
 Route::get('/profile', 'PageController@profile');
-Route::get('/applications', 'ApplicationsController@index');;
+Route::get('/applications', 'ApplicationsController@index');
 Route::get('/applications/create={id}', 'ApplicationsController@create');
 Route::post('/applications', 'ApplicationsController@store');
 
@@ -117,6 +117,11 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::patch('/expenses/{id}', 'ExpensesController@update');
     Route::post('/expenses', 'ExpensesController@store');
     Route::get('/expenses/summary{name}', 'ExpensesController@summary');
+
+    Route::get('/donations/create', 'DonationsController@create');
+    Route::post('/donations', 'DonationsController@store');
+    Route::get('/donations', 'DonationsController@index');
+    Route::get('/expenses/deleteId={id}', 'DonationsController@destroy');
 
     Route::get('/settings', 'SystemController@index');
     Route::post('/settings', 'SystemController@store');

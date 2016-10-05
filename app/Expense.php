@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Expense extends Model
 {
     protected $fillable = [
-        'need_id', 'user_id', 'taskName', 'skillsAndQuals', 'startDate', 'endDate', 'files', 'phone', 'email', 'status'
+        'name', 'description', 'amount', 'resourceNeed'
+
     ];
 
-    protected $table = 'applications';
+    protected $table = 'expenses';
 }

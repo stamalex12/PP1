@@ -43,6 +43,6 @@ class CreateApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('volunteering_needs');
+        Schema::drop('applications');
     }
 }
