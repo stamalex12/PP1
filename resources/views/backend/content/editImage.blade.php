@@ -6,7 +6,7 @@
             <h1>Edit Image</h1>
             {!! Form::model($content, [
 'method' => 'PATCH',
-'action' => ['Admin\ContentController@updateImage', $content->id]
+'action' => ['Admin\ContentImageController@update', $content->id]
 ]) !!}
 
             <div class="form-group">

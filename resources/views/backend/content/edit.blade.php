@@ -5,10 +5,10 @@
         <div class="col-md-12">
             <h1>Edit</h1>
             {!! Form::model($content, [
-'method' => 'PATCH',
-'action' => ['Admin\ContentController@update', $content->id],
-'files' => true
-]) !!}
+                'method' => 'PATCH',
+                'action' => ['Admin\ContentController@update', $content->id],
+                'files' => true
+                ]) !!}
 
             <div class="form-group">
                 {!! Form::label('name', 'Title:') !!}
@@ -16,9 +16,9 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('name', 'Content:') !!}
+                {!! Form::label('content', 'Content:') !!}
 
-                {!! Form::textarea('content',null,array('class' => 'form-control', 'placeholder'=>'Content', 'id' => 'summernote')) !!}
+                {!! Form::textarea('content' ,null, array('class' => 'form-control', 'placeholder'=>'Content', 'id' => 'summernote')) !!}
 
 
             </div>
@@ -63,7 +63,7 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
         });
     </script>

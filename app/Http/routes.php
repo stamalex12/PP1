@@ -14,12 +14,10 @@
 //For visitors
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
-if(App\System::all()->first()->projects == 1)
-{
+if (App\System::all()->first()->projects == 1) {
     Route::get('/projects', 'PageController@projects');
 }
-if(App\System::all()->first()->testimonies == 1)
-{
+if (App\System::all()->first()->testimonies == 1) {
     Route::get('/testimonies', 'PageController@testimonies');
 }
 
@@ -32,21 +30,19 @@ Route::post('/applications', 'ApplicationsController@store');
 Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {
 
 
-
 });
 
 //For all Administrator only access
 Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
-    Route::get('/users', [ 'as' => 'admin.user.index', 'uses' => 'UsersController@index']);
+    Route::get('/users', ['as' => 'admin.user.index', 'uses' => 'UsersController@index']);
     Route::get('/roles', 'RolesController@index');
     Route::get('/roles/create', 'RolesController@create');
     Route::post('/roles/create', 'RolesController@store');
     Route::get('/users/{id?}/edit', 'UsersController@edit');
-    Route::post('/users/{id?}/edit','UsersController@update');
+    Route::post('/users/{id?}/edit', 'UsersController@update');
     Route::get('/dashboard', 'PageController@dashboard');
 
-    if(App\System::all()->first()->resourceneeds == 1)
-    {
+    if (App\System::all()->first()->resourceneeds == 1) {
         Route::get('/resources', 'ResourceController@index');
         Route::get('/resources/create', 'ResourceController@create');
         Route::post('/resources', 'ResourceController@store');
@@ -56,8 +52,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         Route::patch('/resources/{id}', 'ResourceController@update');
     }
 
-    if(App\System::all()->first()->volunteerprograms == 1)
-    {
+    if (App\System::all()->first()->volunteerprograms == 1) {
         Route::get('/volunteering', 'VolunteerController@index');
         Route::get('/volunteering/create', 'VolunteerController@create');
         Route::post('/volunteering', 'VolunteerController@store');
@@ -67,7 +62,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         Route::patch('/volunteering/{id}', 'VolunteerController@update');
     }
 
-    Route::get('/content', 'ContentController@index' );
+    Route::get('/content', 'ContentController@index');
     Route::get('/content/create', 'ContentController@create');
     Route::post('/content', 'ContentController@store');
     Route::get('/content/createImage', 'ContentImageController@create');
@@ -82,13 +77,12 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         'as' => 'content.update',
         'uses' => 'ContentController@update'
     ));
-    Route::patch('/content/{id}', array(
+    Route::patch('/contentImage/{id}', array(
         'as' => 'content.updateImage',
         'uses' => 'ContentImageController@update'
     ));
 
-    if(App\System::all()->first()->testimonies == 1)
-    {
+    if (App\System::all()->first()->testimonies == 1) {
         Route::get('/testimonies', 'TestimoniesController@index');
         Route::get('/testimonies/create', 'TestimoniesController@create');
         Route::post('/testimonies', 'TestimoniesController@store');
@@ -102,8 +96,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/websiteinfo', 'WebsiteInfoController@index');
     Route::post('/websiteinfo', 'WebsiteInfoController@store');
 
-    if(App\System::all()->first()->email == 1)
-    {
+    if (App\System::all()->first()->email == 1) {
         Route::get('/email/create', 'EmailController@create');
         Route::post('/email', 'EmailController@store');
         Route::get('/email-group/create', 'EmailGroupController@create');
@@ -126,19 +119,27 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/settings', 'SystemController@index');
     Route::post('/settings', 'SystemController@store');
 
-     /*if(App\System::all()->first()->slider == 1)
-    {*/
-        Route::get('/slider', 'SliderController@index');
-        Route::get('/slider/create', 'SliderController@create');
-        Route::post('/slider', 'SliderController@store');
-        Route::get('/slider/editId={id}', 'SliderController@edit');
-        Route::get('/slider/disableId={id}', 'SliderController@statusToggle');
-        Route::get('/slider/deleteId={id}', 'SliderController@destroy');
-        Route::patch('/slider/{id}', 'SliderController@update');
+    /*if(App\System::all()->first()->slider == 1)
+   {*/
+    Route::get('/slider', 'SliderController@index');
+    Route::get('/slider/create', 'SliderController@create');
+    Route::post('/slider', 'SliderController@store');
+    Route::get('/slider/editId={id}', 'SliderController@edit');
+    Route::get('/slider/disableId={id}', 'SliderController@statusToggle');
+    Route::get('/slider/deleteId={id}', 'SliderController@destroy');
+    Route::patch('/slider/{id}', 'SliderController@update');
+//    }
+    /*if(App\System::all()->first()->childdetails == 1)
+   {*/
+    Route::get('/children', 'ChildrenController@index');
+    Route::get('/children/create', 'ChildrenController@create');
+    Route::post('/children', 'ChildrenController@store');
+    Route::get('/children/editId={id}', 'ChildrenController@edit');
+    Route::get('/children/disableId={id}', 'ChildrenController@statusToggle');
+    Route::get('/children/deleteId={id}', 'ChildrenController@destroy');
+    Route::patch('/children/{id}', 'ChildrenController@update');
 //    }
 });
-
-
 
 
 Route::get('/logout', 'Auth\AuthController@getLogout');
