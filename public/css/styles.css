@@ -1098,3 +1098,18 @@ body {
 #donation-details, #donation-details div {
     padding: 0;
 }
+
+.details{
+    position:absolute;
+    height: 100%;
+}
+
+.btn-block{
+    position: absolute;
+    bottom: 5px;
+    left:5px;
+    right:25px;
+    width: auto;
+
+
+}

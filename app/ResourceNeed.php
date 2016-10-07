@@ -12,4 +12,8 @@ class ResourceNeed extends Model
     protected $attributes = array(
         'status' => 'Active',
     );
+
+    public function donations() {
+        return $this->morphMany('App\Donation', 'donatable');
+    }
 }

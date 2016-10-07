@@ -15,6 +15,14 @@
 
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
+Route::get('/profile', function(){
+
+//    TODO: put this in the controller
+
+    Image::make(public_path() . '/images/profile-placeholder.jpg')->resize(191,240)->save();
+    return view('profile.index');
+});
+Route::patch('/profile', 'ProfileController@update');
 if(App\System::all()->first()->projects == 1)
 {
     Route::get('/projects', 'PageController@projects');
@@ -27,6 +35,9 @@ if(App\System::all()->first()->testimonies == 1)
 {
     Route::get('/testimonies', 'PageController@testimonies');
 }
+
+//User Profile
+Route::patch('profile/{user_id}', 'UsersController@updateProfile');
 
 //For all Visitor access
 Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/queries.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/slider.css')}}">
+    <link href="{{URL::asset('css/simple-sidebar.css')}}" rel="stylesheet">
 
 
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -37,7 +38,7 @@
     @include('shared.navbar')
     @yield('slider')
 
-
+    @yield('account')
     <div class="text-inter">
         <div class="container">
             @yield('content')
