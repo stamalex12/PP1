@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@if(\App\System::all()->first()->slider == 1)
 @section('slider')
     <div class="slider-wrapper">
         <div class="slider_container">
@@ -21,33 +22,12 @@
                             @endif
                     </li>
                     @endforeach
-                   {{-- <li>
-                        <a href="#"><img src="img/facility.jpg" alt="" title=""/></a>
-                        <div class="flex-caption">
-                            <div class="caption_title_line">
-                                <h2>Facilities</h2>
-                                <p>The facilities that can be provided are more than exceptional. With heating, air
-                                    conditioning and plenty more features the children will be happy.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#"><img src="img/volunteer.jpg" alt="" title=""/></a>
-                        <div class="flex-caption">
-                            <div class="caption_title_line">
-                                <h2>Volunteer</h2>
-                                <p>At Wesley, we are looking for volunteers that are willing to help with providing
-                                    specific services such as teaching English, Programming skills, or other skills that
-                                    will allow the beneficiaries to be gainfully employed.</p>
-                            </div>
-                        </div>
-                    </li>--}}
-
                 </ul>
             </div>
         </div>
     </div>
 @endsection
+@endif
 @section('content')
 
     @foreach($content as $contents)

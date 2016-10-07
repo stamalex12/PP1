@@ -86,7 +86,7 @@ class ChildrenController extends Controller
     {
         $child = Child::find($id);
 
-        return view('backend.children.edit', compact('content'));
+        return view('backend.children.edit', compact('child'));
     }
 
     /**

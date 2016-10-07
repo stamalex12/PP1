@@ -31,15 +31,26 @@
                     @endforeach
                 </select>
             </div>
+            @if($content->image != null)
+                <div class="col-md-4 col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Current Image</label>
+                        {{Html::image($content->image, 'alt', ['class' => 'edit-image-placeholder'])}}
 
-            <div class="form-group">
-                {!! Form::label('image', 'Upload Image:') !!}
-                {!! Form::file('image',null) !!}
+                    </div>
+                </div>
+            @endif
+            <div class="col-md-8 col-xs-12 col-sm-6">
+
+                <div class="form-group">
+                    {!! Form::label('image', 'Upload Image:') !!}
+                    {!! Form::file('image',null) !!}
+                </div>
             </div>
-
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            <a href="../content" class="btn btn-primary btn-raised">Cancel</a>
-
+            <div class="col-md-12">
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                <a href="../content" class="btn btn-primary btn-raised">Cancel</a>
+            </div>
             {!! Form::close() !!}
             @if ($errors->any())
                 <ul class="alert alert-danger">

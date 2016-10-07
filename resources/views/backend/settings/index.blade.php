@@ -59,6 +59,13 @@
                     {!! Form::select('userprofiles', array('1' => 'On', '0' => 'Off'), isset(\App\System::all()->first()->userprofiles)? (\App\System::all()->first()->userprofiles) : '1', ['class' => 'form-control']) !!}
                 </div>
             </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    {!! Form::label('name', 'Slider:') !!}
+                    {!! Form::select('slider', array('1' => 'On', '0' => 'Off'), isset(\App\System::all()->first()->slider)? (\App\System::all()->first()->slider) : '1', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
 
             <div class="col-md-12">
                 {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}

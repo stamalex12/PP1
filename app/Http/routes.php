@@ -1,5 +1,5 @@
 <?php
-
+/*
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,10 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 //For visitors
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
+try
+{
+
+
 if (App\System::all()->first()->projects == 1) {
     Route::get('/projects', 'PageController@projects');
 }
@@ -119,8 +122,8 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/settings', 'SystemController@index');
     Route::post('/settings', 'SystemController@store');
 
-    /*if(App\System::all()->first()->slider == 1)
-   {*/
+    if(App\System::all()->first()->slider == 1)
+   {
     Route::get('/slider', 'SliderController@index');
     Route::get('/slider/create', 'SliderController@create');
     Route::post('/slider', 'SliderController@store');
@@ -128,9 +131,10 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/slider/disableId={id}', 'SliderController@statusToggle');
     Route::get('/slider/deleteId={id}', 'SliderController@destroy');
     Route::patch('/slider/{id}', 'SliderController@update');
-//    }
-    /*if(App\System::all()->first()->childdetails == 1)
-   {*/
+   }
+
+    if(App\System::all()->first()->childdetails == 1)
+   {
     Route::get('/children', 'ChildrenController@index');
     Route::get('/children/create', 'ChildrenController@create');
     Route::post('/children', 'ChildrenController@store');
@@ -138,9 +142,16 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/children/disableId={id}', 'ChildrenController@statusToggle');
     Route::get('/children/deleteId={id}', 'ChildrenController@destroy');
     Route::patch('/children/{id}', 'ChildrenController@update');
-//    }
+    }
 });
+}
+catch(Exception $e)
+{
 
+}
+
+Route::get('getPDF', 'PDFController@getPDF');
+Route::get('getExport', 'ExcelController@getExport');
 
 Route::get('/logout', 'Auth\AuthController@getLogout');
 

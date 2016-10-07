@@ -158,6 +158,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Barryvdh\DomPDF\serviceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -207,6 +210,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

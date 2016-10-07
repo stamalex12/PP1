@@ -1106,3 +1106,7 @@ body {
     display: block;
     max-width:1170px;
 }
+
+img.edit-image-placeholder {
+    max-width: 250px;
+}
