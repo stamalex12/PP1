@@ -55,7 +55,7 @@ class EmailController extends Controller
 
         Mail::send('emails.emailTemplate', $data, function ($message) use ($data)
         {
-            $message->from('kikssrilanka@gmail.com', 'ALEX');
+            $message->from('kikssrilanka@gmail.com', 'KIKS');
 
             $message->to($data['email'])->subject($data['subject']);
         });

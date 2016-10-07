@@ -96,6 +96,37 @@
                             </div>
                         </div>
                     @endif
+
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-separator"></div>
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-group"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">Manage Expenses</h4>
+                                <a href="expenses" class="btn btn-default btn-raised">All Expenses</a>
+                                <a href="expenses/create" class="btn btn-primary btn-raised">Create an Expense</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-separator"></div>
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-group"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">Manage Donations</h4>
+                                <a href="donations" class="btn btn-default btn-raised">All Donations</a>
+                                <a href="donations/create" class="btn btn-primary btn-raised">Record a Donation</a>
+                            </div>
+                        </div>
+                    </div>
+
                     @if(\App\System::all()->first()->volunteerprograms == 1 )
                         <div class="col-md-6 col-xs-12">
                             <div class="list-group-separator"></div>
@@ -145,7 +176,45 @@
                                 <h4 class="list-group-item-heading">Emails</h4>
                                 <a href="testimonies" class="btn btn-default btn-raised">View Sent Emails</a>
                                 <a href="email/create" class="btn btn-primary btn-raised">Send Email</a>
-                                <a href="email-group/create" class="btn btn-primary btn-raised">Send Email To Subscribers</a>
+                                <a href="email-group/create" class="btn btn-primary btn-raised">Send Email To
+                                    Subscribers</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if(\App\System::all()->first()->slider == 1 )
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-separator"></div>
+
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-group"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">Manage Slider</h4>
+                                <a href="slider" class="btn btn-default btn-raised">View Slider Images</a>
+                                <a href="slider/create" class="btn btn-primary btn-raised">Create Slider Image</a>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if(\App\System::all()->first()->childdetails == 1 )
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-separator"></div>
+
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-group"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">Manage Children</h4>
+                                <a href="children" class="btn btn-default btn-raised">View Children</a>
+                                <a href="children/create" class="btn btn-primary btn-raised">Create Child</a>
+
                             </div>
                         </div>
                     </div>

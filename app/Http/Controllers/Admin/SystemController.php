@@ -40,7 +40,8 @@ class SystemController extends Controller
                 'volunteerprograms' => $request->get('volunteerprograms'),
                 'email' => $request->get('email'),
                 'childdetails' => $request->get('childdetails'),
-                'userprofiles' => $request->get('userprofiles')
+                'userprofiles' => $request->get('userprofiles'),
+                'slider' => $request->get('slider'),
             ));
             $newSetting->save();
         }

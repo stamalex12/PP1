@@ -1113,3 +1113,34 @@ body {
 
 
 }
+
+.content-image img {
+    max-width: 250px;
+    margin: auto;
+    display: block;
+}
+
+.content-image-full img {
+    margin: auto;
+    display: block;
+    max-width:1170px;
+}
+
+img.edit-image-placeholder {
+    max-width: 250px;
+}
+
+img.child-image-placeholder {
+    max-width: 324px;
+    margin: auto;
+    display: block;
+    max-height: 250px;
+    margin-top: 10px;
+}
+.child-placeholder {
+    height: 450px;
+}
+
+.child-content {
+    padding: 10px;
+}
