@@ -35,7 +35,7 @@
                                 <select name="resourceNeed">
                                     <option value="none">None</option>
                                     @foreach (\App\resourceNeed::all() as $resource) {
-                                    <option value= "{{$resource->name}}">{{$resource->name}}</option>@endforeach
+                                    <option value= "{{$resource->id}}">{{$resource->name}}</option>@endforeach
                                 </select>
                             </div>
 

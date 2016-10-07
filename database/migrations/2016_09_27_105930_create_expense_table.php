@@ -17,7 +17,7 @@ class CreateExpenseTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('amount');
-            $table->string('resourceNeed');
+            $table->integer('resourceNeed');
 
             $table->timestamps();
         });

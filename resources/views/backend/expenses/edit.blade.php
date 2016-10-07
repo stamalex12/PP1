@@ -18,11 +18,11 @@
             <div class="form-group">
                 {!! Form::label('amount', 'Amount:') !!}
                 {!! Form::text('amount', null, ['class' => 'form-control', 'placeholder' => 'Amount']) !!}
-            </div>
+        </div>
 
 
 
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
             <a href="../expenses" class="btn btn-primary btn-raised">Cancel</a>
 
             {!! Form::close() !!}

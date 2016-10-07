@@ -1110,3 +1110,18 @@ body {
 img.edit-image-placeholder {
     max-width: 250px;
 }
+
+img.child-image-placeholder {
+    max-width: 324px;
+    margin: auto;
+    display: block;
+    max-height: 250px;
+    margin-top: 10px;
+}
+.child-placeholder {
+    height: 450px;
+}
+
+.child-content {
+    padding: 10px;
+}

@@ -16,7 +16,7 @@ class CreateDonationsTable extends Migration
             $table->increments('id');
             $table->string('donnorName');
             $table->integer('amount');
-            $table->string('resourceNeed');
+            $table->integer('resourceNeed');
 
             $table->timestamps();
         });
