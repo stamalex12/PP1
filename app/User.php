@@ -20,7 +20,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'username', 'email', 'password'
+        'name', 'username', 'email', 'password', 'phone', 'country', 'wwc', 'image'
     ];
 
     public function saveRoles($roles)
@@ -35,9 +35,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function donations() {
         return $this->hasMany('App\Donation');
-    }
-
-    public function profile(){
-        return $this->hasOne('App\Profile');
     }
 }

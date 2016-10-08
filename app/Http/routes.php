@@ -15,13 +15,9 @@ Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
 try
 {
-    Route::get('/profile', function(){
-
-//    TODO: put this in the controller
-
-        Image::make(public_path() . '/images/profile-placeholder.jpg')->resize(191,240)->save();
-        return view('profile.index');
-    });
+    Route::get('profile', 'ProfileController@index');
+    Route::get('/profile/my-donations', 'ProfileController@donations');
+    Route::get('/profile/my-volunteering', 'ProfileController@volunteering');
     Route::patch('/profile', 'ProfileController@update');
 
 if (App\System::all()->first()->projects == 1) {
@@ -38,7 +34,7 @@ if (App\System::all()->first()->testimonies == 1) {
 //User Profile
 Route::patch('profile/{user_id}', 'UsersController@updateProfile');
 
-Route::get('/profile', 'PageController@profile');
+//Route::get('/profile', 'PageController@profile');
 Route::get('/applications', 'ApplicationsController@index');
 Route::get('/applications/create={id}', 'ApplicationsController@create');
 Route::post('/applications', 'ApplicationsController@store');
