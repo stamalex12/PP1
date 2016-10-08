@@ -40,11 +40,13 @@ class DonationsController extends Controller
      */
     public function store(Requests\CreateDonnationRequest $request)
     {
+        $resource = ResourceNeed::find($request->get('resourceNeed'));
         $donnation = new Donation(array(
             'donnorName' => $request->get('donnorName'),
             'amount' => $request->get('amount'),
-            'resourceNeed' => $request->get('resourceNeed'),
+           // 'resourceNeed' => $request->get('resourceNeed'),
         ));
+        $donnation->resourceNeed = $resource->id;
         $donnation->save();
 
         return redirect('admin/donations');

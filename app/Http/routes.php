@@ -159,9 +159,13 @@ catch(Exception $e)
 {
 
 }
+Route::get('/getMPDF', 'ReportController@getMPDF');
+Route::get('/getIEPDF', 'ReportController@getIEPDF');
+Route::get('/getIEExport', 'ReportController@getIEExport');
+Route::get('/getMExport', 'ReportController@getMExport');
+Route::get('/report', 'ReportController@generateReport');
 
-Route::get('getPDF', 'PDFController@getPDF');
-Route::get('getExport', 'ExcelController@getExport');
+
 
 Route::get('/logout', 'Auth\AuthController@getLogout');
 

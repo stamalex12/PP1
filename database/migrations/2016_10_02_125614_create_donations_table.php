@@ -23,6 +23,18 @@ class CreateDonationsTable extends Migration
         });
     }
 
+/*    public function up()
+    {
+        Schema::create('donations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('donnorName');
+            $table->integer('amount');
+            $table->integer('resourceNeed');
+
+            $table->timestamps();
+        });
+    }*/
+
     /**
      * Reverse the migrations.
      *

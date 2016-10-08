@@ -1144,3 +1144,8 @@ img.child-image-placeholder {
 .child-content {
     padding: 10px;
 }
+
+.btn-padding {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

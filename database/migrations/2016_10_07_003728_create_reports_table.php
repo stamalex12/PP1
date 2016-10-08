@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExpenseTable extends Migration
+class CreateReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,10 @@ class CreateExpenseTable extends Migration
      */
     public function up()
     {
-        Schema::create('expenses', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('description');
-            $table->integer('amount');
-            $table->integer('resourceNeed');
-
+            $table->string('filepath');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -30,7 +27,6 @@ class CreateExpenseTable extends Migration
      */
     public function down()
     {
-
-        Schema::drop('expenses');
+        Schema::drop('reports');
     }
 }
