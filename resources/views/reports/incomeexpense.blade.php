@@ -17,7 +17,7 @@
     @foreach($income as $incomes)
         <tr>
             <td></td>
-            <td>{{\App\ResourceNeed::find($incomes->resourceNeed)->name}}</td>
+            <td>{{\App\ResourceNeed::find($incomes->donatable_id)->name}}</td>
 
 
             <td>{{$myFormatForView = date("jS F Y", strtotime($incomes->created_at))}}</td>
@@ -38,10 +38,10 @@
     </tr>
 
 
-@foreach($expense as $incomes)
+@foreach($expense as $expenses)
         <tr>
             <td></td>
-            <td>{{\App\ResourceNeed::find($incomes->resourceNeed)->name}}</td>
+            <td>{{\App\ResourceNeed::find($expenses->resourceNeed)->name}}</td>
 
 
             <td>{{$myFormatForView = date("jS F Y", strtotime($incomes->created_at))}}</td>

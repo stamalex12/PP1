@@ -26,7 +26,7 @@
         <tr>
             <th></th>
             <th>Totals</th>
-            <th> ${{\App\Donation::where('resourceNeed', '=', $resources->id)->get()->sum('amount')}}</th>
+            <th> ${{\App\Donation::where('donatable_id', '=', $resources->id)->get()->sum('amount')}}</th>
             <th>${{\App\Expense::where('resourceNeed', '=', $resources->id)->get()->sum('amount')}}</th>
         </tr>
     @endforeach

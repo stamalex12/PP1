@@ -20,6 +20,7 @@ class Donation extends Model
     public function donatable()
     {
         return $this->morphTo();
+    }
 
     protected $table = 'donations';
 

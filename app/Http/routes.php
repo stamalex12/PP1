@@ -163,14 +163,12 @@ catch(Exception $e)
 {
 
 }
-
-Route::get('/getPDF', 'Admin\PDFController@getPDF');
 Route::get('/getMPDF', 'ReportController@getMPDF');
 Route::get('/getIEPDF', 'ReportController@getIEPDF');
 Route::get('/getIEExport', 'ReportController@getIEExport');
 Route::get('/getMExport', 'ReportController@getMExport');
-Route::get('/generateReport', 'ReportController@generateReport');
-Route::get('/generateIncomeExpensesReport', 'ReportController@generateIncomeExpensesReport');
+Route::get('/report', 'ReportController@generateReport');
+
 
 
 Route::get('/logout', 'Auth\AuthController@getLogout');

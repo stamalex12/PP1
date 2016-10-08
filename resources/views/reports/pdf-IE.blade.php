@@ -25,7 +25,7 @@
     @foreach($income as $incomes)
         <tr>
             <td style="text-align:left; border: 1px solid;"></td>
-            <td style="text-align:left; border: 1px solid;">{{\App\ResourceNeed::find($incomes->resourceNeed)->name}}</td>
+            <td style="text-align:left; border: 1px solid;">{{\App\ResourceNeed::find($incomes->donatable_id)->name}}</td>
 
 
             <td style="text-align:left; border: 1px solid;">{{$myFormatForView = date("jS F Y", strtotime($incomes->created_at))}}</td>
@@ -45,10 +45,10 @@
         <td style="text-align:left; border: 1px solid;"></td>
     </tr>
 
-    @foreach($expense as $incomes)
+    @foreach($expense as $expenses)
         <tr>
             <td style="text-align:left; border: 1px solid;"></td>
-            <td style="text-align:left; border: 1px solid;">{{\App\ResourceNeed::find($incomes->resourceNeed)->name}}</td>
+            <td style="text-align:left; border: 1px solid;">{{\App\ResourceNeed::find($expenses->resourceNeed)->name}}</td>
 
 
             <td style="text-align:left; border: 1px solid;">{{$myFormatForView = date("jS F Y", strtotime($incomes->created_at))}}</td>
