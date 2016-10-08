@@ -8,6 +8,7 @@ class Donation extends Model
 {
     protected $fillable = array('amount', 'user_id', 'donatable_id', 'donatable_type');
 
+
     protected $attributes = array(
         'status' => 'Pending'
     );
@@ -19,5 +20,11 @@ class Donation extends Model
     public function donatable()
     {
         return $this->morphTo();
+
+    protected $table = 'donations';
+
+    public function resource()
+    {
+        return $this->belongsTo('ResourceNeed');
     }
 }

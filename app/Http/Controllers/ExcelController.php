@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Maatwebsite\Excel;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Content;
+use App\Month;
+
 
 class ExcelController extends Controller
 {
@@ -25,7 +28,8 @@ class ExcelController extends Controller
 
     public function getExport()
     {
-        $export=Customer::all();
+
+        $export=Content::all();
         Excel::create('Export Customer', function($excel) use($export){
             $excel->sheet('Sheet 1', function($sheet) use($export){
                 $sheet->fromArray($export);
