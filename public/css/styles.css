@@ -1087,3 +1087,65 @@ body {
 .fa-bars:before {
     color: #fff;
 }
+.list-group-item {
+    margin-bottom: 10px!Important;
+}
+
+.logo img {
+    max-height: 68px;
+}
+
+#donation-details, #donation-details div {
+    padding: 0;
+}
+
+.details{
+    position:absolute;
+    height: 100%;
+}
+
+.btn-block{
+    position: absolute;
+    bottom: 5px;
+    left:5px;
+    right:25px;
+    width: auto;
+
+
+}
+
+.content-image img {
+    max-width: 250px;
+    margin: auto;
+    display: block;
+}
+
+.content-image-full img {
+    margin: auto;
+    display: block;
+    max-width:1170px;
+}
+
+img.edit-image-placeholder {
+    max-width: 250px;
+}
+
+img.child-image-placeholder {
+    max-width: 324px;
+    margin: auto;
+    display: block;
+    max-height: 250px;
+    margin-top: 10px;
+}
+.child-placeholder {
+    height: 450px;
+}
+
+.child-content {
+    padding: 10px;
+}
+
+.btn-padding {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

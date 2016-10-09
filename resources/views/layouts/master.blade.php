@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/queries.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/slider.css')}}">
+    <link href="{{URL::asset('css/simple-sidebar.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{URL::asset('js/fullcalendar/fullcalendar.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('css/daterangepicker.css')}}">
@@ -26,6 +27,12 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
 
+
+    <link rel="stylesheet" href="{{URL::asset('css/summernote.css')}}">
+    <script src="{{URL::asset('js/summernote.min.js')}}"></script>
+
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,7 +46,7 @@
     @include('shared.navbar')
     @yield('slider')
 
-
+    @yield('account')
     <div class="text-inter">
         <div class="container">
             @yield('content')
@@ -98,5 +105,12 @@
 <script>
     $(document).ready(function () {
         $('#example').DataTable();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height:300,
+        });
     });
 </script>

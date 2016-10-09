@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Content;
 use App\Http\Requests\CreateContentRequest;
 use App\Page;
+use File;
+use Intervention\Image\Facades\Image;
 
 
 class ContentController extends Controller
@@ -21,7 +23,8 @@ class ContentController extends Controller
     public function index()
     {
         $content = Content::all();
-        return view('backend/content.index')->with('content', $content);
+        $page = Page::all();
+        return view('backend.content.index', compact('content', 'page'));
     }
 
     /**
@@ -31,8 +34,10 @@ class ContentController extends Controller
      */
     public function create()
     {
-        return view('backend/content.create');
+        $page = Page::all();
+        return view('backend/content.create', compact('page', $page));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -42,21 +47,32 @@ class ContentController extends Controller
      */
     public function store(CreateContentRequest $request)
     {
-        if($request['page'] == 'home')
-        {
-            $page = '1';
-        }
-        else
-        {
-            $page = '2';
+        $newContent = new Content(array(
+        'pageId' => $request->get('page'),
+        'title' => $request->get('title'),
+        'content' => $request->get('content'),
+        'sortOrder' => $request->get('sortOrder'),
+        'status' => "Active",
+        'type' => "information"
+    ));
+        $newContent->save();
+
+        if( $request->hasFile('image') ) {
+
+            $imageName = $newContent->id . '.' . $request->file('image')->getClientOriginalExtension();
+
+            $request->file('image')->move(public_path() . '/images/content/', $imageName);
+
+            $newContent->image = '/images/content/' . $imageName;
+            Image::make(public_path() . $newContent->image)->save();
+            $newContent->save();
         }
 
-        Content::insert(['pageId' => $page, 'title' => $request['title'], 'content' => $request['content'], 'sortOrder' => $request['sortOrder'], 'status' => "Active"]);
-        $content = Content::all();
+        return redirect('admin/content');
 
-        return view('backend.content.index')->with('content', $content);
-        //return redirect()->back();
     }
+
+
 
     /**
      * Display the specified resource.
@@ -81,10 +97,12 @@ class ContentController extends Controller
     {
         //$content = Content::with(['page'])->find($id);
         $content = Content::find($id);
-        $page = Page::where('id', '=', $content->pageId)->get();
+        $page = Page::all(['id', 'name']);
         return view('backend.content.edit', compact('content', 'page'));
         //return content;
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -93,25 +111,46 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update($id, Requests\EditContentRequest $request)
     {
         $content = Content::findOrFail($id);
 
-        /* $this->validate($request, [
-             'title' => 'required',
-             'description' => 'required'
-         ]);*/
 
-        $input = $request->all();
+        if( $request->hasFile('image') )
+        {
+            File::Delete(public_path().$content->image);
+            $imageName = $content->id . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path() . '/images/content/', $imageName);
+            Image::make(public_path() . $content->image)->save();
 
-        $content->fill($input)->save();
+            $content->update(array(
+                'title' => $request->get('title'),
+                'pageId' => $request->get('pageId'),
+                'content' => $request->get('content'),
+                'sortOrder' => $request->get('sortOrder'),
+                'image' => '/images/content/' . $imageName
+            ));
+        }
+        else{
+            $content->update(array(
+                'title' => $request->get('title'),
+                'pageId' => $request->get('pageId'),
+                'content' => $request->get('content'),
+                'sortOrder' => $request->get('sortOrder')
+            ));
+        }
+
+      /*  $input = $request->all();
+
+        $content->fill($input)->save();*/
 
         //Session::flash('flash_message', 'Task successfully added!');
 
         $contentReturn = Content::all();
 
         //return $content;
-        return view('backend.content.index')->with('content', $contentReturn);
+        return redirect('admin/content')->with('Status', 'content updated successfully');
     }
 
     /**
@@ -122,10 +161,19 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
+        $content = Content::find($id);
+
+        if($content->image != null)
+        {
+            File::Delete(public_path().$content->image);
+        }
+
         Content::destroy($id);
 
         return redirect('admin/content');
     }
+
+
     public function statusToggle($id){
         $content = Content::findOrFail($id);
         if($content->status == "Active"){

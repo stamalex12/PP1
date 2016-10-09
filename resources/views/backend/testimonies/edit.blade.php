@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Edit</h1>
-            {!! Form::model($testimonie, ['method' => 'PATCH', 'action' => ['Admin\TestimoniesController@update', $testimonie->id]]) !!}
+            {!! Form::model($testimonie, ['method' => 'PATCH', 'action' => ['Admin\TestimoniesController@update', $testimonie->id], 'files'=>true]) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
                 {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
@@ -20,6 +20,10 @@
                 {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
             </div>
 
+            <div class="form-group">
+                {!! Form::label('image', 'Upload Image:') !!}
+                {!! Form::file('image',null) !!}
+            </div>
 
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
             <a href="../testimonies" class="btn btn-default btn-raised">Cancel</a>

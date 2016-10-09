@@ -62,6 +62,7 @@ http://www.freshdesignweb.com/fashion-responsive-slider-tutorial.html
         max-width: 100%;
         display: block;
         border: 10px #ededed solid;
+        margin: auto;
     }
 
 .flex-pauseplay span {

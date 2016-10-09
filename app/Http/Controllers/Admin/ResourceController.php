@@ -6,6 +6,7 @@ use App\ResourceNeed;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
+use Intervention\Image\File;
 
 class ResourceController extends Controller
 {
@@ -104,7 +105,10 @@ class ResourceController extends Controller
         ));
 
         if( $request->hasFile('image') ) {
-
+            if (file_exists(public_path() . $resource->imagePath))
+            {
+                Image::make(public_path() . $resource->imagePath)->destroy();
+            }
             $imageName = $resource->id . '.' . $request->file('image')->getClientOriginalExtension();
 
             $request->file('image')->move(public_path() . '/images/resources/', $imageName);
