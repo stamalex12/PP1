@@ -160,8 +160,6 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Barryvdh\DomPDF\serviceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
-        Tariq86\CountryList\CountryListServiceProvider::class,
 
     ],
 
@@ -213,8 +211,7 @@ return [
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Countries' => Tariq86\CountryList\CountryListFacade::class
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class
     ],
 
 ];
