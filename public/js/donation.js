@@ -20,8 +20,9 @@ $(document).ready(function(){
             beforeSend: function (request) {
                 return request.setRequestHeader('X-CSRF-Token', token);
             },
-            success: function (amt) {
-                console.log(amt);
+            success: function (phone) {
+                console.log(phone);
+                $('#phone').html(phone);
                 $donation_details_div.fadeOut(200).hide(function () {
                     $donation_success_div.fadeIn(200).show()});
             },
