@@ -3,5 +3,6 @@
         <a href="profile" class="btn btn-default btn-raised">My Profile</a>
         <a href="profile/donations" class="btn btn-default btn-raised">My Donations</a>
         <a href="profile/volunteering" class="btn btn-default btn-raised">My Volunteering</a>
+        <a href="report" class="btn btn-default btn-raised">View Reports</a>
     </div>
 </div>
