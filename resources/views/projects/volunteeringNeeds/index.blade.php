@@ -13,6 +13,9 @@
                             <p>Start Date: {{$volunteerNeed->startDate}}</p>
                             <p>End Date: {{$volunteerNeed->endDate}}</p>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-md-offset-6">
+                            <div class="btn btn-primary btn-lg btn-block volunteer-btn">Volunteer</div>
+                        </div>
                     </div>
                 </div>
             </div>
