@@ -6,9 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    protected $fillable=['name', 'type', 'description', 'imagePath'];
+    protected $table="room";
+
+    protected $fillable=['name', 'type', 'price', 'description', 'imagePath'];
+
 
     protected $attributes = array(
         'status' => 'Active',
     );
+
+    public function roombooking(){
+        return $this->hasMany('RoomBooking');
+    }
+
 }

@@ -27,6 +27,7 @@ class CreateRoomRequest extends Request
                'name' => 'required|min:3',
                'type' => 'required',
                'description' => 'required',
+               'price'=>'required',
                'image' => 'image|mimes:jpeg,bmp,png'
            ];
     }

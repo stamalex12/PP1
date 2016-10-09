@@ -40,6 +40,7 @@ class RoomController extends Controller
         $room= new Room(array(
             'name'=>$request->get('name'),
             'type'=>$request->get('type'),
+            'price'=>$request->get('price'),
             'description'=>$request->get('description')
 
         ));
@@ -90,7 +91,7 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\CreateRoomRequestRequest $request, $id)
+    public function update(Requests\CreateRoomRequest $request, $id)
     {
         $room= Room::findOrFail($id);
         $room->update($request->all());

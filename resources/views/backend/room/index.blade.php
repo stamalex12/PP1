@@ -9,9 +9,10 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Status</th>
+                    <th>Price</th>
+                    {{--<th>Description</th>--}}
                     <th>Type</th>
+                    <th>Status</th>
                     <th>Action</th>
 
                 </tr>
@@ -19,9 +20,10 @@
                 <tfoot>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Status</th>
+                    <th>Price</th>
+                    {{--<th>Description</th>--}}
                     <th>Type</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
@@ -31,9 +33,10 @@
 
                     <tr>
                         <th>{{$aroom->name}}</th>
-                        <th>{{$aroom->description}}</th>
+                        <th>{{$aroom->price}}</th>
+                        {{--<th>{{$aroom->description}}</th>--}}
+                        <th>{{$aroom->type}}</th>
                         <th>{{$aroom->status}}</th>
-                        <th>{{$aroom->organisation}}</th>
                         <th>{!!link_to_action('Admin\RoomController@edit', 'Edit', $aroom->id) !!} |
                             @if($aroom->status == "Active")
                                 {!! link_to_action('Admin\RoomController@statusToggle','Disable', $aroom->id) !!}

@@ -32,4 +32,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             $this->roles()->detach();
         }
     }
+
+    public function roombooking(){
+        return $this->hasMany('RoomBooking');
+    }
 }

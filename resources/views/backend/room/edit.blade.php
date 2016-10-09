@@ -11,6 +11,12 @@
             </div>
 
             <div class="form-group">
+                {!! Form::label('price', 'Price:(AUD)') !!}
+                {!! Form::text('price', null, ['class' => 'form-control', 'placeholder' => 'Price']) !!}
+            </div>
+
+
+            <div class="form-group">
                 {!! Form::label('type', 'Type:') !!}
                 {!! Form::text('type', null, ['class' => 'form-control', 'placeholder' => 'Type']) !!}
             </div>

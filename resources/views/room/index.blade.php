@@ -12,8 +12,9 @@
 
                     <div class="col-md-6">
                         <h3>{{$aroom->name}}</h3>
-                        <p>{{$aroom->description}}</p>
-                        <p>type: {{$aroom->type}}</p>
+                        <p>Room ID: {{$aroom->id}}</p>
+                        <p>Room Type: {{$aroom->type}}</p>
+                        <p>Description{{$aroom->description}}</p>
                     </div>
                 </div>
             </div>

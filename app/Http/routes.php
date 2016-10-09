@@ -16,6 +16,25 @@ Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
 Route::get('/projects', 'PageController@projects');
 Route::get('/testimonies', 'PageController@testimonies');
+Route::get('/room', 'PageController@room');
+
+Route::get('/booking', function () {
+    $data = [
+        'page_title' => 'Room Booking',
+    ];
+    return view('roombooking/index', $data);
+});
+
+Route::resource('roombooking', 'RoomBookingController');
+
+Route::get('/api', function () {
+    $roombooking = DB::table('room_bookings')->select('id', 'userId', 'roomId', 'startDate as start', 'endDate as end','firstName','lastName')->get();
+    foreach($roombooking as $event)
+    {
+        $event->url = url('roombooking/' . $event->id);
+    }
+    return $roombooking;
+});
 
 
 //For all Visitor access
@@ -68,6 +87,16 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::patch('/testimonies/{id}', 'TestimoniesController@update');
     Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
 
+
+    Route::get('/room', 'RoomController@index');
+    Route::get('/room/create', 'RoomController@create');
+    Route::post('/room', 'RoomController@store');
+    Route::get('/room/editId={id}', 'RoomController@edit');
+    Route::get('/room/deleteId={id}', 'RoomController@destroy');
+    Route::patch('/room/{id}', 'RoomController@update');
+    Route::get('/room/disableId={id}', 'RoomController@statusToggle');
+
+
     Route::get('/websiteinfo', 'WebsiteInfoController@index');
     Route::post('/websiteinfo', 'WebsiteInfoController@store');
 
@@ -75,6 +104,8 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::post('/email', 'EmailController@store');
     Route::get('/email-group/create', 'EmailGroupController@create');
     Route::post('/email-group', 'EmailGroupController@store');
+
+    Route::resource('roombooking', 'AdminBookingController');
 
 });
 
