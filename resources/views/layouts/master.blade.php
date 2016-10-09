@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{URL::asset('css/slider.css')}}">
     <link href="{{URL::asset('css/simple-sidebar.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{URL::asset('js/fullcalendar/fullcalendar.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('css/daterangepicker.css')}}">
+
 
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- Fonts -->
@@ -35,7 +38,6 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
 
     <![endif]-->
 </head>
@@ -70,6 +72,11 @@
 <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
 <script src="{{URL::asset('js/scripts.js')}}"></script>
 <script src="{{URL::asset('js/unslider.min.js')}}"></script>
+<script src="{{URL::asset('js/fullcalendar/lib/moment.min.js')}}"></script>
+<script src="{{URL::asset('js/fullcalendar/fullcalendar.min.js')}}"></script>
+
+<
+@yield('js')
 </body>
 </html>
 <!-- FlexSlider -->

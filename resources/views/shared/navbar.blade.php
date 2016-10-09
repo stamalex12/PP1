@@ -29,6 +29,10 @@
             @if(\App\System::all()->first()->testimonies == 1)
                 <li>{!!link_to_action('PageController@testimonies', 'Testimonies') !!} </li>
             @endif
+            <li>{!!link_to_action('PageController@projects', 'Projects') !!} </li>
+            <li>{!!link_to_action('PageController@testimonies', 'Testimonies') !!} </li>
+            <li>{!!link_to_action('PageController@room', 'Rooms') !!} </li>
+            <li><a href="{{ url('/booking') }}">Bookings</a></li>
 
 
             @if (Auth::check())

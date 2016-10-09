@@ -33,6 +33,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
+    public function roombooking(){
+        return $this->hasMany('RoomBooking');
+    }
+
     public function donations() {
         return $this->hasMany('App\Donation');
     }
