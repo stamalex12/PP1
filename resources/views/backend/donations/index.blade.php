@@ -8,18 +8,20 @@
             <table id="example" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>Donnor Name</th>
+                    <th>Donnor</th>
                     <th>Amount</th>
-                    <th>Linked Resource</th>
+                    <th>Resource or Child</th>
+                    <th>Status</th>
                     <th>Actions</th>
 
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>Donnor Name</th>
-                    <th>Amount Needed</th>
-                    <th>Linked Resource</th>
+                    <th>Donnor</th>
+                    <th>Amount</th>
+                    <th>Resource or Child</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
                 </tfoot>
@@ -28,10 +30,11 @@
                 @foreach($donations as $donation)
 
                     <tr>
-                        <th>{{$donation->donnorName}}</th>
+                        <th>@if($donation->user_id == 0) Anonymous @else {{App\User::where('id', '=', $donation->user_id)->first()->name}} @endif</th>
                         <th>{{$donation->amount}}</th>
-                        <th>{{$donation->resourceNeed}}</th>
-                        <th>{!! link_to_action('Admin\DonationsController@destroy','Remove', $donation->id) !!}</th>
+                        <th>@if($donation->donatable_type == 'App\Child')  {{App\Child::where('id', '=', $donation->donatable_id)->first()->name}}@else {{App\ResourceNeed::where('id', '=', $donation->donatable_id)->first()->name}} @endif </th>
+                        <th>{{$donation->status}}</th>
+                        <th>@if($donation->status == 'Pending') {!! link_to_action('Admin\DonationsController@approve','Complete', $donation->id) !!} | @endif  {!! link_to_action('Admin\DonationsController@destroy','Remove', $donation->id) !!}</th>
                     </tr>
                 @endforeach
 
