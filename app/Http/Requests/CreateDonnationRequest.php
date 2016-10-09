@@ -29,6 +29,7 @@ class CreateDonnationRequest extends Request
     public function rules()
     {
         return [
+            'donnorName' => 'required',
         ];
     }
 }

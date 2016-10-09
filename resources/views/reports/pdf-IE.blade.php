@@ -36,7 +36,7 @@
         <th style="text-align:left; border: 1px solid;"></th>
         <th style="text-align:left; border: 1px solid;"></th>
         <th style="text-align:left; border: 1px solid;">Total</th>
-        <th style="text-align:left; border: 1px solid;">${{\App\Donation::sum('amount')}}</th>
+        <th style="text-align:left; border: 1px solid;">${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', '=', 'App\ResourceNeed')->sum('amount')}}</th>
     </tr>
     <tr>
         <td style="text-align:left; border: 1px solid;">Expenses</td>
@@ -65,10 +65,10 @@
     </tr>
     <tr>
         <th style="text-align:left; border: 1px solid;">Totals</th>
-        <th style="text-align:left; border: 1px solid;">Income: ${{\App\Donation::sum('amount')}} </th>
+        <th style="text-align:left; border: 1px solid;">Income: ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', '=', 'App\ResourceNeed')->sum('amount')}} </th>
         <th style="text-align:left; border: 1px solid;">Expense: ${{\App\Expense::sum('amount')}}</th>
         <th style="text-align:left; border: 1px solid;">Difference:
-            ${{\App\Donation::sum('amount') - \App\Expense::sum('amount')}}</th>
+            ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', '=', 'App\ResourceNeed')->sum('amount') - \App\Expense::sum('amount')}}</th>
     </tr>
 </table>
 </body>

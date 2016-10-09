@@ -14,37 +14,16 @@
 Route::get('/home', 'PageController@index');
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
-Route::get('/projects', 'PageController@projects');
-Route::get('/testimonies', 'PageController@testimonies');
-Route::get('/room', 'PageController@room');
-
-Route::get('/booking', function () {
-    $data = [
-        'page_title' => 'Room Booking',
-    ];
-    return view('roombooking/index', $data);
-});
-
-Route::resource('roombooking', 'RoomBookingController');
-
-Route::get('/api', function () {
-    $roombooking = DB::table('room_bookings')->select('id', 'userId', 'roomId', 'startDate as start', 'endDate as end','firstName','lastName')->get();
-    foreach($roombooking as $event)
-    {
-        $event->url = url('roombooking/' . $event->id);
-    }
-    return $roombooking;
-});
 try
 {
-    Route::get('profile', 'ProfileController@index');
-    Route::get('/my-donations', 'ProfileController@donations');
-    Route::get('/my-volunteering', 'ProfileController@volunteering');
-    Route::patch('/profile', 'ProfileController@update');
+    Route::get('/profile', function(){
 
-    Route::get('/my-donations/{id}/cancel', 'ProfileController@cancelDonation');
-    Route::get('/my-donations/{id}/recover', 'ProfileController@recoverDonation');
-    Route::get('/my-donations/{id}/delete', 'ProfileController@deleteDonation');
+//    TODO: put this in the controller
+
+        Image::make(public_path() . '/images/profile-placeholder.jpg')->resize(191,240)->save();
+        return view('profile.index');
+    });
+    Route::patch('/profile', 'ProfileController@update');
 
 if (App\System::all()->first()->projects == 1) {
     Route::get('/projects', 'PageController@projects');
@@ -60,7 +39,7 @@ if (App\System::all()->first()->testimonies == 1) {
 //User Profile
 Route::patch('profile/{user_id}', 'UsersController@updateProfile');
 
-//Route::get('/profile', 'PageController@profile');
+Route::get('/profile', 'PageController@profile');
 Route::get('/applications', 'ApplicationsController@index');
 Route::get('/applications/create={id}', 'ApplicationsController@create');
 Route::post('/applications', 'ApplicationsController@store');
@@ -132,16 +111,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     }
 
 
-
-    Route::get('/room', 'RoomController@index');
-    Route::get('/room/create', 'RoomController@create');
-    Route::post('/room', 'RoomController@store');
-    Route::get('/room/editId={id}', 'RoomController@edit');
-    Route::get('/room/deleteId={id}', 'RoomController@destroy');
-    Route::patch('/room/{id}', 'RoomController@update');
-    Route::get('/room/disableId={id}', 'RoomController@statusToggle');
-
-
     Route::get('/websiteinfo', 'WebsiteInfoController@index');
     Route::post('/websiteinfo', 'WebsiteInfoController@store');
 
@@ -151,8 +120,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
         Route::get('/email-group/create', 'EmailGroupController@create');
         Route::post('/email-group', 'EmailGroupController@store');
     }
-
-    Route::resource('roombooking', 'AdminBookingController');
 
     Route::get('/expenses', 'ExpensesController@index');
     Route::get('/expenses/create', 'ExpensesController@create');
@@ -165,9 +132,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/donations/create', 'DonationsController@create');
     Route::post('/donations', 'DonationsController@store');
     Route::get('/donations', 'DonationsController@index');
-    Route::get('/donations/deleteId={id}', 'DonationsController@destroy');
-    Route::get('/donations/approveId={id}', 'DonationsController@approve');
-    Route::post('/donations/create', 'DonationsController@store');
+    Route::get('/expenses/deleteId={id}', 'DonationsController@destroy');
 
     Route::get('/settings', 'SystemController@index');
     Route::post('/settings', 'SystemController@store');
@@ -201,10 +166,12 @@ catch(Exception $e)
 }
 Route::get('/getMPDF', 'ReportController@getMPDF');
 Route::get('/getIEPDF', 'ReportController@getIEPDF');
+Route::get('/getICPDF', 'ReportController@getICPDF');
 Route::get('/getIEExport', 'ReportController@getIEExport');
+Route::get('/getICExport', 'ReportController@getICExport');
 Route::get('/getMExport', 'ReportController@getMExport');
 Route::get('/report', 'ReportController@generateReport');
-
+Route::get('/genChildReport', 'ReportController@genChildReport');
 
 
 Route::get('/logout', 'Auth\AuthController@getLogout');

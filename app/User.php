@@ -20,7 +20,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'phone', 'country', 'wwc', 'image'
+        'name', 'username', 'email', 'password'
     ];
 
     public function saveRoles($roles)
@@ -33,11 +33,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
-    public function roombooking(){
-        return $this->hasMany('RoomBooking');
-    }
-
     public function donations() {
         return $this->hasMany('App\Donation');
+    }
+
+    public function profile(){
+        return $this->hasOne('App\Profile');
     }
 }

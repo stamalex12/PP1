@@ -1095,7 +1095,7 @@ body {
     max-height: 68px;
 }
 
-.donation-details, .donation-details div {
+#donation-details, #donation-details div {
     padding: 0;
 }
 
@@ -1107,13 +1107,11 @@ body {
 .btn-block{
     position: absolute;
     bottom: 5px;
-    left:3%;
-    right:20px;
+    left:5px;
+    right:25px;
     width: auto;
-}
 
-.donate-btn-child{
-    right:5px;
+
 }
 
 .content-image img {

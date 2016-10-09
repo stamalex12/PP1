@@ -28,7 +28,7 @@
         <th></th>
         <th></th>
         <th>Total</th>
-        <th>${{\App\Donation::sum('amount')}}</th>
+        <th>${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount')}}</th>
     </tr>
     <tr>
         <td>Expenses</td>
@@ -44,8 +44,8 @@
             <td>{{\App\ResourceNeed::find($expenses->resourceNeed)->name}}</td>
 
 
-            <td>{{$myFormatForView = date("jS F Y", strtotime($incomes->created_at))}}</td>
-            <td>${{$incomes->amount}}
+            <td>{{$myFormatForView = date("jS F Y", strtotime($expenses->created_at))}}</td>
+            <td>${{$expenses->amount}}
             </td>
         </tr>
     @endforeach
@@ -59,9 +59,9 @@
 
     <tr>
         <th>Totals</th>
-        <th>Income: ${{\App\Donation::sum('amount')}} </th>
+        <th>Income: ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount')}} </th>
         <th>Expense: ${{\App\Expense::sum('amount')}}</th>
-        <th>Difference: ${{\App\Donation::sum('amount') - \App\Expense::sum('amount')}}</th>
+        <th>Difference: ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount') - \App\Expense::sum('amount')}}</th>
     </tr>
 
 

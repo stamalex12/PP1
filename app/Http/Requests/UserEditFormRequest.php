@@ -25,7 +25,7 @@ class UserEditFormRequest extends Request
     {
         return [
             'name' => 'required',
-            'email'=> 'required|email',
+            'email'=> 'required',
             'role'=> 'required',
             'password'=>'alpha_num|min:6|confirmed',
             'password_confirmation'=>'alpha_num|min:6',

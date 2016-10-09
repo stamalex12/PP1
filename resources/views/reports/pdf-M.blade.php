@@ -36,7 +36,7 @@
         <tr>
             <th style="text-align:left; border: 1px solid;"></th>
             <th style="text-align:left; border: 1px solid;">Totals</th>
-            <th style="text-align:left; border: 1px solid;"> ${{\App\Donation::where('donatable_id', '=', $resources->id)->get()->sum('amount')}}</th>
+            <th style="text-align:left; border: 1px solid;"> ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', '=', 'App\ResourceNeed')->where('donatable_id', '=', $resources->id)->get()->sum('amount')}}</th>
             <th style="text-align:left; border: 1px solid;">${{\App\Expense::where('resourceNeed', '=', $resources->id)->get()->sum('amount')}}</th>
         </tr>
     @endforeach
