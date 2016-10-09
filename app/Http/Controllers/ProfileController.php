@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Donation;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Hash;
@@ -274,8 +275,8 @@ class ProfileController extends Controller
     }
 
     public function donations(){
-
-        return view('profile.donations');
+        $donations = \Auth::user()->donations;
+        return view('profile.donations', compact('donations'));
     }
 
     public function volunteering(){
@@ -332,4 +333,25 @@ class ProfileController extends Controller
 
         return redirect('profile')->with('success', 'Your profile has been succesfully updated!');
     }
+
+    public function cancelDonation($id){
+        $donation = Donation::find($id);
+        $donation->status = "Cancelled";
+        $donation->save();
+        return redirect('my-donations');
+    }
+
+    public function recoverDonation($id){
+        $donation = Donation::find($id);
+        $donation->status = "Pending";
+        $donation->save();
+        return redirect('my-donations');
+    }
+
+    public function deleteDonation($id){
+        Donation::destroy($id);
+
+        return redirect('my-donations');
+    }
 }
+

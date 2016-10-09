@@ -37,9 +37,13 @@ Route::get('/api', function () {
 try
 {
     Route::get('profile', 'ProfileController@index');
-    Route::get('/profile/my-donations', 'ProfileController@donations');
-    Route::get('/profile/my-volunteering', 'ProfileController@volunteering');
+    Route::get('/my-donations', 'ProfileController@donations');
+    Route::get('/my-volunteering', 'ProfileController@volunteering');
     Route::patch('/profile', 'ProfileController@update');
+
+    Route::get('/my-donations/{id}/cancel', 'ProfileController@cancelDonation');
+    Route::get('/my-donations/{id}/recover', 'ProfileController@recoverDonation');
+    Route::get('/my-donations/{id}/delete', 'ProfileController@deleteDonation');
 
 if (App\System::all()->first()->projects == 1) {
     Route::get('/projects', 'PageController@projects');
