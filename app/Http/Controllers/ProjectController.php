@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Donation;
 use App\ResourceNeed;
+use App\WebsiteInfo;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 
@@ -14,6 +15,15 @@ class ProjectController extends Controller
         $type = Request::get("type");
         $user_id = \Auth::id();
         $amt = Request::get("amount");
+        $phone = "0061 4444 4444";
+        try {
+            $wi = WebsiteInfo::firstOrFail();
+            $phone = $wi->phoneNo;
+        }catch(\Exception $e){
+            if(!isset($phone) || $phone == ""){
+                $phone = "0061 4444 4444";
+            }
+        }
 
         $d = Donation::create(array(
             'donatable_id'      => $id,
@@ -21,6 +31,6 @@ class ProjectController extends Controller
             'user_id'           => $user_id,
             'amount'            => $amt
         ));
-        return $d;
+        return $phone;
     }
 }

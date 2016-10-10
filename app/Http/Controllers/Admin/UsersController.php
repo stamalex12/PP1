@@ -40,21 +40,4 @@ class UsersController extends Controller
 
         return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');
     }
-
-    public function updateProfile($user_id, UserEditFormRequest $request)
-    {
-        //TODO: create different validation for the form
-
-        $user = User::whereId($id)->firstOrFail();
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $password = $request->get('password');
-        if($password != "") {
-            $user->password = Hash::make($password);
-        }
-        $user->save();
-        $user->saveRoles($request->get('role'));
-
-        return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');
-    }
 }

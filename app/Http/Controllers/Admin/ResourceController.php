@@ -105,7 +105,7 @@ class ResourceController extends Controller
         ));
 
         if( $request->hasFile('image') ) {
-            if (file_exists(public_path() . $resource->imagePath))
+            if ($resource->imagePath != "" && file_exists(public_path() . $resource->imagePath))
             {
                 Image::make(public_path() . $resource->imagePath)->destroy();
             }

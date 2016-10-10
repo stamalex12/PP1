@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Content;
+use App\Page;
 use App\ResourceNeed;
+use App\Room;
+use App\RoomBooking;
 use App\VolunteeringNeed;
 use App\Testimonies;
 use App\Child;
@@ -57,6 +60,16 @@ class PageController extends Controller
 
         return view('testimonies.index', compact('testimonies'));
     }
+
+
+    public function room()
+    {
+        $room = Room::where('status', '=', 'Active')->get();
+
+        return view('room.index', compact('room'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

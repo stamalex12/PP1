@@ -10,14 +10,6 @@
                             {{ csrf_field() }}
 
                             <div class="form-group">
-                                <label for="name" class="col-md-4 control-label">Donnor Name</label>
-                                <div class="col-md-6">
-                                    <input id="donnor" type="text" class="form-control" name="donnorName" value="{{ old('name') }}">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
                                 <label for="amount" class="col-md-4 control-label">Amount</label>
                                 <div class="col-md-6">
                                     <input id="amount" type="text" class="form-control" name="amount" value="{{ old('name') }}">
@@ -25,18 +17,29 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="resourceNeed" class="col-md-4 control-label">Linked resource Need</label>
-                                <select name="resourceNeed">
+                                <label for="resourceOrChild" class="col-md-4 control-label">Linked resource Need or Child</label>
+                                <select name="resourceOrChild">
                                     <option value="none">None</option>
                                     @foreach (\App\resourceNeed::all() as $resource) {
-                                    <option value= "{{$resource->id}}">{{$resource->name}}</option>@endforeach
+                                    <option value= "{{$resource->name}}">{{$resource->name}}</option>@endforeach
+                                    @foreach (\App\child::all() as $child) {
+                                    <option value= "{{$child->name}}">{{$child->name}}</option>@endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="user" class="col-md-4 control-label">User</label>
+                                <select name="user">
+                                    <option value="none">Anonymous</option>
+                                    @foreach (\App\User::all() as $user) {
+                                    <option value= "{{$user->id}}">{{$user->name}}</option>@endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-user"></i> submit
+                                        submit
                                     </button>
                                 </div>
                             </div>

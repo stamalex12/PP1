@@ -29,13 +29,15 @@
             @if(\App\System::all()->first()->testimonies == 1)
                 <li>{!!link_to_action('PageController@testimonies', 'Testimonies') !!} </li>
             @endif
+            <li>{!!link_to_action('PageController@room', 'Rooms') !!} </li>
+            <li><a href="{{ url('/booking') }}">Bookings</a></li>
 
 
             @if (Auth::check())
                 @if(Auth::user()->hasRole('Admin'))
                     <li>{!!link_to_action('Admin\PageController@dashboard', 'Dashboard') !!} </li>
                      @elseif(Auth::user()->hasRole('Visitor'))
-                    <li>{!!link_to_action('PageController@profile', 'Profile') !!} </li>
+                    <li>{!!link_to_action('ProfileController@index', 'Profile') !!} </li>
                 @elseif(Auth::user()->hasRole('Auditor'))
                     <li>{!!link_to_action('ReportController@generateReport', 'Reports') !!} </li>
                 @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Donation;
+use App\Child;
 use App\ResourceNeed;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class DonationsController extends Controller
      */
     public function index()
     {
-        $donations = donation::all();
+        $donations = Donation::all();
         return view('backend.donations.index', compact('donations'));
     }
 
@@ -40,13 +41,23 @@ class DonationsController extends Controller
      */
     public function store(Requests\CreateDonnationRequest $request)
     {
-        $resource = ResourceNeed::find($request->get('resourceNeed'));
+
         $donnation = new Donation(array(
-            'donnorName' => $request->get('donnorName'),
             'amount' => $request->get('amount'),
+            'user_id' => $request->get('user'),
            // 'resourceNeed' => $request->get('resourceNeed'),
         ));
-        $donnation->resourceNeed = $resource->id;
+        $donnation->status = 'Complete';
+        $donnation->donatable_id = 1;
+
+        if (Child::where('name', '=', $request->get('resourceOrChild'))->exists()){
+            $donnation->donatable_id = Child::where('name', '=', $request->get('resourceOrChild'))->first()->id;
+            $donnation->donatable_type = 'App\Child';
+        } else {
+            $donnation->donatable_id = ResourceNeed::where('name', '=', $request->get('resourceOrChild'))->first()->id;
+            $donnation->donatable_type = 'App\ResourceNeed';
+        }
+
         $donnation->save();
 
         return redirect('admin/donations');
@@ -55,6 +66,16 @@ class DonationsController extends Controller
     public function destroy($id)
     {
         donation::destroy($id);
+
+        return redirect('admin/donations');
+
+    }
+
+    public function approve($id)
+    {
+        $donnation = donation::findorfail($id);
+        $donnation->status = 'Complete';
+        $donnation->save();
 
         return redirect('admin/donations');
 
