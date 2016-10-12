@@ -35,7 +35,7 @@
                                     <select class="form-control" id="role" name="role[]" multiple>
                                         @foreach($roles as $role)
                                             <option value="{!! $role->id !!}" @if(in_array($role->id, $selectedRoles))
-                                            selected="selected" @endif >{!! $role->display_name !!}
+                                            selected="selected" @endif >{!! $role->name !!}
                                             </option>
                                         @endforeach
                                     </select>

@@ -75,7 +75,7 @@
 <script src="{{URL::asset('js/fullcalendar/lib/moment.min.js')}}"></script>
 <script src="{{URL::asset('js/fullcalendar/fullcalendar.min.js')}}"></script>
 
-<
+
 @yield('js')
 </body>
 </html>

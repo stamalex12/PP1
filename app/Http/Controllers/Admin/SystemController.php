@@ -42,13 +42,30 @@ class SystemController extends Controller
                 'childdetails' => $request->get('childdetails'),
                 'userprofiles' => $request->get('userprofiles'),
                 'slider' => $request->get('slider'),
+                'rooms' => $request->get('rooms'),
+                'incomeexpense' => $request->get('incomeexpense'),
+                'reports' => $request->get('reports'),
+
             ));
             $newSetting->save();
         }
         else
         {
-            $input = $request->all();
-            $settings->fill($input)->save();
+            $settings->update(array(
+                'testimonies' => $request->get('testimonies'),
+                'projects' => $request->get('projects'),
+                'resourceneeds' => $request->get('resourceneeds'),
+                'volunteerprograms' => $request->get('volunteerprograms'),
+                'email' => $request->get('email'),
+                'childdetails' => $request->get('childdetails'),
+                'userprofiles' => $request->get('userprofiles'),
+                'slider' => $request->get('slider'),
+                'rooms' => $request->get('rooms'),
+                'incomeexpense' => $request->get('incomeexpense'),
+                'reports' => $request->get('reports'),
+            ));
+
+            $settings->save();
         }
         return redirect('admin/dashboard')->with('status', 'Settings Successfully updated');
     }

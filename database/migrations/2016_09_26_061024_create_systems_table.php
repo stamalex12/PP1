@@ -22,6 +22,9 @@ class CreateSystemsTable extends Migration
             $table->integer('childdetails');
             $table->integer('userprofiles');
             $table->integer('slider');
+            $table->integer('rooms');
+            $table->integer('incomeexpense');
+            $table->integer('reports');
             $table->timestamps();
         });
     }

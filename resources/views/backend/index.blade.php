@@ -8,32 +8,52 @@
             @if (session('status'))
                 <div class="alert alert-success"> {{ session('status') }} </div> @endif
             <div class="list-group">
-                <div class="col-md-6 col-xs-12">
-                    <div class="list-group-item">
-                        <div class="row-action-primary">
-                            <i class="mdi-social-person"></i>
-                        </div>
-                        <div class="row-content">
-                            <div class="action-secondary"><i class="mdi-social-info"></i></div>
-                            <h4 class="list-group-item-heading">Manage Users</h4>
-                            <a href="users" class="btn btn-default btn-raised">All Users</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <div class="list-group-separator"></div>
-                    <div class="list-group-item">
-                        <div class="row-action-primary">
-                            <i class="mdi-social-group"></i>
-                        </div>
-                        <div class="row-content">
-                            <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                            <h4 class="list-group-item-heading">Manage Roles</h4>
-                            <a href="roles" class="btn btn-default btn-raised">All Roles</a>
-                            <a href="roles/create" class="btn btn-primary btn-raised">Create A Role</a>
+                @if(Auth::user()->hasRole('Manager'))
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-person"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-social-info"></i></div>
+                                <h4 class="list-group-item-heading">Manage Users</h4>
+                                <a href="users" class="btn btn-default btn-raised">All Users</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-separator"></div>
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-group"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">Manage Roles</h4>
+                                <a href="roles" class="btn btn-default btn-raised">All Roles</a>
+                                <a href="roles/create" class="btn btn-primary btn-raised">Create A Role</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-separator"></div>
+
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-group"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">Website Settings</h4>
+                                <a href="settings" class="btn btn-default btn-raised">Edit Website Settings</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
+
                 <div class="col-md-6 col-xs-12">
                     <div class="list-group-separator"></div>
 
@@ -48,20 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xs-12">
-                    <div class="list-group-separator"></div>
 
-                    <div class="list-group-item">
-                        <div class="row-action-primary">
-                            <i class="mdi-social-group"></i>
-                        </div>
-                        <div class="row-content">
-                            <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                            <h4 class="list-group-item-heading">Website Settings</h4>
-                            <a href="settings" class="btn btn-default btn-raised">Edit Website Settings</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-6 col-xs-12">
                     <div class="list-group-separator"></div>
 
@@ -96,7 +103,44 @@
                             </div>
                         </div>
                     @endif
+                    @if(\App\System::all()->first()->volunteerprograms == 1 )
+                        <div class="col-md-6 col-xs-12">
+                            <div class="list-group-separator"></div>
 
+                            <div class="list-group-item">
+                                <div class="row-action-primary">
+                                    <i class="mdi-social-group"></i>
+                                </div>
+                                <div class="row-content">
+                                    <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                    <h4 class="list-group-item-heading">Manage Volunteer Needs</h4>
+                                    <a href="volunteering" class="btn btn-default btn-raised">All Volunteer Needs</a>
+                                    <a href="volunteering/create" class="btn btn-primary btn-raised">Create A Volunteer
+                                        Need</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    @if(\App\System::all()->first()->childdetails == 1 )
+                        <div class="col-md-6 col-xs-12">
+                            <div class="list-group-separator"></div>
+
+                            <div class="list-group-item">
+                                <div class="row-action-primary">
+                                    <i class="mdi-social-group"></i>
+                                </div>
+                                <div class="row-content">
+                                    <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                    <h4 class="list-group-item-heading">Manage Children</h4>
+                                    <a href="children" class="btn btn-default btn-raised">View Children</a>
+                                    <a href="children/create" class="btn btn-primary btn-raised">Create Child</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+                @if(\App\System::all()->first()->incomeexpense == 1)
                     <div class="col-md-6 col-xs-12">
                         <div class="list-group-separator"></div>
                         <div class="list-group-item">
@@ -126,25 +170,6 @@
                             </div>
                         </div>
                     </div>
-
-                    @if(\App\System::all()->first()->volunteerprograms == 1 )
-                        <div class="col-md-6 col-xs-12">
-                            <div class="list-group-separator"></div>
-
-                            <div class="list-group-item">
-                                <div class="row-action-primary">
-                                    <i class="mdi-social-group"></i>
-                                </div>
-                                <div class="row-content">
-                                    <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                                    <h4 class="list-group-item-heading">Manage Volunteer Needs</h4>
-                                    <a href="volunteering" class="btn btn-default btn-raised">All Volunteer Needs</a>
-                                    <a href="volunteering/create" class="btn btn-primary btn-raised">Create A Volunteer
-                                        Need</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                 @endif
                 @if(\App\System::all()->first()->testimonies == 1 )
                     <div class="col-md-6 col-xs-12">
@@ -163,7 +188,7 @@
                         </div>
                     </div>
                 @endif
-                @if(\App\System::all()->first()->email == 1 )
+                @if(\App\System::all()->first()->email == 1)
                     <div class="col-md-6 col-xs-12">
                         <div class="list-group-separator"></div>
 
@@ -201,66 +226,35 @@
                     </div>
                 @endif
 
-                @if(\App\System::all()->first()->childdetails == 1 )
+                @if(\App\System::all()->first()->rooms == 1 )
                     <div class="col-md-6 col-xs-12">
-                        <div class="list-group-separator"></div>
-
                         <div class="list-group-item">
                             <div class="row-action-primary">
                                 <i class="mdi-social-group"></i>
                             </div>
                             <div class="row-content">
                                 <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                                <h4 class="list-group-item-heading">Manage Children</h4>
-                                <a href="children" class="btn btn-default btn-raised">View Children</a>
-                                <a href="children/create" class="btn btn-primary btn-raised">Create Child</a>
+                                <h4 class="list-group-item-heading">Manage Rooms</h4>
+                                <a href="room" class="btn btn-default btn-raised">All Rooms</a>
+                                <a href="room/create" class="btn btn-primary btn-raised">Create A Room</a>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-md-6 col-xs-12">
+                        <div class="list-group-item">
+                            <div class="row-action-primary">
+                                <i class="mdi-social-group"></i>
+                            </div>
+                            <div class="row-content">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">Manage Room Bookings</h4>
+                                <a href="roombooking" class="btn btn-default btn-raised">All Bookings</a>
+                                <a href="roombooking/create" class="btn btn-primary btn-raised">Create A Booking</a>
                             </div>
                         </div>
                     </div>
                 @endif
-                <div class="col-md-6 col-xs-12">
-                    <div class="list-group-item">
-                        <div class="row-action-primary">
-                            <i class="mdi-social-group"></i>
-                        </div>
-                        <div class="row-content">
-                            <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                            <h4 class="list-group-item-heading">Manage Rooms</h4>
-                            <a href="room" class="btn btn-default btn-raised">All Rooms</a>
-                            <a href="room/create" class="btn btn-primary btn-raised">Create A Room</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                    <div class="list-group-item">
-                        <div class="row-action-primary">
-                            <i class="mdi-social-group"></i>
-                        </div>
-                        <div class="row-content">
-                            <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                            <h4 class="list-group-item-heading">Manage Room Bookings</h4>
-                            <a href="roombooking" class="btn btn-default btn-raised">All Bookings</a>
-                            <a href="roombooking/create" class="btn btn-primary btn-raised">Create A Booking</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-xs-12">
-                    <div class="list-group-item">
-                        <div class="row-action-primary">
-                            <i class="mdi-social-group"></i>
-                        </div>
-                        <div class="row-content">
-                            <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                            <h4 class="list-group-item-heading">Emails</h4>
-                            <a href="testimonies" class="btn btn-default btn-raised">View Sent Emails</a>
-                            <a href="email/create" class="btn btn-primary btn-raised">Send Email To Single Person</a>
-                            <a href="email-group/create" class="btn btn-primary btn-raised">Send Email To Subscribed List</a>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="list-group-separator"></div>
             </div>

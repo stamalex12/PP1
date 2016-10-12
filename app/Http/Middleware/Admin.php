@@ -1,17 +1,26 @@
 <?php
 
 namespace App\Http\Middleware;
+
 use Closure;
 use Illuminate\Support\Facades\Auth;
-class Manager
+
+class Admin
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
         if(!Auth::check()) {
-                return redirect('/login');
+            return redirect('/login');
         } else {
             $user = Auth::user();
-            if($user->hasRole('Manager'))
+            if($user->hasRole('Admin') || $user->hasRole('Manager'))
             {
                 return $next($request);
             } else {

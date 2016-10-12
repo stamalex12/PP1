@@ -65,6 +65,26 @@
                     {!! Form::select('slider', array('1' => 'On', '0' => 'Off'), isset(\App\System::all()->first()->slider)? (\App\System::all()->first()->slider) : '1', ['class' => 'form-control']) !!}
                 </div>
             </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    {!! Form::label('name', 'Rooms:') !!}
+                    {!! Form::select('rooms', array('1' => 'On', '0' => 'Off'), isset(\App\System::all()->first()->rooms)? (\App\System::all()->first()->rooms) : '1', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    {!! Form::label('name', 'Donations/Expenses:') !!}
+                    {!! Form::select('incomeexpense', array('1' => 'On', '0' => 'Off'), isset(\App\System::all()->first()->incomeexpense)? (\App\System::all()->first()->incomeexpense) : '1', ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    {!! Form::label('name', 'Reports:') !!}
+                    {!! Form::select('reports', array('1' => 'On', '0' => 'Off'), isset(\App\System::all()->first()->reports)? (\App\System::all()->first()->reports) : '1', ['class' => 'form-control']) !!}
+                </div>
+            </div>
 
 
             <div class="col-md-12">

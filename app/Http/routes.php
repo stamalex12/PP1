@@ -14,199 +14,208 @@
 Route::get('/home', 'PageController@index');
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
-Route::get('/projects', 'PageController@projects');
-Route::get('/testimonies', 'PageController@testimonies');
-Route::get('/room', 'PageController@room');
 
-Route::get('/booking', function () {
-    $data = [
-        'page_title' => 'Room Booking',
-    ];
-    return view('roombooking/index', $data);
-});
+try {
 
-Route::resource('roombooking', 'RoomBookingController');
-
-Route::get('/api', function () {
-    $roombooking = DB::table('room_bookings')->select('id', 'userId', 'roomId', 'startDate as start', 'endDate as end','firstName','lastName')->get();
-    foreach($roombooking as $event)
-    {
-        $event->url = url('roombooking/' . $event->id);
-    }
-    return $roombooking;
-});
-try
-{
-    Route::get('profile', 'ProfileController@index');
-    Route::get('/my-donations', 'ProfileController@donations');
-    Route::get('/my-volunteering', 'ProfileController@volunteering');
-    Route::patch('/profile', 'ProfileController@update');
-
-    Route::get('/my-donations/{id}/cancel', 'ProfileController@cancelDonation');
-    Route::get('/my-donations/{id}/recover', 'ProfileController@recoverDonation');
-    Route::get('/my-donations/{id}/delete', 'ProfileController@deleteDonation');
-
-if (App\System::all()->first()->projects == 1) {
-    Route::get('/projects', 'PageController@projects');
-    Route::get('projects/{resource}/resource-donation', ['as' => 'resource-donation', function (App\ResourceNeed $resource) {
-        return view('projects/resourceNeeds.amount', compact('resource'));
-    }]);
-    Route::post('/donate', 'ProjectController@donate');
-}
-if (App\System::all()->first()->testimonies == 1) {
-    Route::get('/testimonies', 'PageController@testimonies');
-}
-
-//User Profile
-Route::patch('profile/{user_id}', 'UsersController@updateProfile');
-
-//Route::get('/profile', 'PageController@profile');
-Route::get('/applications', 'ApplicationsController@index');
-Route::get('/applications/create={id}', 'ApplicationsController@create');
-Route::post('/applications', 'ApplicationsController@store');
-
-//For all Visitor access
-Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {
-
-
-});
-
-//For all Administrator only access
-Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'), function () {
-    Route::get('/users', ['as' => 'admin.user.index', 'uses' => 'UsersController@index']);
-    Route::get('/roles', 'RolesController@index');
-    Route::get('/roles/create', 'RolesController@create');
-    Route::post('/roles/create', 'RolesController@store');
-    Route::get('/users/{id?}/edit', 'UsersController@edit');
-    Route::post('/users/{id?}/edit', 'UsersController@update');
-    Route::get('/dashboard', 'PageController@dashboard');
-
-    if (App\System::all()->first()->resourceneeds == 1) {
-        Route::get('/resources', 'ResourceController@index');
-        Route::get('/resources/create', 'ResourceController@create');
-        Route::post('/resources', 'ResourceController@store');
-        Route::get('/resources/editId={id}', 'ResourceController@edit');
-        Route::get('/resources/disableId={id}', 'ResourceController@statusToggle');
-        Route::get('/resources/deleteId={id}', 'ResourceController@destroy');
-        Route::patch('/resources/{id}', 'ResourceController@update');
+    if (App\System::all()->first()->rooms == 1) {
+        Route::get('/room', 'PageController@room');
+        Route::resource('roombooking', 'RoomBookingController');
+        Route::get('/booking', function () {
+            $data = [
+                'page_title' => 'Room Booking',
+            ];
+            return view('roombooking/index', $data);
+        });
+        Route::get('/api', function () {
+            $roombooking = DB::table('room_bookings')->select('id', 'userId', 'roomId', 'startDate as start', 'endDate as end', 'firstName', 'lastName')->get();
+            foreach ($roombooking as $event) {
+                $event->url = url('roombooking/' . $event->id);
+            }
+            return $roombooking;
+        });
     }
 
-    if (App\System::all()->first()->volunteerprograms == 1) {
-        Route::get('/volunteering', 'VolunteerController@index');
-        Route::get('/volunteering/create', 'VolunteerController@create');
-        Route::post('/volunteering', 'VolunteerController@store');
-        Route::get('/volunteering/editId={id}', 'VolunteerController@edit');
-        Route::get('/volunteering/disableId={id}', 'VolunteerController@statusToggle');
-        Route::get('/volunteering/deleteId={id}', 'VolunteerController@destroy');
-        Route::patch('/volunteering/{id}', 'VolunteerController@update');
+
+    if (App\System::all()->first()->projects == 1) {
+        Route::get('/projects', 'PageController@projects');
+        Route::get('projects/{resource}/resource-donation', ['as' => 'resource-donation', function (App\ResourceNeed $resource) {
+            return view('projects/resourceNeeds.amount', compact('resource'));
+        }]);
+        Route::post('/donate', 'ProjectController@donate');
     }
-
-    Route::get('/content', 'ContentController@index');
-    Route::get('/content/create', 'ContentController@create');
-    Route::post('/content', 'ContentController@store');
-    Route::get('/content/createImage', 'ContentImageController@create');
-    Route::post('/contentImage', 'ContentImageController@store');
-    Route::get('/contentEdit/{id}', 'ContentController@edit');
-    Route::get('/contentEditImage/{id}', 'ContentImageController@edit');
-
-
-    Route::get('/content/disableId={id}', 'ContentController@statusToggle');
-    Route::get('/content/deleteId={id}', 'ContentController@destroy');
-    Route::patch('/content/{id}', array(
-        'as' => 'content.update',
-        'uses' => 'ContentController@update'
-    ));
-    Route::patch('/contentImage/{id}', array(
-        'as' => 'content.updateImage',
-        'uses' => 'ContentImageController@update'
-    ));
 
     if (App\System::all()->first()->testimonies == 1) {
-        Route::get('/testimonies', 'TestimoniesController@index');
-        Route::get('/testimonies/create', 'TestimoniesController@create');
-        Route::post('/testimonies', 'TestimoniesController@store');
-        Route::get('/testimonies/editId={id}', 'TestimoniesController@edit');
-        Route::get('/testimonies/deleteId={id}', 'TestimoniesController@destroy');
-        Route::patch('/testimonies/{id}', 'TestimoniesController@update');
-        Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
+
+        Route::get('/testimonies', 'PageController@testimonies');
     }
 
+//User Profile
+    Route::patch('profile/{user_id}', 'UsersController@updateProfile');
+
+//Route::get('/profile', 'PageController@profile');
+    Route::get('/applications', 'ApplicationsController@index');
+    Route::get('/applications/create={id}', 'ApplicationsController@create');
+    Route::post('/applications', 'ApplicationsController@store');
+
+//For all Visitor access
+    Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {
+        Route::get('/report', 'ReportController@generateReport');
+        Route::get('profile', 'ProfileController@index');
+        Route::get('/my-donations', 'ProfileController@donations');
+        Route::get('/my-volunteering', 'ProfileController@volunteering');
+        Route::patch('/profile', 'ProfileController@update');
+
+        Route::get('/my-donations/{id}/cancel', 'ProfileController@cancelDonation');
+        Route::get('/my-donations/{id}/recover', 'ProfileController@recoverDonation');
+        Route::get('/my-donations/{id}/delete', 'ProfileController@deleteDonation');
 
 
-    Route::get('/room', 'RoomController@index');
-    Route::get('/room/create', 'RoomController@create');
-    Route::post('/room', 'RoomController@store');
-    Route::get('/room/editId={id}', 'RoomController@edit');
-    Route::get('/room/deleteId={id}', 'RoomController@destroy');
-    Route::patch('/room/{id}', 'RoomController@update');
-    Route::get('/room/disableId={id}', 'RoomController@statusToggle');
+    });
+
+    Route::group(array('prefix' => 'auditor', 'namespace' => 'Auditor', 'middleware' => 'auditor'), function () {
+        Route::get('/getMPDF', 'ReportController@getMPDF');
+        Route::get('/getIEPDF', 'ReportController@getIEPDF');
+        Route::get('/getICPDF', 'ReportController@getICPDF');
+        Route::get('/getIEExport', 'ReportController@getIEExport');
+        Route::get('/getICExport', 'ReportController@getICExport');
+        Route::get('/getMExport', 'ReportController@getMExport');
+        Route::get('/report', 'ReportController@generateReport');
+        Route::get('/genChildReport', 'ReportController@genChildReport');
+    });
+
+//For all Administrator only access
+    Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'), function () {
+        // For all manager only access
+        Route::group(array('middleware' => 'manager'), function () {
+
+            Route::get('/users', ['as' => 'admin.user.index', 'uses' => 'UsersController@index']);
+            Route::get('/roles', 'RolesController@index');
+            Route::get('/roles/create', 'RolesController@create');
+            Route::post('/roles/create', 'RolesController@store');
+            Route::get('/users/{id?}/edit', 'UsersController@edit');
+            Route::post('/users/{id?}/edit', 'UsersController@update');
+
+            Route::get('/settings', 'SystemController@index');
+            Route::post('/settings', 'SystemController@store');
+        });
+
+            Route::get('/dashboard', 'PageController@dashboard');
+
+            if (App\System::all()->first()->resourceneeds == 1) {
+                Route::get('/resources', 'ResourceController@index');
+                Route::get('/resources/create', 'ResourceController@create');
+                Route::post('/resources', 'ResourceController@store');
+                Route::get('/resources/editId={id}', 'ResourceController@edit');
+                Route::get('/resources/disableId={id}', 'ResourceController@statusToggle');
+                Route::get('/resources/deleteId={id}', 'ResourceController@destroy');
+                Route::patch('/resources/{id}', 'ResourceController@update');
+            }
+
+            if (App\System::all()->first()->volunteerprograms == 1) {
+                Route::get('/volunteering', 'VolunteerController@index');
+                Route::get('/volunteering/create', 'VolunteerController@create');
+                Route::post('/volunteering', 'VolunteerController@store');
+                Route::get('/volunteering/editId={id}', 'VolunteerController@edit');
+                Route::get('/volunteering/disableId={id}', 'VolunteerController@statusToggle');
+                Route::get('/volunteering/deleteId={id}', 'VolunteerController@destroy');
+                Route::patch('/volunteering/{id}', 'VolunteerController@update');
+            }
+
+            Route::get('/content', 'ContentController@index');
+            Route::get('/content/create', 'ContentController@create');
+            Route::post('/content', 'ContentController@store');
+            Route::get('/content/createImage', 'ContentImageController@create');
+            Route::post('/contentImage', 'ContentImageController@store');
+            Route::get('/contentEdit/{id}', 'ContentController@edit');
+            Route::get('/contentEditImage/{id}', 'ContentImageController@edit');
 
 
-    Route::get('/websiteinfo', 'WebsiteInfoController@index');
-    Route::post('/websiteinfo', 'WebsiteInfoController@store');
+            Route::get('/content/disableId={id}', 'ContentController@statusToggle');
+            Route::get('/content/deleteId={id}', 'ContentController@destroy');
+            Route::patch('/content/{id}', array(
+                'as' => 'content.update',
+                'uses' => 'ContentController@update'
+            ));
+            Route::patch('/contentImage/{id}', array(
+                'as' => 'content.updateImage',
+                'uses' => 'ContentImageController@update'
+            ));
 
-    if (App\System::all()->first()->email == 1) {
-        Route::get('/email/create', 'EmailController@create');
-        Route::post('/email', 'EmailController@store');
-        Route::get('/email-group/create', 'EmailGroupController@create');
-        Route::post('/email-group', 'EmailGroupController@store');
-    }
+            if (App\System::all()->first()->testimonies == 1) {
+                Route::get('/testimonies', 'TestimoniesController@index');
+                Route::get('/testimonies/create', 'TestimoniesController@create');
+                Route::post('/testimonies', 'TestimoniesController@store');
+                Route::get('/testimonies/editId={id}', 'TestimoniesController@edit');
+                Route::get('/testimonies/deleteId={id}', 'TestimoniesController@destroy');
+                Route::patch('/testimonies/{id}', 'TestimoniesController@update');
+                Route::get('/testimonies/disableId={id}', 'TestimoniesController@statusToggle');
+            }
 
-    Route::resource('roombooking', 'AdminBookingController');
+            if (App\System::all()->first()->rooms == 1) {
+                Route::get('/room', 'RoomController@index');
+                Route::get('/room/create', 'RoomController@create');
+                Route::post('/room', 'RoomController@store');
+                Route::get('/room/editId={id}', 'RoomController@edit');
+                Route::get('/room/deleteId={id}', 'RoomController@destroy');
+                Route::patch('/room/{id}', 'RoomController@update');
+                Route::get('/room/disableId={id}', 'RoomController@statusToggle');
+                Route::resource('roombooking', 'AdminBookingController');
+            }
 
-    Route::get('/expenses', 'ExpensesController@index');
-    Route::get('/expenses/create', 'ExpensesController@create');
-    Route::get('/expenses/deleteId={id}', 'ExpensesController@destroy');
-    Route::get('/expenses/editId={id}', 'ExpensesController@edit');
-    Route::patch('/expenses/{id}', 'ExpensesController@update');
-    Route::post('/expenses', 'ExpensesController@store');
-    Route::get('/expenses/summary{name}', 'ExpensesController@summary');
+            Route::get('/websiteinfo', 'WebsiteInfoController@index');
+            Route::post('/websiteinfo', 'WebsiteInfoController@store');
 
-    Route::get('/donations/create', 'DonationsController@create');
-    Route::post('/donations', 'DonationsController@store');
-    Route::get('/donations', 'DonationsController@index');
-    Route::get('/donations/deleteId={id}', 'DonationsController@destroy');
-    Route::get('/donations/approveId={id}', 'DonationsController@approve');
-    Route::post('/donations/create', 'DonationsController@store');
+            if (App\System::all()->first()->email == 1) {
+                Route::get('/email/create', 'EmailController@create');
+                Route::post('/email', 'EmailController@store');
+                Route::get('/email-group/create', 'EmailGroupController@create');
+                Route::post('/email-group', 'EmailGroupController@store');
+            }
 
-    Route::get('/settings', 'SystemController@index');
-    Route::post('/settings', 'SystemController@store');
 
-    if(App\System::all()->first()->slider == 1)
-   {
-    Route::get('/slider', 'SliderController@index');
-    Route::get('/slider/create', 'SliderController@create');
-    Route::post('/slider', 'SliderController@store');
-    Route::get('/slider/editId={id}', 'SliderController@edit');
-    Route::get('/slider/disableId={id}', 'SliderController@statusToggle');
-    Route::get('/slider/deleteId={id}', 'SliderController@destroy');
-    Route::patch('/slider/{id}', 'SliderController@update');
-   }
+            Route::get('/expenses', 'ExpensesController@index');
+            Route::get('/expenses/create', 'ExpensesController@create');
+            Route::get('/expenses/deleteId={id}', 'ExpensesController@destroy');
+            Route::get('/expenses/editId={id}', 'ExpensesController@edit');
+            Route::patch('/expenses/{id}', 'ExpensesController@update');
+            Route::post('/expenses', 'ExpensesController@store');
+            Route::get('/expenses/summary{name}', 'ExpensesController@summary');
 
-    if(App\System::all()->first()->childdetails == 1)
-   {
-    Route::get('/children', 'ChildrenController@index');
-    Route::get('/children/create', 'ChildrenController@create');
-    Route::post('/children', 'ChildrenController@store');
-    Route::get('/children/editId={id}', 'ChildrenController@edit');
-    Route::get('/children/disableId={id}', 'ChildrenController@statusToggle');
-    Route::get('/children/deleteId={id}', 'ChildrenController@destroy');
-    Route::patch('/children/{id}', 'ChildrenController@update');
-    }
-});
+            Route::get('/donations/create', 'DonationsController@create');
+            Route::post('/donations', 'DonationsController@store');
+            Route::get('/donations', 'DonationsController@index');
+            Route::get('/donations/deleteId={id}', 'DonationsController@destroy');
+            Route::get('/donations/approveId={id}', 'DonationsController@approve');
+            Route::post('/donations/create', 'DonationsController@store');
+
+
+            if (App\System::all()->first()->slider == 1) {
+                Route::get('/slider', 'SliderController@index');
+                Route::get('/slider/create', 'SliderController@create');
+                Route::post('/slider', 'SliderController@store');
+                Route::get('/slider/editId={id}', 'SliderController@edit');
+                Route::get('/slider/disableId={id}', 'SliderController@statusToggle');
+                Route::get('/slider/deleteId={id}', 'SliderController@destroy');
+                Route::patch('/slider/{id}', 'SliderController@update');
+            }
+
+            if (App\System::all()->first()->childdetails == 1) {
+                Route::get('/children', 'ChildrenController@index');
+                Route::get('/children/create', 'ChildrenController@create');
+                Route::post('/children', 'ChildrenController@store');
+                Route::get('/children/editId={id}', 'ChildrenController@edit');
+                Route::get('/children/disableId={id}', 'ChildrenController@statusToggle');
+                Route::get('/children/deleteId={id}', 'ChildrenController@destroy');
+                Route::patch('/children/{id}', 'ChildrenController@update');
+            }
+
+
+
+    });
+
+} catch (Exception $e) {
+
 }
-catch(Exception $e)
-{
-
-}
-Route::get('/getMPDF', 'ReportController@getMPDF');
-Route::get('/getIEPDF', 'ReportController@getIEPDF');
-Route::get('/getICPDF', 'ReportController@getICPDF');
-Route::get('/getIEExport', 'ReportController@getIEExport');
-Route::get('/getICExport', 'ReportController@getICExport');
-Route::get('/getMExport', 'ReportController@getMExport');
-Route::get('/report', 'ReportController@generateReport');
-Route::get('/genChildReport', 'ReportController@genChildReport');
 
 
 Route::get('/logout', 'Auth\AuthController@getLogout');

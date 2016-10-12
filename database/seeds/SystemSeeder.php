@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
 
 class SystemSeeder extends Seeder
 {
@@ -20,7 +21,30 @@ class SystemSeeder extends Seeder
             'childdetails' => 1,
             'userprofiles' => 1,
             'slider' => 1,
-
+            'rooms' => 1,
+            'reports' => 1,
+            'incomeexpense' => 1,
         ]);
+        $role_user = new Role();
+        $role_user->name = 'Visitor';
+        $role_user->description = 'A normal User';
+        $role_user->save();
+
+        $role_user = new Role();
+        $role_user->name = 'Auditor';
+        $role_user->description = 'A normal User';
+        $role_user->save();
+
+        $role_admin = new Role();
+        $role_admin->name = 'Admin';
+        $role_admin->description = 'A Admin';
+        $role_admin->save();
+
+        $role_user = new Role();
+        $role_user->name = 'Manager';
+        $role_user->description = 'A normal User';
+        $role_user->save();
     }
+
+
 }
