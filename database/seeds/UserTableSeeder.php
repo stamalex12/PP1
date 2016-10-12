@@ -33,6 +33,7 @@ class UserTableSeeder extends Seeder
         $user->username = 'Visitor';
         $user->email = 'visitor@example.com';
         $user->password = bcrypt('visitor');
+        $user->subscriber = 1;
         $user->save();
         $user = User::where('username', 'Visitor')->first();
         //$user->saveRoles($userVal);
@@ -42,6 +43,7 @@ class UserTableSeeder extends Seeder
         $admin->username = 'Admin';
         $admin->email = 'admin@example.com';
         $admin->password = bcrypt('admin');
+        $admin->subscriber = 1;
         $admin->save();
         $admin = User::where('username', 'Admin')->first();
         //$admin->saveRoles($AdminVal);
@@ -51,6 +53,7 @@ class UserTableSeeder extends Seeder
         $auditor->username = 'Auditor';
         $auditor->email = 'auditor@example.com';
         $auditor->password = bcrypt('auditor');
+        $auditor->subscriber = 1;
         $auditor->save();
         $auditor = User::where('username', 'Auditor')->first();
         //$admin->saveRoles($auditorVal);
@@ -60,6 +63,7 @@ class UserTableSeeder extends Seeder
         $manager->username = 'Manager';
         $manager->email = 'manager@example.com';
         $manager->password = bcrypt('manager');
+        $manager->subscriber = 1;
         $manager->save();
         $manager = User::where('username', 'Manager')->first();
         //$admin->saveRoles($managerVal);

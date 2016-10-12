@@ -18,13 +18,13 @@
             <div class="form-group">
                 {!! Form::label('content', 'Age:') !!}
 
-                {!! Form::textarea('age' ,null, array('class' => 'form-control')) !!}
+                {!! Form::text('age' ,null, array('class' => 'form-control')) !!}
 
 
             </div>
             <div class="form-group">
                 {!! Form::label('name', 'Aspirations:') !!}
-                {!! Form::text('aspirations', null, ['class' => 'form-control']) !!}
+                {!! Form::textarea('aspirations', null, ['class' => 'form-control']) !!}
             </div>
 
             <div class="form-group">

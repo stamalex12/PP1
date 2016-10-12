@@ -61,6 +61,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="../booking" class=" btn btn-primary btn-raised">Cancel</a>
             </form>
         </div>
     </div>

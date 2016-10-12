@@ -29,7 +29,8 @@ class CreateExpenseRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
+            'amount' => 'required',
+            'resourceNeed' => 'required'
         ];
     }
 }

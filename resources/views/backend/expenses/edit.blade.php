@@ -18,11 +18,24 @@
             <div class="form-group">
                 {!! Form::label('amount', 'Amount:') !!}
                 {!! Form::text('amount', null, ['class' => 'form-control', 'placeholder' => 'Amount']) !!}
-        </div>
+            </div>
+            <div class="form-group">
+                <label for="resourNeed" class="col-md-4 control-label">Linked resource Need</label>
 
+                <select class="form-control" name="resourceNeed" placeholder="Select...">
+                    <option value="">Select...</option>
+                    @foreach (\App\resourceNeed::all() as $resource)
+                        @if($resource->id == $expense->resourceNeed)
+                            <option selected value="{{$resource->id}}">{{$resource->name}}</option>
+                        @else
+                            <option value="{{$resource->id}}">{{$resource->name}}</option>
+                        @endif
+                    @endforeach
+                </select>
 
+            </div>
 
-        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
             <a href="../expenses" class="btn btn-primary btn-raised">Cancel</a>
 
             {!! Form::close() !!}

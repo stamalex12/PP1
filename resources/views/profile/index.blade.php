@@ -47,6 +47,10 @@
                     @endforeach
                 </select>
             </div>
+                <div class="form-group">
+                    {!! Form::label('name', 'Subscribe to Email:') !!}
+                    {!! Form::select('subscriber', array('1' => 'Yes', '0' => 'No'),(Auth::user()->subscriber), ['class' => 'form-control']) !!}
+                </div>
 
             <div class="form-group">
                 {!! Form::label('wwc', 'Working with Children check upload:') !!}
@@ -87,6 +91,10 @@
                 <div class="form-group">
                     {!! Form::label('new_password_confirmation', 'Confirm new password:') !!}
                     {!! Form::password('new_password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'New password']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('name', 'Subscribe to Email:') !!}
+                    {!! Form::select('email', array('1' => 'Yes', '0' => 'No'),(Auth::user()->subscriber), ['class' => 'form-control']) !!}
                 </div>
             </div>
 

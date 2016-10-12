@@ -43,12 +43,13 @@ class EmailGroupController extends Controller
         $data = ['subject' => $request['subject'], 'bodyMessage' => $request['body']];
 
         $users = User::all();
+        $info = WebsiteInfo::all()->first();
 
         foreach($users as $user)
         {
-            Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $user)
+            Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $user, $info)
             {
-                $message->from('kikssrilanka@gmail.com', 'KIKS');
+                $message->from($info->email, $info->companyName);
 
                 $message->to($user->email)->subject($data['subject']);
             });

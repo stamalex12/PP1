@@ -12,6 +12,7 @@
                     <th>Description</th>
                     <th>Amount Needed</th>
                     <th>Linked Resource</th>
+                    <th>Action</th>
 
                 </tr>
                 </thead>
@@ -21,6 +22,7 @@
                     <th>Description</th>
                     <th>Amount Needed</th>
                     <th>Linked Resource</th>
+                    <th>Action</th>
                 </tr>
                 </tfoot>
                 <tbody>
