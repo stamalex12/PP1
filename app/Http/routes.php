@@ -187,6 +187,9 @@ try {
             Route::get('/donations/deleteId={id}', 'DonationsController@destroy');
             Route::get('/donations/approveId={id}', 'DonationsController@approve');
             Route::post('/donations/create', 'DonationsController@store');
+	
+            Route::get('/applications', 'AdminApplicationsController@index');
+            Route::get('/applications/approveId={id}', 'AdminApplicationsController@approve');
 
 
             if (App\System::all()->first()->slider == 1) {

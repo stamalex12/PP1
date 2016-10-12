@@ -168,6 +168,8 @@
                                 <a href="donations" class="btn btn-default btn-raised">All Donations</a>
                                 <a href="donations/create" class="btn btn-primary btn-raised">Record a Donation</a>
                             </div>
+
+
                         </div>
                     </div>
                 @endif
@@ -255,6 +257,18 @@
                         </div>
                     </div>
                 @endif
+                    <div class="col-md-6 col-xs-12">
+                    <div class="list-group-item">
+                        <div class="row-action-primary">
+                            <i class="mdi-social-group"></i>
+                        </div>
+                        <div class="row-content">
+                            <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                            <h4 class="list-group-item-heading">Manage Volunteer Applications</h4>
+                            <a href="applications" class="btn btn-default btn-raised">All Applications</a>
+                        </div>
+                    </div>
+                        </div>
 
                 <div class="list-group-separator"></div>
             </div>

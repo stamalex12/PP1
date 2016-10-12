@@ -31,13 +31,13 @@
                 </div>
 
                 <div class="form-group @if($errors->has('roomId')) has-error has-feedback @endif">
-                    <label for="roomId">Room ID</label>
-                    <input type="text" class="form-control" name="roomId" placeholder="Room ID" value="{{ old('roomId') }}">
+                    <label for="roomId">Room</label>
 
-                    {{--<select name="roomId" form="">--}}
-                        {{--@foreach($room as $aroom)--}}
-                        {{--<option value=$aroom->id> $aroom->name </option>--}}
-                    {{--</select>--}}
+                    <select id="roomId" name="roomId" class="form-control">
+                        @foreach($rooms as $room)
+                            <option value="{{ $room->id }}">{{ $room->name }}</option>
+                        @endforeach
+                    </select>
 
 
                     @if ($errors->has('roomId'))

@@ -33,11 +33,8 @@ class AdminBookingController extends Controller
         if (Auth::check())
         {
             // The user is logged in...
-            $data = [
-                'page_title' => 'Create new booking',
-                'room'=>Room::where('status', '=', 'Active')->get(),
-            ];
-            return view('backend/roombooking/create', $data);
+            $rooms = Room::where('status', '=', 'Active')->get();
+            return view('backend/roombooking/create', compact('rooms'));
         }
 
         else{
