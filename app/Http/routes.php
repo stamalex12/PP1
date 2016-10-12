@@ -52,7 +52,7 @@ try {
 //User Profile
     Route::patch('profile/{user_id}', 'UsersController@updateProfile');
 
-//Route::get('/profile', 'PageController@profile');
+    Route::get('profile', 'ProfileController@index');
     Route::get('/applications', 'ApplicationsController@index');
     Route::get('/applications/create={id}', 'ApplicationsController@create');
     Route::post('/applications', 'ApplicationsController@store');
@@ -60,7 +60,7 @@ try {
 //For all Visitor access
     Route::group(array('prefix' => 'visitor', 'namespace' => 'Visitor', 'middleware' => 'visitor'), function () {
         Route::get('/report', 'ReportController@generateReport');
-        Route::get('profile', 'ProfileController@index');
+
         Route::get('/my-donations', 'ProfileController@donations');
         Route::get('/my-volunteering', 'ProfileController@volunteering');
         Route::patch('/profile', 'ProfileController@update');
