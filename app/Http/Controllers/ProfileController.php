@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Donation;
+use App\Subscribers;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Hash;
@@ -289,11 +290,29 @@ class ProfileController extends Controller
         $user = \Auth::user();
         if(\Auth::attempt(array('id' => \Auth::user()->id, 'password' => $request->old_password))) {
 
+            if($user->subscriber == 1)
+            {
+                if($request->get('subscriber') == 0)
+                {
+                    $this->deleteSubscriber($user->id);
+                }
+            }
+            else
+            {
+                if($request->get('subscriber') == 1)
+                {
+                    $this->addSubscriber($user->id, $user->email);
+                }
+
+            }
+
+
             $user->update(array(
                 'username' => $request->get('username'),
                 'email' => $request->get('email'),
                 'phone' => $request->get('phone'),
                 'country' => $request->get('country'),
+                'subscriber' => $request->get('subscriber'),
             ));
 
             if($request->new_password != ""){
@@ -352,6 +371,20 @@ class ProfileController extends Controller
         Donation::destroy($id);
 
         return redirect('my-donations');
+    }
+
+    public function addSubscriber($id, $email)
+    {
+        $subscriber = new Subscribers(array(
+            'userId' => $id,
+            'email' => $email
+        ));
+        $subscriber->save();
+    }
+
+    public function deleteSubscriber($id)
+    {
+        Subscribers::destroy()->where('userId', $id);
     }
 }
 

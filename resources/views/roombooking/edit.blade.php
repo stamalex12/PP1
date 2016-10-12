@@ -35,7 +35,6 @@
                     @endif
                 </div>
 
-
                 <div class="form-group ">
                     <label for="time">Time</label>
                     <div class="input-group">

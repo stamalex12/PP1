@@ -38,6 +38,7 @@
                     error: function() {
                         alert("cannot load json");
                     }
+
                 }
             });
         });

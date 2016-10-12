@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateEmailRequest;
 use App\Http\Requests\CreateEmailGroupRequest;
 use App\Email;
+use App\WebsiteInfo;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 
@@ -52,10 +53,10 @@ class EmailController extends Controller
 
         $data = ['email' => $request['emailTo'],'subject' => $request['subject'], 'bodyMessage' => $request['body']];
 
-
-        Mail::send('emails.emailTemplate', $data, function ($message) use ($data)
+        $info = WebsiteInfo::all()->first();
+        Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $info)
         {
-            $message->from('kikssrilanka@gmail.com', 'KIKS');
+            $message->from($info->email, $info->companyName);
 
             $message->to($data['email'])->subject($data['subject']);
         });
@@ -68,7 +69,7 @@ class EmailController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function storeGroupMessage(CreateEmailGroupRequest $request)
+   /* public function storeGroupMessage(CreateEmailGroupRequest $request)
     {
         $email = Email::insert(['emailTo' => 'subscribers', 'subject' => $request['subject'], 'message' => $request['body'], 'type' => 'group']);
 
@@ -87,7 +88,7 @@ class EmailController extends Controller
         }
 
         return redirect('/admin/email/create-group')->with('status', 'Group Email was sent successfully');
-    }
+    }*/
 
     /**
      * Display the specified resource.
