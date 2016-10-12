@@ -14,9 +14,7 @@
                             <p>End Date: {{$volunteerNeed->endDate}}</p>
                         </div>
                         @if (Auth::check())
-                            @if(Auth::user()->hasRole('User'))
-                                {!! link_to_action('ApplicationsController@create','Apply', $volunteerNeed->id) !!}
-                            @endif
+                            {!! link_to_action('ApplicationsController@create','Apply', $volunteerNeed->id, ['class' =>'btn btn-primary btn-raised']) !!}
                         @else
                             Interested in helping out? <a href="{{ url('/login') }}">Login</a> or <a href="{{ url('/register') }}">Register</a>.
                         @endif

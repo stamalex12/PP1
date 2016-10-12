@@ -56,7 +56,7 @@ class ApplicationsController extends Controller
         ));
         $application->save();
 
-        return redirect('admin/expenses');
+        return redirect('profile');
     }
 
 
