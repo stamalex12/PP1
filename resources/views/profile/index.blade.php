@@ -92,10 +92,6 @@
                     {!! Form::label('new_password_confirmation', 'Confirm new password:') !!}
                     {!! Form::password('new_password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'New password']) !!}
                 </div>
-                <div class="form-group">
-                    {!! Form::label('name', 'Subscribe to Email:') !!}
-                    {!! Form::select('email-subscription', array('1' => 'Yes', '0' => 'No'),(Auth::user()->subscriber), ['class' => 'form-control']) !!}
-                </div>
             </div>
 
             {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
