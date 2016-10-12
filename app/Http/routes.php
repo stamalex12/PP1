@@ -168,6 +168,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 
     Route::get('/donations/deleteId={id}', 'DonationsController@destroy');
     Route::get('/donations/approveId={id}', 'DonationsController@approve');
     Route::post('/donations/create', 'DonationsController@store');
+	
+	Route::get('/applications', 'AdminApplicationsController@index');
+    Route::get('/applications/approveId={id}', 'AdminApplicationsController@approve');
 
     Route::get('/settings', 'SystemController@index');
     Route::post('/settings', 'SystemController@store');
