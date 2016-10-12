@@ -20,10 +20,16 @@ class ApplicationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function userindex()
     {
         $applications = Application::where('user_id', '=', \Auth::user()->id)->get();
         return view('profile.applications.index', compact('applications'));
+    }
+
+    public function index()
+    {
+        $applications = Application::all();
+        return view('backend.applications.index', compact('applications'));
     }
 
     public function create($id)

@@ -13,7 +13,7 @@ class CreateApplicationsTable extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
-
+            $table->increments('id');
             $table->integer('need_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
@@ -21,9 +21,6 @@ class CreateApplicationsTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
-
-            $table->primary(['need_id', 'user_id']);
-
             $table->string('taskName');
             $table->text('skillsAndQuals');
             $table->date('startDate');
