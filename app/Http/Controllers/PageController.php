@@ -45,6 +45,7 @@ class PageController extends Controller
         $volunteerNeeds = VolunteeringNeed::where('status', '=', 'Active')->get();
         $children = Child::all();
 
+
         return view('projects.index', compact('resources', 'volunteerNeeds', 'children'));
     }
 

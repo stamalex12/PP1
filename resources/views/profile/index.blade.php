@@ -33,7 +33,7 @@
                 {!! Form::label('email', 'Email:') !!}
                 {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
             </div>
-            {{--TODO: Phone number to be null by default instead of 0--}}
+
             <div class="form-group">
                 {!! Form::label('phone', 'Phone number(including country code):') !!}
                 {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => 'Phone']) !!}
@@ -94,7 +94,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('name', 'Subscribe to Email:') !!}
-                    {!! Form::select('email', array('1' => 'Yes', '0' => 'No'),(Auth::user()->subscriber), ['class' => 'form-control']) !!}
+                    {!! Form::select('email-subscription', array('1' => 'Yes', '0' => 'No'),(Auth::user()->subscriber), ['class' => 'form-control']) !!}
                 </div>
             </div>
 

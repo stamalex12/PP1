@@ -384,7 +384,7 @@ class ProfileController extends Controller
 
     public function deleteSubscriber($id)
     {
-        Subscribers::destroy()->where('userId', $id);
+        Subscribers::where('userId', $id)->delete();
     }
 }
 

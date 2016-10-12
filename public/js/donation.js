@@ -22,7 +22,7 @@ $(document).ready(function(){
             },
             success: function (phone) {
                 console.log(phone);
-                $('#phone').html(phone);
+                $('.phone').html(phone);
                 $donation_details_div.fadeOut(200).hide(function () {
                     $donation_success_div.fadeIn(200).show()});
             },

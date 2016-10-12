@@ -2,6 +2,6 @@
     <p>Thank you for your donation. Please call the number below to finalize your donation.</p>
     <p>Please not that your donation will be marked as pending until it is processed from our side.</p>
     <p><span class="glyphicon glyphicon-earphone">
-        </span><span id="phone"></span></p>
+        </span><span class="phone"></span></p>
     {!! link_to('my-donations', 'My Donations', ['class' => 'btn btn-default btn-raised']) !!}
 </div>
