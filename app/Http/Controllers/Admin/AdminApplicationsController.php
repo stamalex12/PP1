@@ -41,7 +41,9 @@ class AdminApplicationsController extends Controller
 
         $applications = Application::all();
 
-        $data = ['email' => 'splinkye83@gmail.com','subject' => 'Application Approved', 'bodyMessage' => 'Your Application hass been approved.'];
+        $message = 'Your appllication to assist us with '.$application->taskName.' between '.$application->startDate. ' and '.$application->endDate. ' has been approved. We will contact you with more informtion shortly.';
+
+        $data = ['email' => 'splinkye83@gmail.com','subject' => 'Application Approved', 'bodyMessage' => $message];
 
         $info = WebsiteInfo::all()->first();
         Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $info)
