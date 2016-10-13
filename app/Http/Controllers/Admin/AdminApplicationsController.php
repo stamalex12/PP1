@@ -38,5 +38,10 @@ class AdminApplicationsController extends Controller
 
     }
 
+    public function download($id){
+        $application = application::findorfail($id);
+        return response()->download(public_path().$application->files);
+    }
+
 
 }

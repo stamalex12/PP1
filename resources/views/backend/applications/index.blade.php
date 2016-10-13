@@ -10,12 +10,13 @@
                 <tr>
                     <th>Volunteer</th>
                     <th>Task Name</th>
-                    <th>Skills and Qualifications</th>
+                    <th>Skills</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Status</th>
+                    <th>wwc</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -23,12 +24,13 @@
                 <tr>
                     <th>Volunteer</th>
                     <th>Task Name</th>
-                    <th>Skills and Qualifications</th>
+                    <th>Skills</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Status</th>
+                    <th>wwc</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
@@ -43,7 +45,8 @@
                         <th>{{$application->phone}}</th>
                         <th>{{$application->email}}</th>
                         <th>{{$application->status}}</th>
-                        <th>@if($application->status == 'new') {!! link_to_action('Admin\AdminApplicationsController@approve','Approve', $application->id) !!} | @endif k</th>
+                        <th>@if($application->files !="") Yes @endif</th>
+                        <th>@if($application->status == 'new') {!! link_to_action('Admin\AdminApplicationsController@approve','Approve', $application->id) !!} | @endif @if($application->files !="") {!! link_to_action('Admin\AdminApplicationsController@download','Download WWC', $application->id) !!} @endif</th>
                     </tr>
                 @endforeach
 

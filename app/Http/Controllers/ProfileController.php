@@ -339,9 +339,9 @@ class ProfileController extends Controller
                 }
                 $fileName = $user->id . '.' . $request->file('wwc')->getClientOriginalExtension();
 
-                $request->file('wwc')->move(public_path() . '/images/profile/wwc', $fileName);
+                $request->file('wwc')->move(public_path() . '/images/profile/wwc/', $fileName);
 
-                $user->wwc = '/images/profile/wwc' . $fileName;
+                $user->wwc = '/images/profile/wwc/' . $fileName;
                 $user->save();
             }
 

@@ -188,6 +188,7 @@ try {
 	
             Route::get('/applications', 'AdminApplicationsController@index');
             Route::get('/applications/approveId={id}', 'AdminApplicationsController@approve');
+            Route::get('/applications/downloadId={id}', 'AdminApplicationsController@download');
 
 
             if (App\System::all()->first()->slider == 1) {

@@ -50,10 +50,23 @@ class ApplicationsController extends Controller
             'files' => '',
             'phone' => $request->get('phone'),
             'email' => $request->get('email'),
-            'status' => 'new'
-
-
+            'status' => 'new',
         ));
+
+        $user = \Auth::user();
+        if ($request->hasFile('wwc')) {
+            if ($user->wwc != "" && file_exists(public_path() . $user->wwc)) {
+                Image::make(public_path() . $user->wwc)->destroy();
+            }
+            $fileName = $user->id . '.' . $request->file('wwc')->getClientOriginalExtension();
+
+            $request->file('wwc')->move(public_path() . '/images/profile/wwc/', $fileName);
+
+            $user->wwc = '/images/profile/wwc/' . $fileName;
+            $user->save();
+        }
+
+        $application->files = \Auth::user()->wwc;
         $application->save();
 
         return redirect('profile');
