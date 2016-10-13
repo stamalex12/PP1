@@ -63,7 +63,8 @@ class ApplicationsController extends Controller
         $application->files = \Auth::user()->wwc;
         $application->save();
 
-        return redirect('profile');
+        $applications = Application::where('user_id', '=', \Auth::user()->id)->get();
+        return view('profile.applications.applications', compact('applications'));
     }
 
     public function cancel($id)
