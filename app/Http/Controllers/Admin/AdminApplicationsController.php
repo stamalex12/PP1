@@ -41,7 +41,7 @@ class AdminApplicationsController extends Controller
 
         $applications = Application::all();
 
-        $message = 'Your appllication to assist us with '.$application->taskName.' between '.$application->startDate. ' and '.$application->endDate. ' has been approved. We will contact you with more informtion shortly.';
+        $message = 'Your appllication to assist us with '.$application->taskName.' between '.$application->startDate->format('dS F Y'). ' and '.$application->endDate->format('dS F Y'). ' has been approved. We will contact you with more informtion shortly.';
 
         $data = ['email' => $user->email,'subject' => 'Application Approved', 'bodyMessage' => $message];
 

@@ -13,7 +13,7 @@ class VolunteeringNeed extends Model
     protected $attributes = array(
         'status' => 'Active',
     );
-
+    protected $dates = ['startDate', 'endDate'];
     public function volunteerUsers() {
         return $this->belongsToMany('App\User', 'volunteerNeeds_users', 'volunteerNeed_id', 'user_id');
     }

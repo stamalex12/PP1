@@ -10,8 +10,8 @@
                             <h3>{{$volunteerNeed->name}}</h3>
                             <p>{{$volunteerNeed->description}}</p>
                             <p>Skills Needed: {{$volunteerNeed->skillsNeeded}}</p>
-                            <p>Start Date: {{$volunteerNeed->startDate}}</p>
-                            <p>End Date: {{$volunteerNeed->endDate}}</p>
+                            <p>Start Date: {{$volunteerNeed->startDate->format('dS F Y')}}</p>
+                            <p>End Date: {{$volunteerNeed->endDate->format('dS F Y')}}</p>
                         </div>
                         @if (Auth::check())
                             {!! link_to_action('ApplicationsController@create','Apply', $volunteerNeed->id, ['class' =>'btn btn-primary btn-raised']) !!}
