@@ -40,13 +40,22 @@
                         <th>{{$application->user_id}}</th>
                         <th>{{$application->taskName}}</th>
                         <th>{{$application->skillsAndQuals}}</th>
-                        <th>{{$application->startDate}}</th>
-                        <th>{{$application->endDate}}</th>
+                        <th>{{$application->startDate->format('dS M Y')}}</th>
+                        <th>{{$application->endDate->format('dS M Y')}}</th>
                         <th>{{$application->phone}}</th>
                         <th>{{$application->email}}</th>
                         <th>{{$application->status}}</th>
                         <th>@if($application->files !="") Yes @endif</th>
-                        <th>@if($application->status == 'new') {!! link_to_action('Admin\AdminApplicationsController@approve','Approve', $application->id) !!} | @endif @if($application->files !="") {!! link_to_action('Admin\AdminApplicationsController@download','Download WWC', $application->id) !!} @endif</th>
+                        <th>
+                            @if($application->status == 'new')
+                                {!! link_to_action('Admin\AdminApplicationsController@approve','Approve', $application->id) !!}
+                                |
+                            @endif
+                            @if($application->files !="")
+                                {!! link_to_action('Admin\AdminApplicationsController@download','Download WWC', $application->id) !!}
+                                |
+                            @endif
+                            {!! link_to_action('Admin\AdminApplicationsController@show','View', $application->id) !!}</th>
                     </tr>
                 @endforeach
 

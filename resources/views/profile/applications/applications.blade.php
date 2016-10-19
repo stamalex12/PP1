@@ -19,6 +19,9 @@
                         <th>Status</th>
                         <th>wwc</th>
                         <th>Action</th>
+
+
+
                     </tr>
                     </thead>
                     <tfoot>
@@ -32,16 +35,23 @@
                         <th>Status</th>
                         <th>wwc</th>
                         <th>Action</th>
+
                     </tr>
                     </tfoot>
                     <tbody>
 
                     @foreach($applications as $application)
-                            <tr>
+                        @if($application->status == 'new')
+                            <tr class="warning">
+                        @elseif($application->status == 'Approved')
+                            <tr class="success">
+                        @else
+                            <tr class="danger">
+                                @endif
                                 <th>{{$application->taskName}}</th>
                                 <th>{{$application->skillsAndQuals}}</th>
-                                <th>{{$application->startDate}}</th>
-                                <th>{{$application->endDate}}</th>
+                                <th>{{$application->startDate->format('dS M Y')}}</th>
+                                <th>{{$application->endDate->format('dS M Y')}}</th>
                                 <th>{{$application->phone}}</th>
                                 <th>{{$application->email}}</th>
                                 <th>{{$application->status}}</th>

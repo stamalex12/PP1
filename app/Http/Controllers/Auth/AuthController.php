@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Role;
+use App\Subscribers;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -77,6 +78,11 @@ class AuthController extends Controller
         $role = Role::where('name', '=', 'Visitor')->get();
 
         $user->saveRoles($role);
+        $subscriber = Subscribers::create([
+            'userId' => $user->id,
+            'email' => $data['email']
+        ]);
+        $subscriber->save();
         return $user;
     }
 }

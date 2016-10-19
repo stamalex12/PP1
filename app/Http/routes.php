@@ -55,12 +55,13 @@ try {
     Route::patch('/profile', 'ProfileController@update');
     Route::get('/applications', 'ApplicationsController@index');
     Route::get('/applications/create={id}', 'ApplicationsController@create');
+
     Route::post('/applications', 'ApplicationsController@store');
     Route::get('/applications/cancel={id}', 'ApplicationsController@cancel');
-
+    Route::get('/report', 'ReportController@generateReport');
 //For all Visitor access
     Route::group(array('middleware' => 'visitor'), function () {
-        Route::get('/report', 'ReportController@generateReport');
+
         
         Route::get('/my-donations', 'ProfileController@donations');
         Route::get('/my-volunteering', 'ApplicationsController@index');
@@ -78,7 +79,7 @@ try {
         Route::get('/getIEExport', 'ReportController@getIEExport');
         Route::get('/getICExport', 'ReportController@getICExport');
         Route::get('/getMExport', 'ReportController@getMExport');
-        Route::get('/report', 'ReportController@generateReport');
+
         Route::get('/genChildReport', 'ReportController@genChildReport');
     });
 
@@ -188,6 +189,7 @@ try {
             Route::post('/donations/create', 'DonationsController@store');
 	
             Route::get('/applications', 'AdminApplicationsController@index');
+        Route::get('/applications/show={id}', 'AdminApplicationsController@show');
             Route::get('/applications/approveId={id}', 'AdminApplicationsController@approve');
             Route::get('/applications/downloadId={id}', 'AdminApplicationsController@download');
 

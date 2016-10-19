@@ -26,7 +26,7 @@ class EditProfileRequest extends Request
         return [
             'username' => 'required|unique:users,id,'.\Auth::user()->id,
             'email' => 'required|email',
-            'phone' => 'min:11|numeric',
+            'phone' => 'numeric',
             //TODO: Improve phone validation
             'new_password' => 'alpha_num|min:6|confirmed',
             'new_password_confirmation' => 'alpha_num|min:6',

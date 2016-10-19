@@ -75,7 +75,8 @@ class ApplicationsController extends Controller
         $application->save();
 
         $applications = Application::where('user_id', '=', \Auth::user()->id)->get();
-        return view('profile.applications.applications', compact('applications'));
+        return redirect('applications');
+       // return view('profile.applications.applications', compact('applications'));
 
     }
 

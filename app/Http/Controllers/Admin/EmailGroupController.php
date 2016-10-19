@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Subscribers;
+use App\WebsiteInfo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\CreateEmailGroupRequest;
@@ -10,6 +12,7 @@ use App\User;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use TijsVerkoyen\CssToInlineStyles\Exception;
 
 class EmailGroupController extends Controller
 {
@@ -42,10 +45,20 @@ class EmailGroupController extends Controller
 
         $data = ['subject' => $request['subject'], 'bodyMessage' => $request['body']];
 
-        $users = User::all();
-        $info = WebsiteInfo::all()->first();
 
-        foreach($users as $user)
+        $subscribers = Subscribers::all();
+
+        try{
+            $info = WebsiteInfo::all()->first();
+
+
+        }
+        catch (Exception $e)
+        {
+            return redirect('/admin/email-group/create')->with('status', 'You need to specify the email address in Website information page');
+        }
+
+        foreach($subscribers as $user)
         {
             Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $user, $info)
             {
@@ -54,6 +67,7 @@ class EmailGroupController extends Controller
                 $message->to($user->email)->subject($data['subject']);
             });
         }
+
 
         return redirect('/admin/email-group/create')->with('status', 'Group Email was sent successfully');
     }

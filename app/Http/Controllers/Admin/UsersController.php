@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Subscribers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
@@ -37,6 +38,19 @@ class UsersController extends Controller
         }
         $user->save();
         $user->saveRoles($request->get('role'));
+
+        $role= Role::where('id', $request->get('role'))->first();
+
+        if(!($role->name == 'Visitor'))
+        {
+            $subscriber = Subscribers::where('userId', $user->id)->firstOrFail();
+            if($subscriber)
+            {
+                Subscribers::destroy($subscriber->id);
+                $user->subscriber = 0;
+                $user->save();
+            }
+        }
 
         return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');
     }

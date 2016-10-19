@@ -62,5 +62,12 @@ class AdminApplicationsController extends Controller
         return response()->download(public_path().$application->files);
     }
 
+    public function show($id)
+    {
+        $application = Application::find($id);
+        $user = User::find($application->user_id);
+        return view('backend.applications.show', compact('application', 'user'));
+    }
+
 
 }

@@ -10,6 +10,8 @@ class Application extends Model
         'user_id', 'need_id', 'taskName', 'skillsAndQuals', 'startDate', 'endDate', 'files', 'phone', 'email', 'status'
 
     ];
+
+    protected $dates = ['startDate', 'endDate'];
     protected $attributes = array(
         'status' => 'Active',
     );

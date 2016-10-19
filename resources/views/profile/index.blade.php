@@ -70,7 +70,7 @@
 
             <div class="form-group">
                 {!! Form::label('old_password', 'Current password:') !!}
-                {!! Form::password('old_password', null, ['class' => 'form-control', 'placeholder' => 'Old password']) !!}
+                {!! Form::password('old_password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
             </div>
             @if(session('error'))
                 <div class="alert alert-danger">
@@ -85,16 +85,16 @@
             <div id="passwordFields" hidden>
                 <div class="form-group">
                     {!! Form::label('new_password', 'New password:') !!}
-                    {!! Form::password('new_password', null, ['class' => 'form-control', 'placeholder' => 'New password']) !!}
+                    {!! Form::password('new_password', ['class' => 'form-control', 'placeholder' => 'New password']) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('new_password_confirmation', 'Confirm new password:') !!}
-                    {!! Form::password('new_password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'New password']) !!}
+                    {!! Form::password('new_password_confirmation',['class' => 'form-control', 'placeholder' => 'New password']) !!}
                 </div>
             </div>
 
-            {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!} Make sure you enter your password to update settings
 
             {!! Form::close() !!}
 

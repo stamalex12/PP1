@@ -314,6 +314,13 @@ class ProfileController extends Controller
                 'country' => $request->get('country'),
                 'subscriber' => $request->get('subscriber'),
             ));
+            if($request->get('subscriber') == 1)
+            {
+                $subscriber = Subscribers::where('userId', $user->id)->first();
+                $subscriber->update(array(
+                    'email' => $request->get('email')
+                ));
+            }
 
             if($request->new_password != ""){
                 $user->password = Hash::make($request->new_password);

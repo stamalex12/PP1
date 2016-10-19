@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder
         $user->name = 'Victor';
         $user->username = 'Visitor';
         $user->email = 'visitor@example.com';
-        $user->password = bcrypt('visitor');
+        $user->password = bcrypt('12visitor21');
         $user->subscriber = 1;
         $user->save();
         $user = User::where('username', 'Visitor')->first();
@@ -42,7 +42,7 @@ class UserTableSeeder extends Seeder
         $admin->name = 'Alex';
         $admin->username = 'Admin';
         $admin->email = 'admin@example.com';
-        $admin->password = bcrypt('admin');
+        $admin->password = bcrypt('12admin21');
         $admin->subscriber = 1;
         $admin->save();
         $admin = User::where('username', 'Admin')->first();
@@ -52,7 +52,7 @@ class UserTableSeeder extends Seeder
         $auditor->name = 'Aldo';
         $auditor->username = 'Auditor';
         $auditor->email = 'auditor@example.com';
-        $auditor->password = bcrypt('auditor');
+        $auditor->password = bcrypt('12auditor21');
         $auditor->subscriber = 1;
         $auditor->save();
         $auditor = User::where('username', 'Auditor')->first();
@@ -62,7 +62,7 @@ class UserTableSeeder extends Seeder
         $manager->name = 'Malvin';
         $manager->username = 'Manager';
         $manager->email = 'manager@example.com';
-        $manager->password = bcrypt('manager');
+        $manager->password = bcrypt('12manager21');
         $manager->subscriber = 1;
         $manager->save();
         $manager = User::where('username', 'Manager')->first();
