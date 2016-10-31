@@ -10,14 +10,14 @@
                     <h3>{{$contents->title}}</h3>
                     @if($contents->image == null)
                         <div class="col-md-12">
-                            <p>{!! nl2br(e($contents->content)) !!}</p>
+                            <p>{!! $contents->content!!}</p>
                         </div>
                     @else
                         <div class="col-md-3">
                             <div class="content-image">{{ Html::image($contents->image) }}</div>
                         </div>
                         <div class="col-md-9">
-                            <p>{!! nl2br(e($contents->content)) !!}</p>
+                            <p>{!! $contents->content!!}</p>
                         </div>
                     @endif
 

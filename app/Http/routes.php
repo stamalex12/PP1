@@ -30,6 +30,8 @@ try {
             $roombooking = DB::table('room_bookings')->select('id', 'userId', 'roomId', 'startDate as start', 'endDate as end', 'firstName', 'lastName')->get();
             foreach ($roombooking as $event) {
                 $event->url = url('roombooking/' . $event->id);
+                $room = \App\Room::where('id', $event->roomId)->first();
+                $event->title = $room->name;
             }
             return $roombooking;
         });

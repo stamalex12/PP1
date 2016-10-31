@@ -1140,7 +1140,8 @@ img.child-image-placeholder {
     margin-top: 10px;
 }
 .child-placeholder {
-    height: 450px;
+    min-height: 450px;
+    max-height: 600px;
 }
 
 .child-content {
