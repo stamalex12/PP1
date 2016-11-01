@@ -50,7 +50,9 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="../../booking" class="btn btn-default btn-raised">Back</a>
             </form>
+
         </div>
     </div>
 @endsection

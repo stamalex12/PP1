@@ -40,6 +40,8 @@ try {
 
     if (App\System::all()->first()->projects == 1) {
         Route::get('/projects', 'PageController@projects');
+
+        Route::get('/volunteerview={id}', 'PageController@volunteerView');
         Route::get('projects/{resource}/resource-donation', ['as' => 'resource-donation', function (App\ResourceNeed $resource) {
             return view('projects/resourceNeeds.amount', compact('resource'));
         }]);
@@ -121,6 +123,7 @@ try {
                 Route::get('/volunteering/disableId={id}', 'VolunteerController@statusToggle');
                 Route::get('/volunteering/deleteId={id}', 'VolunteerController@destroy');
                 Route::patch('/volunteering/{id}', 'VolunteerController@update');
+
             }
 
             Route::get('/content', 'ContentController@index');
