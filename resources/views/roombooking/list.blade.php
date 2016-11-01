@@ -5,37 +5,28 @@
 {{--admin can check the whole list of bookings--}}
     <div class="row">
         <div class="col-lg-12">
+            <h1>My Bookings</h1>
             @if($roombooking->count() > 0)
                 <table class="table table-striped">
                     <thead>
                     <tr>
 
                         <th>Booking Id</th>
-                        <th>Room Id</th>
+                        <th>Room</th>
                         {{--<th>Guest Name</th>--}}
                         <th>Start</th>
                         <th>End</th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
 
-                        <th>Booking Id</th>
-                        <th>Room Id</th>
-                        {{--<th>Guest Name</th>--}}
-                        <th>Start</th>
-                        <th>End</th>
-                        <th></th>
-                    </tr>
-                    </tfoot>
                     <tbody>
                     <?php $i = 1;?>
                     @foreach($roombooking as $booking)
                         <tr>
 
                             <td><a href="{{ url('roombooking/' . $booking->id) }}">{{ $booking->id }}</a></td>
-                            <td>{{ $booking->roomId }}</td>
+                            <td>{{\App\Room::where('id', $booking->roomId)->first()->name }}</td>
                             <td>{{ date("g:ia\, jS M Y", strtotime($booking->startDate)) }}</td>
                             <td>{{date("g:ia\, jS M Y", strtotime($booking->endDate)) }}</td>
                             <td>
@@ -55,6 +46,7 @@
             @else
                 <h2>No event yet!</h2>
             @endif
+            <a href="booking" class="btn btn-default btn-raised">Back</a>
         </div>
     </div>
 @endsection
