@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserEditFormRequest;
 use Illuminate\Support\Facades\Hash;
+use TijsVerkoyen\CssToInlineStyles\Exception;
 
 class UsersController extends Controller
 {
@@ -43,13 +44,32 @@ class UsersController extends Controller
 
         if(!($role->name == 'Visitor'))
         {
-            $subscriber = Subscribers::where('userId', $user->id)->firstOrFail();
-            if($subscriber)
-            {
-                Subscribers::destroy($subscriber->id);
-                $user->subscriber = 0;
-                $user->save();
+            try{
+                $subscriber = Subscribers::where('userId', $user->id)->first();
+                if($subscriber == null)
+                {
+                    throw new Exception();
+                }
+                if($subscriber)
+                {
+                    Subscribers::destroy($subscriber->id);
+                    $user->subscriber = 0;
+                    $user->save();
+                }
             }
+            catch(Exception $e)
+            {
+                //only here because Subscriber doesnt exist
+            }
+
+        }
+        else
+        {
+            $newSubscriber = new Subscribers(array(
+                'userId' => $user->id,
+                'email' => $user->email,
+            ));
+            $newSubscriber->save();
         }
 
         return redirect(action('Admin\UsersController@edit', $user->id))->with('status', 'The user has been updated!');

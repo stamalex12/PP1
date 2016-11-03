@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
         $user->username = 'Visitor';
         $user->email = 'visitor@example.com';
         $user->password = bcrypt('12visitor21');
-        $user->subscriber = 1;
+        $user->subscriber = 0;
         $user->save();
         $user = User::where('username', 'Visitor')->first();
         //$user->saveRoles($userVal);

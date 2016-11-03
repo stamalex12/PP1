@@ -24,7 +24,7 @@ class CreateChildRequest extends Request
     public function rules()
     {
         return [
-            //
+            'name' => 'required'
         ];
     }
 }

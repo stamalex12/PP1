@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('image', 'Upload Image:') !!}
+                            {!! Form::label('image', 'Upload Logo:') !!}
                             {!! Form::file('image',null) !!}
                         </div>
 

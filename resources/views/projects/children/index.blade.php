@@ -4,7 +4,9 @@
         @foreach($children as $donatable)
             <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 7%">
                 <div class="panel panel-default child-placeholder" style="position:relative;">
+                    @if($donatable->image)
                     {{ Html::image($donatable->image, 'alt', ['class' => 'child-image-placeholder']) }}
+                    @endif
                     <div class="child-content">
                         <p><b>{{$donatable->name}}</b> -  Aged {{$donatable->age}}<br/><br/>
                             {{$donatable->aspirations}}

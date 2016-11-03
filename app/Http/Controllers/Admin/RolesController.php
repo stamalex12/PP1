@@ -31,7 +31,7 @@ class RolesController extends Controller
             'description' => $request->get('description')
         ));
         $role->save();
-        return redirect('/admin/roles/create')->with('status', 'A new role has been created!');
+        return redirect('/admin/roles')->with('status', 'A new role has been created!');
     }
 
 }
