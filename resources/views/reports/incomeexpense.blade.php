@@ -28,7 +28,8 @@
         <th></th>
         <th></th>
         <th>Total</th>
-        <th>${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount')}}</th>
+        <th>
+            ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount')}}</th>
     </tr>
     <tr>
         <td>Expenses</td>
@@ -38,7 +39,7 @@
     </tr>
 
 
-@foreach($expense as $expenses)
+    @foreach($expense as $expenses)
         <tr>
             <td></td>
             <td>{{\App\ResourceNeed::find($expenses->resourceNeed)->name}}</td>
@@ -59,9 +60,11 @@
 
     <tr>
         <th>Totals</th>
-        <th>Income: ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount')}} </th>
+        <th>Income:
+            ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount')}} </th>
         <th>Expense: ${{\App\Expense::sum('amount')}}</th>
-        <th>Difference: ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount') - \App\Expense::sum('amount')}}</th>
+        <th>Difference:
+            ${{\App\Donation::where('status', '=', 'Complete')->where('donatable_type', 'LIKE', '%ResourceNeed%')->sum('amount') - \App\Expense::sum('amount')}}</th>
     </tr>
 
 

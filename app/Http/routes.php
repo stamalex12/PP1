@@ -83,7 +83,7 @@ try {
         Route::get('/getIEExport', 'ReportController@getIEExport');
         Route::get('/getICExport', 'ReportController@getICExport');
         Route::get('/getMExport', 'ReportController@getMExport');
-
+        Route::get('/report', 'ReportController@generateReport');
         Route::get('/genChildReport', 'ReportController@genChildReport');
     });
 
