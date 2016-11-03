@@ -54,19 +54,19 @@ try {
     }
 
 //User Profile
-    Route::patch('profile/{user_id}', 'UsersController@updateProfile');
-    Route::get('profile', 'ProfileController@index');
-    Route::patch('/profile', 'ProfileController@update');
-    Route::get('/applications', 'ApplicationsController@index');
-    Route::get('/applications/create={id}', 'ApplicationsController@create');
 
-    Route::post('/applications', 'ApplicationsController@store');
-    Route::get('/applications/cancel={id}', 'ApplicationsController@cancel');
-    Route::get('/report', 'ReportController@generateReport');
 //For all Visitor access
     Route::group(array('middleware' => 'visitor'), function () {
 
-        
+        Route::patch('profile/{user_id}', 'UsersController@updateProfile');
+        Route::get('profile', 'ProfileController@index');
+        Route::patch('/profile', 'ProfileController@update');
+        Route::get('/applications', 'ApplicationsController@index');
+        Route::get('/applications/create={id}', 'ApplicationsController@create');
+
+        Route::post('/applications', 'ApplicationsController@store');
+        Route::get('/applications/cancel={id}', 'ApplicationsController@cancel');
+        Route::get('/report', 'ReportController@generateReport');
         Route::get('/my-donations', 'ProfileController@donations');
         Route::get('/my-volunteering', 'ApplicationsController@index');
 
