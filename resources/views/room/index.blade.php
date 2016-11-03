@@ -9,8 +9,9 @@
         <div class="row">
             <div class="panel panel-default col-sm-12 col-md-8 col-md-offset-2 col-xs-12">
                 <div class="row">
-                    <div class="col-md-6" style="padding-left: 0px;">{{ Html::image($aroom->imagePath) }}</div>
-
+                    @if($aroom->imagePath)
+                        <div class="col-md-6" style="padding-left: 0px;">{{ Html::image($aroom->imagePath) }}</div>
+                    @endif
                     <div class="col-md-6">
                         <h3>{{$aroom->name}}</h3>
                         <p>Room ID: {{$aroom->id}}</p>

@@ -29,6 +29,8 @@ class CreateDonnationRequest extends Request
     public function rules()
     {
         return [
+            'amount' => 'required',
+            'resourceOrChild' => 'required'
         ];
     }
 }

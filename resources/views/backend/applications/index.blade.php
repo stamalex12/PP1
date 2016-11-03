@@ -37,7 +37,8 @@
                 <tbody>
                 @foreach($applications as $application)
                     <tr>
-                        <th>{{$application->user_id}}</th>
+
+                        <th>{{\App\User::find($application->user_id)->name}}</th>
                         <th>{{$application->taskName}}</th>
                         <th>{{$application->skillsAndQuals}}</th>
                         <th>{{$application->startDate->format('dS M Y')}}</th>

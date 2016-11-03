@@ -5,12 +5,9 @@
 {{--admin can check the whole list of bookings--}}
 
     <div class="row">
+
         <div class="col-lg-12">
-            <a class="btn btn-primary" href="{{ url('roombooking/create')}}">
-                <span class="glyphicon glyphicon-plus"></span> Create A New Booking</a>
-        </div>
-        <div class="col-lg-12">
-            <h3>Full Booking list</h3>
+            <h3>Booking list</h3>
             @if($roombooking->count() > 0)
                 <table class="table table-striped">
                     <thead>

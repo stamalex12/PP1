@@ -65,7 +65,7 @@
                     </tbody>
                 </table>
                 <div class="divider"></div>
-                <a href="dashboard" class="btn btn-default btn-raised">Back</a>
+
             </div>
         </div>
     </div>

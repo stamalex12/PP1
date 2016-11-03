@@ -201,8 +201,8 @@
                             <div class="row-content">
                                 <div class="action-secondary"><i class="mdi-material-info"></i></div>
                                 <h4 class="list-group-item-heading">Emails</h4>
-                                <a href="testimonies" class="btn btn-default btn-raised">View Sent Emails</a>
-                                <a href="email/create" class="btn btn-primary btn-raised">Send Email</a>
+                                <a href="email/create" class="btn btn-default btn-raised">Send Email</a>
+
                                 <a href="email-group/create" class="btn btn-primary btn-raised">Send Email To
                                     Subscribers</a>
                             </div>

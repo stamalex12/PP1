@@ -22,7 +22,7 @@
                                     Child</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="resourceOrChild">
-                                        <option value="none">None</option>
+                                        <option value="">None</option>
                                         @foreach (\App\resourceNeed::all() as $resource) {
                                         <option value="{{$resource->name}}">{{$resource->name}}</option>@endforeach
                                         @foreach (\App\child::all() as $child) {
@@ -35,7 +35,7 @@
                                 <label for="user" class="col-md-4 control-label">User</label>
                                 <div class="col-md-6">
                                     <select class="form-control" name="user">
-                                        <option value="none">Anonymous</option>
+                                        <option value="0">Anonymous</option>
                                         @foreach (\App\User::all() as $user) {
                                         <option value="{{$user->id}}">{{$user->name}}</option>@endforeach
                                     </select>
@@ -51,6 +51,13 @@
                                 </div>
                             </div>
                         </form>
+                        @if ($errors->any())
+                            <ul class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
             </div>

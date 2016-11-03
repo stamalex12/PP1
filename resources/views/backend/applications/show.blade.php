@@ -46,10 +46,11 @@
                 </div>
             @endif
 
-            <div class="col-md-6 col-xs-12">
-                <p>{!! link_to_action('Admin\AdminApplicationsController@download','Download Working With Children Check', $application->id) !!}</p>
-            </div>
-
+            @if(!($application->files == null))
+                <div class="col-md-6 col-xs-12">
+                    <p>{!! link_to_action('Admin\AdminApplicationsController@download','Download Working With Children Check', $application->id) !!}</p>
+                </div>
+            @endif
 
             <div class="row">
                 <div class="col-md-12">

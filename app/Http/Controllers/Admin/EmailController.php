@@ -11,6 +11,7 @@ use App\Email;
 use App\WebsiteInfo;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use TijsVerkoyen\CssToInlineStyles\Exception;
 
 class EmailController extends Controller
 {
@@ -51,16 +52,28 @@ class EmailController extends Controller
     {
         $email = Email::insert(['emailTo' => $request['emailTo'], 'subject' => $request['subject'], 'message' => $request['body'], 'type' => 'single']);
 
-        $data = ['email' => $request['emailTo'],'subject' => $request['subject'], 'bodyMessage' => $request['body']];
+        $data = ['email' => $request['emailTo'], 'subject' => $request['subject'], 'bodyMessage' => $request['body']];
 
         $info = WebsiteInfo::all()->first();
-        Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $info)
-        {
-            $message->from($info->email, $info->companyName);
+        try {
+            if ($info == null) {
+                throw new Exception();
+            }
+                Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $info) {
+                    $message->from($info->email, $info->companyName);
 
-            $message->to($data['email'])->subject($data['subject']);
-        });
-        return redirect('/admin/email/create')->with('status', 'Email was sent successfully');
+                    $message->to($data['email'])->subject($data['subject']);
+                });
+                return redirect('/admin/email/create')->with('status', 'Email was sent successfully');
+
+
+        } catch (Exception $e) {
+
+            return redirect('/admin/email/create')->with('status', 'You need to add your email and company name in website information in order to send emails');
+
+        }
+
+
     }
 
     /**
@@ -69,26 +82,26 @@ class EmailController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-   /* public function storeGroupMessage(CreateEmailGroupRequest $request)
-    {
-        $email = Email::insert(['emailTo' => 'subscribers', 'subject' => $request['subject'], 'message' => $request['body'], 'type' => 'group']);
+    /* public function storeGroupMessage(CreateEmailGroupRequest $request)
+     {
+         $email = Email::insert(['emailTo' => 'subscribers', 'subject' => $request['subject'], 'message' => $request['body'], 'type' => 'group']);
 
-        $data = ['subject' => $request['subject'], 'bodyMessage' => $request['body']];
+         $data = ['subject' => $request['subject'], 'bodyMessage' => $request['body']];
 
-        $users = User::all();
+         $users = User::all();
 
-        foreach($users as $user)
-        {
-            Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $user)
-            {
-                $message->from('kikssrilanka@gmail.com', 'KIKS');
+         foreach($users as $user)
+         {
+             Mail::send('emails.emailTemplate', $data, function ($message) use ($data, $user)
+             {
+                 $message->from('kikssrilanka@gmail.com', 'KIKS');
 
-                $message->to($user->email)->subject($data['subject']);
-            });
-        }
+                 $message->to($user->email)->subject($data['subject']);
+             });
+         }
 
-        return redirect('/admin/email/create-group')->with('status', 'Group Email was sent successfully');
-    }*/
+         return redirect('/admin/email/create-group')->with('status', 'Group Email was sent successfully');
+     }*/
 
     /**
      * Display the specified resource.

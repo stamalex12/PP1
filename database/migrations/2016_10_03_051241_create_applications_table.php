@@ -25,7 +25,7 @@ class CreateApplicationsTable extends Migration
             $table->text('skillsAndQuals');
             $table->date('startDate');
             $table->date('endDate');
-            $table->string('files');
+            $table->string('files')->nullable();
             $table->string('phone');
             $table->string('email');
             $table->string('status');

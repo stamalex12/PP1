@@ -5,9 +5,7 @@
         <div class="col-md-12">
             <h1>Create Email</h1>
             {!! Form::open(['url'=>'/admin/email']) !!}
-            @foreach ($errors->all() as $error)
-                <p class="alert alert-danger">{{ $error }}</p>
-            @endforeach
+
             @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}

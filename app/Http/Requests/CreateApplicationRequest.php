@@ -29,6 +29,10 @@ class CreateApplicationRequest extends Request
     {
         return [
             'startDate' => 'required',
+            'skillsAndQuals' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+
         ];
     }
 }
