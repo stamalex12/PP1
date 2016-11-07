@@ -14,7 +14,7 @@
 Route::get('/home', 'PageController@index');
 Route::get('/', 'PageController@index');
 Route::get('/about', 'PageController@about');
-
+Route::get('/report', 'ReportController@generateReport');
 try {
 
     if (App\System::all()->first()->rooms == 1) {
@@ -66,7 +66,7 @@ try {
 
         Route::post('/applications', 'ApplicationsController@store');
         Route::get('/applications/cancel={id}', 'ApplicationsController@cancel');
-        Route::get('/report', 'ReportController@generateReport');
+
         Route::get('/my-donations', 'ProfileController@donations');
         Route::get('/my-volunteering', 'ApplicationsController@index');
 
@@ -83,7 +83,7 @@ try {
         Route::get('/getIEExport', 'ReportController@getIEExport');
         Route::get('/getICExport', 'ReportController@getICExport');
         Route::get('/getMExport', 'ReportController@getMExport');
-        Route::get('/report', 'ReportController@generateReport');
+
         Route::get('/genChildReport', 'ReportController@genChildReport');
     });
 
